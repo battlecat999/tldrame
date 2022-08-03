@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+html{
+	box-sizing: border-box;
+	font-family: 62.5%;/*reset para REMS - 62.5% = 10px de 16px*/
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Utils */
+.w-50 {
+    width: 50%;
+    /* max-width: 50%; */
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.white-space-nowrap {
+    white-space: nowrap;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.d-inline {
+    display: inline;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+body{
+	font-family: 'Lato', sans-serif;
+	font-size: 1.0rem;
+    max-width: 85%;
+    margin: auto;
+    padding-top: 1rem;
+}
+
+.business-data-section,
+.document-disclaimer-section,
+.anticipo-data {
+    display: inline-block;
+    width: 33%;
+}
+
+.business-data-section {
+	position: relative;
+}
+
+.business-data-section .business-data-info {
+	display: inline-block;
+	position: absolute;
+	margin-left: 5px;
+	width: 700px;
+}
+
+.business-name {
+    margin: 0;
+}
+
+.document-disclaimer-section {
+    text-align: center;
+}
+
+.document-disclaimer-section span,
+.anticipo-data span,
+.business-data-info span {
+    font-size: 1.0rem;
+}
+
+.anticipo-data {
+    text-align: right;
+    /* max-width: 90%; */
+}
+
+.provider-section h6,
+.travel-section h6,
+.anticipo-section h6 {
+    border: 1px solid black;
+    text-align: center;
+    padding: .5rem;
+}
+
+.provider-section span,
+.travel-section span,
+.anticipo-section span {
+    font-size: 1.0rem;
+}
+
+.sign-section {
+    margin-top: 10rem;
+}
+
+</style>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body>
+    <section class="header-section">
+        <div class="business-data-section">
+            <img src="https://www.logisticamyf.ar/logos/logo_icono.jpg" width="150" height="150"/>
+			<div class="business-data-info">
+				<p class="business-name">@@v_empresa_nombre</p><br/>
+				<span><b>Direcci&oacute;n Comercial:</b> @@v_empresa_direccion</span><br/>
+				<span><b>Condici&oacute;n Frente IVA:</b> @@v_empresa_condicion_iva</span><br/>
+				<span><b>IIBB:</b> @@v_empresa_iibb</span><br/>
+				<span><b>Fecha Inicio Actividad:</b> @@v_empresa_fecha_inicio_actividad</span><br/>
+				<span><b>CUIT:</b> @@v_empresa_cuit</span><br/>
+			</div>
+        </div>
+        <div class="document-disclaimer-section">
+            <p>X</p>
+            <span>Documento no v&aacute;lido como factura</span>
+        </div>
+        <div class="anticipo-data">
+            <span><b>Nro Anticipo:</b> @@v_numero_anticipo</span><br/>
+            <span><b>Fecha Anticipo:</b> @@v_fecha_anticipo</span>
+        </div>
+    </section>
+
+    <section class="provider-section">
+        <h6>Datos de Proveedor</h6>
+        <div class="white-space-nowrap">
+            <div class="w-50 d-inline-block">
+                <span><b>Denominaci&oacute;n:</b>@@v_razon_social</span>
+            </div>
+            <div class="w-50 d-inline-block">
+                <span><b>Chofer:</b>@@v_nombre_chofer</span>
+            </div>
+        </div>
+        <div class="white-space-nowrap">
+            <div class="w-50 d-inline-block">
+                <span><b>CUIT:</b>@@v_proveedor_cuit</span>
+            </div>
+            <div class="w-50 d-inline-block">
+                <span><b>Patente:</b> @@v_patente_tractor</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <span><b>Domicilio:</b>@@v_proveedor_domicilio</span>
+            </div>
+            <div>
+                <span><b>Condición Frente IVA:</b>@@v_condicion_iva_proveedor</span>
+            </div>
+        </div>
+    </section>
+    <section class="travel-section">
+        <h6>Datos de Viaje</h6>
+        <div class="white-space-nowrap">
+            <div class="w-50 d-inline-block">
+                <span><b>Contenedor:</b>@@v_numero_contenedor</span>
+            </div>
+            <div class="w-50 d-inline-block">
+                <span><b>Fecha:</b>@@v_posic</span>
+            </div>
+        </div>
+        <div class="white-space-nowrap">
+            <div class="w-50 d-inline-block">
+                <span><b>BL/Booking:</b>@@v_bl_booking</span>
+            </div>
+            <div class="w-50 d-inline-block">
+                <span><b>Ruta:</b>@@v_ruta</span>
+            </div>
+        </div>
+    </section>
+    <section class="anticipo-section">
+        <h6>Datos de Anticipo</h6>
+        <div class="white-space-nowrap">
+            <div class="w-25 d-inline-block text-center">
+                <b><span>Tipo Valor</span></b>
+            </div>
+            <div class="w-25 d-inline-block text-center">
+                <b><span>Nro Valor</span></b>
+            </div>
+            <div class="w-25 d-inline-block text-center">
+                <b><span>Fecha Deposito</span></b>
+            </div>
+            <div class="w-25 d-inline-block text-center">
+                <b><span>Importe</span></b>          
+            </div>
+        </div>
+        <div class="white-space-nowrap">
+            <div class="w-25 d-inline-block text-center">
+                <span>@@v_abreviatura</span>
+            </div>
+            <div class="w-25 d-inline-block text-center">
+                <span>@@v_Cheque</span>
+            </div>
+            <div class="w-25 d-inline-block text-center">
+                <span>@@v_FechaCheque</span>
+            </div>
+            <div class="w-25 d-inline-block text-center">
+                <span>@@v_importe</span>          
+            </div>
+        </div>
+    </section>
+    <section class="sign-section">
+        <div class="float-left">
+            <span>Firma <br/>Autorizado</span>
+        </div>
+        <div class="float-right">
+            <span>Firma <br/>Recibido</span>
+        </div>
+    </section>                
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+Private Sub txtImporte_GotFocus()
+    Call AcualizarTotal
+End Sub
+Private Sub ActualizarTotal()
+    Dim SQL As String
+    Dim rs As DAO.Recordset
+    SQL = "SELECT SUM(Importe_item) as Total FROM Anticipos_ItemsTMP"
+    Set rs = CurrentDb.OpenRecordset(SQL, dbOpenDynaset)
+    If Not rs.EOF Then
+        Me.TxtImporte.Value = rs!Total
+    Else
+        Me.TxtImporte.Value = 0
+    End If
+End Sub
+
+Private Sub cmdGuardar_Click()
+Dim SQL As String
+
+On Error GoTo Error_Anticipo
+Call ActualizarTotal
+BeginTrans
+
+'Grabar en cabecera
+If GLOBAL_NUEVO = True Then
+    SQL = "INSERT INTO Anticipos ( Empresa, OT, ItemOT, Fecha, Importe, Contenedor, IdProveedor, Nro_AP ) "
+    SQL = SQL & "VALUES (" & Me.cboEmpresa.Value & ",0,0,#" & Format(Me.txtFecha.Value, "mm/dd/yyyy") & "#," & CDec(Me.TxtImporte.Value) & ",'" & Me.txtConedor.Value & "'," & Me.CboProveedor.Value & ",'" & Me.cboAnticipos.Value & "')"
+Else
+    SQL = "UPDATE Anticipos SET Importe=" & CDec(Me.TxtImporte.Value) & " WHERE Empresa=" & Me.cboEmpresa.Value & " AND Nro_AP='" & Me.cboAnticipos.Value & "'"
+End If
+CurrentDb.Execute SQL
+
+'grabar Item
+Dim rs As DAO.Recordset, rsTMP As DAO.Recordset
+SQL = "SELECT Empresa, Nro_AP, Item_Anticipo, Forma_Pago, Importe_item, Litros, Precio_Litro, NroCheque, Fecha_Pago, Observacion, IdBanco, Confirmado FROM Anticipos_ItemsTMP;"
+Set rsTMP = CurrentDb.OpenRecordset(SQL, dbOpenDynaset)
+
+'traigo de la base real
+
+Dim i As Integer
+Dim esNew As Boolean
+
+i = 0
+
+Do While Not rsTMP.EOF
+     i = i + 1
+    SQL = ""
+    SQL = SQL & "SELECT Empresa, Nro_AP, Item_Anticipo, Forma_Pago, Importe_item, Litros, Precio_Litro, NroCheque, Fecha_Pago, Observacion, IdBanco, Confirmado FROM Anticipos_Items "
+    SQL = SQL & "WHERE Empresa=" & rsTMP!Empresa & " AND Nro_AP='" & rsTMP!Nro_AP & "' AND item_Anticipo=" & i & ";"
+    Set rs = CurrentDb.OpenRecordset(SQL, dbOpenDynaset)
+
+    If rs.EOF = True Then
+        rs.AddNew
+        esNew = True
+    Else
+        rs.Edit
+        esNew = False
+    End If
+       
+        rs!Empresa = rsTMP!Empresa
+        rs!Nro_AP = rsTMP!Nro_AP
+        If esNew = True Then
+            rs!Item_Anticipo = i
+        End If
+        rs!Forma_Pago = rsTMP!Forma_Pago
+        rs!Importe_item = rsTMP!Importe_item
+        rs!Litros = rsTMP!Litros
+        rs!Precio_Litro = rsTMP!Precio_Litro
+        rs!NroCheque = rsTMP!NroCheque
+        rs!Fecha_Pago = rsTMP!Fecha_Pago
+        rs!Observacion = rsTMP!Observacion
+        rs!IdBanco = rsTMP!IdBanco
+        rs!Confirmado = True
+    rs.Update
+    rsTMP.MoveNext
+Loop
+
+
+If GLOBAL_NUEVO = True Then
+    SQL = "INSERT INTO CtaCteProv ( Empresa, Comprobante, NroComprobante, FecVencim, NroOrden, ImporteNeto, ImporteIVA, ImporteTotal, ImpIB, ImpRetIVA, Saldo, Estado, FecRegistracion, OPago, TipoValor, Proveedor )"
+    SQL = SQL & "VALUES (" & Me.cboEmpresa.Value & ",'AP','" & Me.cboAnticipos.Value & "',#" & Format(Me.txtFecha.Value, "mm/dd/yyyy") & "#,0," & Me.TxtImporte.Value & ",0," & Me.TxtImporte.Value & ",0,0," & Me.TxtImporte.Value & ",'Pendiente',#" & Format(Me.txtFecha.Value, "mm/dd/yyyy") & "#,0,0," & Me.CboProveedor.Value & ")"
+    
+    CurrentDb.Execute SQL
+Else
+    SQL = "UPDATE CtaCteProv SET ImporteNeto=" & Me.TxtImporte.Value & ", ImporteTotal=" & Me.TxtImporte.Value & ",Saldo=" & Me.TxtImporte.Value & " WHERE  Empresa=" & Me.cboEmpresa.Value & " AND Comprobante='AP' AND NroComprobante='" & Me.cboAnticipos.Value & "' AND NroOrden=0"
+    CurrentDb.Execute SQL
+End If
+'Dim rs As DAO.Recordset
+
+SQL = "SELECT Empresa,Nro_AP,Forma_Pago,NroCheque,Fecha_Pago,IdBanco,Importe_item FROM Anticipos_Items WHERE Empresa=" & Me.cboEmpresa.Value & " AND Nro_AP ='" & Me.cboAnticipos.Value & "' AND Forma_Pago=4"
+Set rs = CurrentDb.OpenRecordset(SQL, dbOpenDynaset)
+
+Do While Not rs.EOF
+
+    SQL = "UPDATE Chequera SET FechaPago= #" & Format(rs!Fecha_Pago, "mm/dd/yyyy") & "#, Importe=" & rs!Importe_item & ",NroAP='" & rs!Nro_AP & "' "
+    SQL = SQL & " WHERE IdEmpresa=" & rs!Empresa & " AND IdBanco=" & rs!IdBanco & " AND nroCheque='" & rs!NroCheque & "'"
+    CurrentDb.Execute SQL
+    
+rs.MoveNext
+Loop
+
+CommitTrans
+
+Refresh
+Call Limpiar
+    Exit Sub
+Error_Anticipo:
+    MsgBox "Error de grabado"
+    Rollback
+
+End Sub
+

@@ -1,0 +1,62 @@
+CREATE DEFINER=`marco`@`%` PROCEDURE `SP_OT_Alta`(
+	IN `pIdEmpresa` INT,
+	IN `pNumero_OT` INT,
+	IN `pIdCotizacion` INT,
+	IN `pFecha` DATE,
+	IN `pNroRefCliente` VARCHAR(100),
+	IN `pBuque` VARCHAR(20),
+	IN `pBLBooking` VARCHAR(20),
+	IN `pTipoServicio` INT,
+	IN `pViaje` INT,
+	IN `pIdTerminalRet` INT,
+	IN `pIdTerminalEnt` INT,
+	IN `pIdDepositoRet` INT,
+	IN `pIdDepositoEnt` INT,
+	IN `pIdATA` INT,
+	IN `pObservaciones` VARCHAR(100),
+	IN `pEstado` INT,
+	IN `pCosto` DECIMAL(10,2),
+	IN `pImporte` DECIMAL(10,2)
+
+
+
+
+
+
+)
+BEGIN
+
+	IF (pNumero_OT is Null) Then
+	
+		IF EXISTS (SELECT 1 FROM ot)
+		THEN
+			SELECT @nextOT:= IFNULL(MAX(IdOT),0)+1 Prox FROM ot; 
+		Else
+			Set @nextOT = 1;
+		End IF;
+		
+		INSERT INTO ot 
+		(
+		 IdEmpresa, IdOT, IdCotizacion, Fecha, NroRefCliente, Buque, BLBooking, TipoServicio, Viaje, IdTerminalRet, IdTerminalEnt, IdDepositoRet, 
+		 IdDepositoEnt, IdATA, Observacion, Estado, Costo, Venta)
+		VALUES 
+		(
+		 pIdEmpresa, @nextOT, pIdCotizacion, pFecha, pNroRefCliente, pBuque, pBLBooking, pTipoServicio, pViaje, pIdTerminalRet, pIdTerminalEnt, pIdDepositoRet, 
+		 pIdDepositoEnt, pIdATA, pObservaciones, pEstado, pCosto, pImporte
+		 ); 
+		 
+	Else
+	
+		Update ot 
+		Set 
+		IdTerminalRet = pIdTerminalRet,
+		IdTerminalEnt = pIdTerminalEnt,
+		IdDepositoRet = pIdDepositoRet,
+		IdDepositoEnt = pIdDepositoEnt,
+		Observacion = pObservaciones,
+		Estado = pEstado
+		Where IdOT = pNumero_OT;
+		
+	End IF;
+ 
+ END

@@ -1,0 +1,1 @@
+SELECT * FROM information_schema.routines WHERE routine_schema='logisticamm_pop' ORDER BY Last_altered desc

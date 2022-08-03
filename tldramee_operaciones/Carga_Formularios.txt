@@ -1,0 +1,34 @@
+CALL Cargar_Formularios(1,'frm_abm_clientes','Alta de Clientes',1,0,10);
+CALL Cargar_Formularios(1,'frm_abm_contactos','Alta de Contactos',1,0,20);
+CALL Cargar_Formularios(1,'frm_CorredorClientes','Asociar Rutas a Clientes',1,0,30);
+CALL Cargar_Formularios(2,'frm_abm_proveedores','Alta de Transportistas',1,0,10);
+CALL Cargar_Formularios(2,'frm_abm_contactos_transportes','Alta de Contactos (de Prov)',1,0,20);
+CALL Cargar_Formularios(2,'frm_CorredorTransportes','Asociar Rutas a Transportistas',1,0,30);
+CALL Cargar_Formularios(2,'frm_abm_tractores','Carga de Tractores',1,0,40);
+CALL Cargar_Formularios(2,'frm_abm_chasis','Carga de Chasis',1,0,50);
+CALL Cargar_Formularios(2,'frm_abm_choferes','Carga de Choferes',1,0,60);
+CALL Cargar_Formularios(3,'frm_Comerciales_Alta_Presupuestos','Carga de Presupuestos',1,0,10);
+CALL Cargar_Formularios(3,'frm_Comerciales_OT','Carga de Ordenes de Transporte',1,0,20);
+CALL Cargar_Formularios(3,'frmBuscador_OT','Buscador de Viajes',1,0,30);
+CALL Cargar_Formularios(3,'frmCambioNominacion','Cambiar Asignaciones',1,0,10);
+CALL Cargar_Formularios(3,'frmConfirma_Email_Nominacion','Re-Envio de emails de Asignaciones',1,0,20);
+CALL Cargar_Formularios(3,'frm_Trafico_a_Designar','Viajes a Designar',1,0,30);
+CALL Cargar_Formularios(3,'frm_Trafico_Designado','Viajes Designados',1,0,40);
+CALL Cargar_Formularios(3,'frm_Trafico_En_Transito','Viajes en Curso',1,0,50);
+CALL Cargar_Formularios(3,'frm_PopUp_Designa_Viaje','Asignación de Viajes',1,0,60);
+CALL Cargar_Formularios(3,'frm_PopUp_Designa_Viaje_Conceptos','Carga de Eventos a Viajes ',1,0,70);
+CALL Cargar_Formularios(3,'frmAlta_Anticipo','Carga de Anticipos',1,0,80);
+CALL Cargar_Formularios(4,'frmBuscador_Anticipos','Buscador de Anticipos',1,0,10);
+CALL Cargar_Formularios(4,'frmConfirma_Anticipos','Confirmación de Anticipos',1,0,20);
+CALL Cargar_Formularios(4,'frmCM2','Informe CM2',1,0,30);
+CALL Cargar_Formularios(4,'frmCombustible','Control de Combustible',1,0,40);
+CALL Cargar_Formularios(6,'frm_asoc_admin_email','Parametrazar Emails para Administración',1,0,10);
+CALL Cargar_Formularios(6,'frm_abm_corredores','Alta de Rutas',1,0,20);
+CALL Cargar_Formularios(6,'frm_abm_eventos','Alta de Eventos',1,0,30
+CALL Cargar_Formularios(6,'frm_abm_elementos','Alta de Elementos',1,0,31);
+CALL Cargar_Formularios(6,'frmAyuda','Ayuda',1,0,40);
+CALL Cargar_Formularios(6,'frm_Permisos','Módulo de Permisos',1,0,50);
+
+
+
+

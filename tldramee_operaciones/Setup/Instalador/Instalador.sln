@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Instalador", "Instalador.vdproj", "{AA0D31AB-3C52-440B-8EE1-DA7EB91130AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA0D31AB-3C52-440B-8EE1-DA7EB91130AC}.Debug|Default.ActiveCfg = Debug
+		{AA0D31AB-3C52-440B-8EE1-DA7EB91130AC}.Debug|Default.Build.0 = Debug
+		{AA0D31AB-3C52-440B-8EE1-DA7EB91130AC}.Release|Default.ActiveCfg = Release
+		{AA0D31AB-3C52-440B-8EE1-DA7EB91130AC}.Release|Default.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {88E840E1-BD4C-4E64-B5BC-297BE8F3D3C8}
+	EndGlobalSection
+EndGlobal

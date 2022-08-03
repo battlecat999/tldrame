@@ -1,0 +1,38 @@
+DELETE FROM asoc_clientes_corredores;
+DELETE FROM asoc_clientes_eventos;
+DELETE FROM asoc_transportistas_corredores;
+DELETE FROM clientes;
+DELETE FROM contactos;
+DELETE FROM corredores;
+DELETE FROM cotizaciones;
+DELETE FROM cotizacionesItems;
+DELETE FROM depositos;
+DELETE FROM detalle_corredores;
+DELETE FROM itemot;
+DELETE FROM mercaderias;
+DELETE FROM niveles;
+DELETE FROM ot;
+DELETE FROM proveedores;
+DELETE FROM t_trans_tractor;
+DELETE FROM t_trans_chasis;
+DELETE FROM t_trans_chofer;
+DELETE FROM t_chasis;
+DELETE FROM t_choferes;
+DELETE FROM t_tractores;
+ALTER TABLE t_tractores AUTO_INCREMENT=0;
+ALTER TABLE t_chasis AUTO_INCREMENT=0;
+ALTER TABLE t_choferes AUTO_INCREMENT=0;
+ALTER TABLE proveedores AUTO_INCREMENT=0;
+
+DELETE FROM terminales;
+DELETE FROM tipo_documentos;
+DELETE FROM tipo_traficos_chasis;
+DELETE FROM transportistas1;
+DELETE FROM vendedores;
+
+ALTER TABLE contactos AUTO_INCREMENT=0;
+ALTER TABLE corredores AUTO_INCREMENT=0;
+ALTER TABLE cotizaciones AUTO_INCREMENT=0;
+ALTER TABLE mercaderias AUTO_INCREMENT=0;
+ALTER TABLE proveedores AUTO_INCREMENT=0;
+ALTER TABLE terminales AUTO_INCREMENT=0;

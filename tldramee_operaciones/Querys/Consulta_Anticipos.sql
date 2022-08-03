@@ -1,0 +1,1 @@
+CALL `SP_Transferencia_Para_Anticipos`('1')
