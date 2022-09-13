@@ -734,6 +734,7 @@
     <Content Include="logo_icono-ConvertImage.ico" />
     <Content Include="Logo_ML-ConvertImage.ico" />
     <None Include="Resources\Logo_Icono.png" />
+    <None Include="Resources\Logo.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

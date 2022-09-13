@@ -658,7 +658,7 @@
             this.btnAnular.Name = "btnAnular";
             this.btnAnular.Size = new System.Drawing.Size(154, 44);
             this.btnAnular.TabIndex = 23;
-            this.btnAnular.Text = "Anular OT (Completa)";
+            this.btnAnular.Text = "Anular VIAJE (Completo)";
             this.btnAnular.UseVisualStyleBackColor = true;
             this.btnAnular.Click += new System.EventHandler(this.btnAnular_Click);
             // 
@@ -704,9 +704,9 @@
             this.lblAviso.ForeColor = System.Drawing.Color.White;
             this.lblAviso.Location = new System.Drawing.Point(175, 0);
             this.lblAviso.Name = "lblAviso";
-            this.lblAviso.Size = new System.Drawing.Size(517, 18);
+            this.lblAviso.Size = new System.Drawing.Size(505, 18);
             this.lblAviso.TabIndex = 35;
-            this.lblAviso.Text = "No se pueden agregar Items porque la OT ya tiene Asociada una Factura";
+            this.lblAviso.Text = "No se pueden agregar Items porque el V ya tiene Asociada una Factura";
             this.lblAviso.Visible = false;
             // 
             // lblFechaDesde

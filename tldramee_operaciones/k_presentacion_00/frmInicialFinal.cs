@@ -36,7 +36,7 @@ namespace k_presentacion_00
             this.Size = SystemInformation.PrimaryMonitorMaximizedWindowSize;
   
             this.st_Version.Text= "Versión del Sistema: " + Application.ProductVersion.ToString();
-            this.st_Fecha_Version.Text = "Fecha de Versión: 27/06/2022";
+            this.st_Fecha_Version.Text = "Fecha de Versión: 11/08/2022";
 
             this.Text = datos.g_idUser + " " + datos.g_lastName;
             this.lblTitulo.Text = datos.g_nomEmpresa;

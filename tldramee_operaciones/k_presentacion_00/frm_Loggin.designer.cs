@@ -54,7 +54,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(197, 331);
+            this.panel1.Size = new System.Drawing.Size(255, 331);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
@@ -189,10 +189,10 @@
             // picLoco
             // 
             this.picLoco.BackColor = System.Drawing.Color.Black;
-            this.picLoco.Image = global::k_presentacion_00.Properties.Resources.Logo_Icono;
-            this.picLoco.Location = new System.Drawing.Point(0, 103);
+            this.picLoco.Image = global::k_presentacion_00.Properties.Resources.Logo1;
+            this.picLoco.Location = new System.Drawing.Point(3, 103);
             this.picLoco.Name = "picLoco";
-            this.picLoco.Size = new System.Drawing.Size(197, 74);
+            this.picLoco.Size = new System.Drawing.Size(249, 117);
             this.picLoco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLoco.TabIndex = 1;
             this.picLoco.TabStop = false;

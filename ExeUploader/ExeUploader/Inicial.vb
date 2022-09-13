@@ -9,11 +9,11 @@ Class Inicial
         Me.Text = "Exe Uploader 2022-08-03"
         'Call ReemplazarVersion("BL_Aereo.exe", False)
 
-        Call ReemplazarVersion("PermisoUsuarioForm.Infrastructure.dll", True)
-        Call ReemplazarVersion("k_negocio_00.dll", True)
-        Call ReemplazarVersion("k_loger.dll", True)
-        Call ReemplazarVersion("k_mysql.dll", True)
-        Call ReemplazarVersion("PermisoUsuarioForm.Domain.dll", True)
+        Call ReemplazarVersion("PermisoUsuarioForm.Infrastructure.dll", False)
+        Call ReemplazarVersion("k_negocio_00.dll", False)
+        Call ReemplazarVersion("k_loger.dll", False)
+        Call ReemplazarVersion("k_mysql.dll", False)
+        Call ReemplazarVersion("PermisoUsuarioForm.Domain.dll", False)
         Call ReemplazarVersion("k_presentacion_00.exe", True)
 
 

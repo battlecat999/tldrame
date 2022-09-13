@@ -163,9 +163,17 @@ namespace k_presentacion_00
             }
             if (e.KeyCode == Keys.F4)
             {
-                txtuser.Text = "administrador.mym";
+                txtuser.Text = "Miry";
                 txtpass.UseSystemPasswordChar = true;
-                txtpass.Text = "cast233";
+                txtpass.Text = "1";
+                btnAcceder_Click(sender, e);
+            }
+
+            if (e.KeyCode == Keys.F6)
+            {
+                txtuser.Text = "Joana";
+                txtpass.UseSystemPasswordChar = true;
+                txtpass.Text = "1";
                 btnAcceder_Click(sender, e);
             }
         }

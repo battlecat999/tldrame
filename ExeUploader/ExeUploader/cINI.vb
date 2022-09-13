@@ -3,7 +3,7 @@ Imports System.IO
 Public Class cINI
 #Region "-Variables-"
 
-    Public RutaIni As String = String.Concat(System.IO.Directory.GetCurrentDirectory(), "\LogisticaUploader.ini")
+    Public RutaIni As String = String.Concat(System.IO.Directory.GetCurrentDirectory(), "\ExeUploader.ini")
 
     Private filePath As String
     Private fileStream As FileStream

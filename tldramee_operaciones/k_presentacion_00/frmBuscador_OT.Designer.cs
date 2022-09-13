@@ -189,7 +189,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1577, 32);
             this.label1.TabIndex = 17;
-            this.label1.Text = "Buscador de Ordenes de Transportes";
+            this.label1.Text = "Buscador de Cargas";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgv
@@ -253,7 +253,7 @@
             this.Controls.Add(this.mFechaDesde);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmBuscador_OT";
-            this.Text = "Buscador de OT";
+            this.Text = "Buscador de Cargas";
             this.Load += new System.EventHandler(this.frmBuscador_OT_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);

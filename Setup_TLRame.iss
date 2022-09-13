@@ -45,7 +45,6 @@ Source: "D:\Kamus_Proyectos\tldrame\Archivos_Setup\ClosedXML.pdb"; DestDir: "{ap
 Source: "D:\Kamus_Proyectos\tldrame\Archivos_Setup\ClosedXML.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Kamus_Proyectos\tldrame\Archivos_Setup\CM2.xlsx"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Kamus_Proyectos\tldrame\Archivos_Setup\Cnn.ini"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Kamus_Proyectos\tldrame\Archivos_Setup\Cnn.ini1.ini"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Kamus_Proyectos\tldrame\Archivos_Setup\DocumentFormat.OpenXml.DLL"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Kamus_Proyectos\tldrame\Archivos_Setup\DocumentFormat.OpenXml.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Kamus_Proyectos\tldrame\Archivos_Setup\DropboxInstaller.exe"; DestDir: "{app}\Instaladores"; Flags: ignoreversion

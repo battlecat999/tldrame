@@ -1,0 +1,5 @@
+UPDATE [Item Factura] SET [Item Factura].PtoVenta = 1;
+UPDATE Facturas SET Facturas.PtoVenta = 1;
+UPDATE [Cuenta Corriente] SET [Cuenta Corriente].PtoVenta = 1;
+UPDATE [Cobranza Factura] SET [Cobranza Factura].PtoVenta = 1;
+

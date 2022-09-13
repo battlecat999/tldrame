@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Model name="FEGEN" id="FEGEN" language="delphi">
+  <Package name="FEGen_TLB" id="ID=5">
+    <Diagram name="Class Diagram" id="ID=17" metaclass="Class Diagram" file="Class_Diagram.txvcls.html">
+      <DiagramReference id="ID=91" element="ID=11" metaclass="Interface">
+        <Property name="Gradient On">False</Property>
+        <Property name="Persistent">False</Property>
+        <Property name="Circle view">False</Property>
+        <Property name="Gradient color 1">255, 255, 255</Property>
+        <Property name="Extends">System.IDispatch</Property>
+        <Property name="Color Area">Whole Shape</Property>
+        <Property name="Gradient Mode">Vertical</Property>
+        <Property name="Gradient color 2">255, 255, 255</Property>
+        <Property name="bounds">577,110,832,346</Property>
+      </DiagramReference>
+    </Diagram>
+    <Classifier name="IFEGenerador" id="ID=11" type="Interface" visibility="public">
+      <Property name="Persistent">False</Property>
+      <Property name="Extends">System.IDispatch</Property>
+      <Extends idref="ID=36" refFN="System.IDispatch" doom="true" />
+      <Uses />
+      <Field fieldType="Field" elementName="AbrirAlGenerar" id="ID=33" type="OLE_CANCELBOOL" systemType="OLE_CANCELBOOL" isPrimitive="false" isProperty="true" visibility="public">
+        <Property name="Type">OLE_CANCELBOOL</Property>
+        <Property name="Access">read/write</Property>
+      </Field>
+      <Method id="ID=24" name="Editar" isSubroutine="true" visibility="public">
+        <Parameter elementName="Template" id="ID3=24_60946511" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Property name="Reintroduce">False</Property>
+        <ReturnType id="ID=24" type="" isPrimitive="true" />
+      </Method>
+      <Method id="ID=25" name="SeteaDatosvendedor" isSubroutine="true" visibility="public">
+        <Parameter elementName="CUIT" id="ID3=25_37720384" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="RazonSocial" id="ID3=25_35452302" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Direccion" id="ID3=25_53064224" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Telefono" id="ID3=25_3234911" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="IngresosBrutos" id="ID3=25_60701234" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info1" id="ID3=25_17852930" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info2" id="ID3=25_36801206" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info3" id="ID3=25_28107703" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info4" id="ID3=25_62131436" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info5" id="ID3=25_66590397" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Property name="Reintroduce">False</Property>
+        <ReturnType id="ID=25" type="" isPrimitive="true" />
+      </Method>
+      <Method id="ID=26" name="SeteaCabecera" isSubroutine="true" visibility="public">
+        <Parameter elementName="TipoComp" id="ID3=26_24691380" type="Integer" systemType="Integer" isPrimitive="false" />
+        <Parameter elementName="PtoVta" id="ID3=26_53844748" type="Integer" systemType="Integer" isPrimitive="false" />
+        <Parameter elementName="Nro" id="ID3=26_61244865" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="FechaComp" id="ID3=26_61887033" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="RazonSocial" id="ID3=26_46793790" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="TipoDoc" id="ID3=26_32200631" type="Integer" systemType="Integer" isPrimitive="false" />
+        <Parameter elementName="Documento" id="ID3=26_58114317" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="CondIVA" id="ID3=26_9639207" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="CAE" id="ID3=26_42578285" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Vencimiento" id="ID3=26_26289097" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Direccion" id="ID3=26_49042080" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Total" id="ID3=26_12985564" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Info1" id="ID3=26_45197797" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info2" id="ID3=26_37142946" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info3" id="ID3=26_55788668" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info4" id="ID3=26_22588250" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info5" id="ID3=26_17708965" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Property name="Reintroduce">False</Property>
+        <ReturnType id="ID=26" type="" isPrimitive="true" />
+      </Method>
+      <Method id="ID=27" name="InsertaDetalle" isSubroutine="true" visibility="public">
+        <Parameter elementName="CodigoArt" id="ID3=27_25140036" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="DescripcionArt" id="ID3=27_23077024" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Cantidad" id="ID3=27_57299616" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Precio" id="ID3=27_10757292" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="IVA" id="ID3=27_66034349" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="SubTotal" id="ID3=27_47182091" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Info1" id="ID3=27_63653037" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info2" id="ID3=27_55622396" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info3" id="ID3=27_9120223" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info4" id="ID3=27_540607" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Info5" id="ID3=27_43789187" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Num1" id="ID3=27_57263252" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num2" id="ID3=27_7811801" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num3" id="ID3=27_28776122" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num4" id="ID3=27_49164577" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num5" id="ID3=27_22907763" type="Double" systemType="Double" isPrimitive="false" />
+        <Property name="Reintroduce">False</Property>
+        <ReturnType id="ID=27" type="" isPrimitive="true" />
+      </Method>
+      <Method id="ID=28" name="EnviarPorMail" isSubroutine="true" visibility="public">
+        <Parameter elementName="Template" id="ID3=28_43589530" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Email" id="ID3=28_41091070" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Property name="Reintroduce">False</Property>
+        <ReturnType id="ID=28" type="" isPrimitive="true" />
+      </Method>
+      <Method id="ID=29" name="Get_AbrirAlGenerar" visibility="public">
+        <Property name="Reintroduce">False</Property>
+        <Property name="Returns">OLE_CANCELBOOL</Property>
+        <ReturnType id="ID=29" type="OLE_CANCELBOOL" systemType="OLE_CANCELBOOL" isPrimitive="false" />
+      </Method>
+      <Method id="ID=30" name="Set_AbrirAlGenerar" isSubroutine="true" visibility="public">
+        <Parameter elementName="Value" id="ID3=30_40042374" type="OLE_CANCELBOOL" systemType="OLE_CANCELBOOL" isPrimitive="false" />
+        <Property name="Reintroduce">False</Property>
+        <ReturnType id="ID=30" type="" isPrimitive="true" />
+      </Method>
+      <Method id="ID=31" name="Generar" isSubroutine="true" visibility="public">
+        <Parameter elementName="Archivo" id="ID3=31_22206875" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Template" id="ID3=31_53926436" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Formato" id="ID3=31_5965194" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Property name="Reintroduce">False</Property>
+        <ReturnType id="ID=31" type="" isPrimitive="true" />
+      </Method>
+      <Method id="ID=32" name="SeteaCabeceraExtras" isSubroutine="true" visibility="public">
+        <Parameter elementName="Num1" id="ID3=32_13418676" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num2" id="ID3=32_13170954" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num3" id="ID3=32_60214390" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num4" id="ID3=32_45527389" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num5" id="ID3=32_63839913" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num6" id="ID3=32_3650498" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num7" id="ID3=32_27254927" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num8" id="ID3=32_60165497" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num9" id="ID3=32_41567079" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Num10" id="ID3=32_11490242" type="Double" systemType="Double" isPrimitive="false" />
+        <Parameter elementName="Fecha1" id="ID3=32_58294385" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Fecha2" id="ID3=32_24224733" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Fecha3" id="ID3=32_16046317" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Fecha4" id="ID3=32_24683273" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Parameter elementName="Fecha5" id="ID3=32_53188122" type="WideString" systemType="WideString" isPrimitive="false" />
+        <Property name="Reintroduce">False</Property>
+        <ReturnType id="ID=32" type="" isPrimitive="true" />
+      </Method>
+    </Classifier>
+  </Package>
+</Model>
