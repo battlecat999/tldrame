@@ -1,0 +1,2 @@
+21/10/2019 10:46:20 ==> Authentication to host '190.228.29.57' for user 'marco' using method 'mysql_native_password' failed with message: Access denied for user 'marco'@'%' to database 'logisticamm_pop'
+21/10/2019 12:48:29 ==> Unable to connect to any of the specified MySQL hosts.

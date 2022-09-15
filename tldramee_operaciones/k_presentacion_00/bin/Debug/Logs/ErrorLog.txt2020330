@@ -1,0 +1,8 @@
+30/03/2020 21:58:40 ==> Authentication to host '190.228.29.57' for user 'marco' using method 'mysql_native_password' failed with message: Reading from the stream has failed.
+30/03/2020 22:52:53 ==> Fatal error encountered during command execution.
+30/03/2020 23:31:25 ==> Reading from the stream has failed.
+30/03/2020 23:31:25 ==> Referencia a objeto no establecida como instancia de un objeto.
+30/03/2020 23:39:25 ==> Reading from the stream has failed.
+30/03/2020 23:42:42 ==> Reading from the stream has failed.
+30/03/2020 23:51:05 ==> Reading from the stream has failed.
+30/03/2020 23:54:56 ==> Reading from the stream has failed.

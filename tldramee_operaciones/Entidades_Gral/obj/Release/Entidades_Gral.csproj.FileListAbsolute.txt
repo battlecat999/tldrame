@@ -1,0 +1,12 @@
+D:\Kamus\Kamus_Transportes\KT\Entidades_Gral\bin\Release\Entidades_Gral.dll
+D:\Kamus\Kamus_Transportes\KT\Entidades_Gral\bin\Release\Entidades_Gral.pdb
+D:\Kamus\Kamus_Transportes\KT\Entidades_Gral\obj\Release\Entidades_Gral.csprojAssemblyReference.cache
+D:\Kamus\Kamus_Transportes\KT\Entidades_Gral\obj\Release\Entidades_Gral.csproj.CoreCompileInputs.cache
+D:\Kamus\Kamus_Transportes\KT\Entidades_Gral\obj\Release\Entidades_Gral.dll
+D:\Kamus\Kamus_Transportes\KT\Entidades_Gral\obj\Release\Entidades_Gral.pdb
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\bin\Release\Entidades_Gral.dll
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\bin\Release\Entidades_Gral.pdb
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\obj\Release\Entidades_Gral.csprojAssemblyReference.cache
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\obj\Release\Entidades_Gral.csproj.CoreCompileInputs.cache
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\obj\Release\Entidades_Gral.dll
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\obj\Release\Entidades_Gral.pdb

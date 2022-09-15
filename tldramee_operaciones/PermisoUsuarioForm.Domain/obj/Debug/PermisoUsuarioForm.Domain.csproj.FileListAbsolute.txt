@@ -1,0 +1,17 @@
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\bin\Debug\PermisoUsuarioForm.Domain.dll
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\bin\Debug\PermisoUsuarioForm.Domain.pdb
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.csprojAssemblyReference.cache
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.csproj.CoreCompileInputs.cache
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.dll
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.pdb
+D:\Kamus_Proyectos\LogisticaMyM\PermisoUsuarioForm.Domain\bin\Debug\PermisoUsuarioForm.Domain.dll
+D:\Kamus_Proyectos\LogisticaMyM\PermisoUsuarioForm.Domain\bin\Debug\PermisoUsuarioForm.Domain.pdb
+D:\Kamus_Proyectos\LogisticaMyM\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.csproj.CoreCompileInputs.cache
+D:\Kamus_Proyectos\LogisticaMyM\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.dll
+D:\Kamus_Proyectos\LogisticaMyM\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.pdb
+D:\Kamus_Proyectos\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\bin\Debug\PermisoUsuarioForm.Domain.dll
+D:\Kamus_Proyectos\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\bin\Debug\PermisoUsuarioForm.Domain.pdb
+D:\Kamus_Proyectos\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.csproj.AssemblyReference.cache
+D:\Kamus_Proyectos\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.csproj.CoreCompileInputs.cache
+D:\Kamus_Proyectos\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.dll
+D:\Kamus_Proyectos\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.pdb

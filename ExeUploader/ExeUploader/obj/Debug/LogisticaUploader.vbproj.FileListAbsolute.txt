@@ -1,0 +1,12 @@
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\bin\Debug\LogisticaUploader.exe.config
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\bin\Debug\LogisticaUploader.exe
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\bin\Debug\LogisticaUploader.pdb
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\bin\Debug\LogisticaUploader.xml
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\obj\Debug\LogisticaUploader.vbprojAssemblyReference.cache
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\obj\Debug\LogisticaUploader.Form1.resources
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\obj\Debug\LogisticaUploader.Resources.resources
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\obj\Debug\LogisticaUploader.vbproj.GenerateResource.cache
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\obj\Debug\LogisticaUploader.vbproj.CoreCompileInputs.cache
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\obj\Debug\LogisticaUploader.exe
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\obj\Debug\LogisticaUploader.xml
+D:\Kamus_Proyectos\LogisticaMyM\LogisticaUploader\LogisticaUploader\obj\Debug\LogisticaUploader.pdb

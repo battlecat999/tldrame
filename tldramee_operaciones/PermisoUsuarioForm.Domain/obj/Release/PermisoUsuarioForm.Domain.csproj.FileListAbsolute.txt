@@ -1,0 +1,5 @@
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\bin\Release\PermisoUsuarioForm.Domain.dll
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\bin\Release\PermisoUsuarioForm.Domain.pdb
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\obj\Release\PermisoUsuarioForm.Domain.csproj.CoreCompileInputs.cache
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\obj\Release\PermisoUsuarioForm.Domain.dll
+D:\Kamus_Proyectos\Modulo_Usuario\PermisoUsuarioForm.Domain\obj\Release\PermisoUsuarioForm.Domain.pdb

@@ -1,0 +1,4 @@
+20/04/2020 19:00:42 ==> Authentication to host '190.228.29.57' for user 'marco' using method 'mysql_native_password' failed with message: Too many connections
+20/04/2020 19:00:55 ==> Authentication to host '190.228.29.57' for user 'marco' using method 'mysql_native_password' failed with message: Too many connections
+20/04/2020 19:01:05 ==> Authentication to host '190.228.29.57' for user 'marco' using method 'mysql_native_password' failed with message: Too many connections
+20/04/2020 19:01:20 ==> Authentication to host '190.228.29.57' for user 'marco' using method 'mysql_native_password' failed with message: Too many connections

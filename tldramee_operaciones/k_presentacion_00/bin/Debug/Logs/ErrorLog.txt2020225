@@ -1,0 +1,14 @@
+25/02/2020 16:47:10 ==> Reading from the stream has failed.
+25/02/2020 16:50:32 ==> Unable to connect to any of the specified MySQL hosts.
+25/02/2020 16:55:06 ==> Unable to connect to any of the specified MySQL hosts.
+25/02/2020 16:55:30 ==> Reading from the stream has failed.
+25/02/2020 16:56:48 ==> Reading from the stream has failed.
+25/02/2020 17:06:39 ==> Unable to connect to any of the specified MySQL hosts.
+25/02/2020 17:07:17 ==> Reading from the stream has failed.
+25/02/2020 18:20:42 ==> Fatal error encountered during command execution.
+25/02/2020 18:59:53 ==> The CommandText property has not been properly initialized.
+25/02/2020 19:06:15 ==> The CommandText property has not been properly initialized.
+25/02/2020 22:06:21 ==> Unable to connect to any of the specified MySQL hosts.
+25/02/2020 22:10:27 ==> Reading from the stream has failed.
+25/02/2020 22:12:28 ==> Unable to connect to any of the specified MySQL hosts.
+25/02/2020 22:13:39 ==> Unable to connect to any of the specified MySQL hosts.

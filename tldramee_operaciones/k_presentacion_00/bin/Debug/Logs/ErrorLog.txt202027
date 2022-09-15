@@ -1,0 +1,5 @@
+07/02/2020 18:04:50 ==> Fatal error encountered during command execution.
+07/02/2020 18:05:46 ==> Authentication to host '190.228.29.57' for user 'marco' using method 'mysql_native_password' failed with message: Reading from the stream has failed.
+07/02/2020 18:53:36 ==> Unable to connect to any of the specified MySQL hosts.
+07/02/2020 18:56:24 ==> Unable to connect to any of the specified MySQL hosts.
+07/02/2020 18:57:16 ==> Unable to connect to any of the specified MySQL hosts.

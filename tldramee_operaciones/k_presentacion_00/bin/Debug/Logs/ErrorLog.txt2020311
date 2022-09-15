@@ -1,0 +1,3 @@
+11/03/2020 22:53:09 ==> Reading from the stream has failed.
+11/03/2020 22:54:03 ==> Authentication to host '190.228.29.57' for user 'marco' using method 'mysql_native_password' failed with message: Reading from the stream has failed.
+11/03/2020 22:54:27 ==> Authentication to host '190.228.29.57' for user 'marco' using method 'mysql_native_password' failed with message: Reading from the stream has failed.

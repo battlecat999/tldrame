@@ -1,0 +1,2 @@
+05/04/2022 12:48:23 ==> Duplicate entry '2-1-2-4' for key 'PRIMARY'
+05/04/2022 12:48:23 ==> Duplicate entry '2-2-2-4' for key 'PRIMARY'

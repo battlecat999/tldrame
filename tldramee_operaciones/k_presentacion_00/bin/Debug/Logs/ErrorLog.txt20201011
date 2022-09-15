@@ -1,0 +1,8 @@
+11/10/2020 23:28:30 ==> The CommandText property has not been properly initialized.
+11/10/2020 23:29:00 ==> Unknown column 'pEstado' in 'field list'
+11/10/2020 23:30:41 ==> Unknown column 'pEstado' in 'field list'
+11/10/2020 23:33:37 ==> Unknown column 'pEstado' in 'field list'
+11/10/2020 23:39:05 ==> Incorrect number of arguments for PROCEDURE logisticamm_pop.SP_Cotizaciones_update; expected 24, got 25
+11/10/2020 23:39:23 ==> Incorrect number of arguments for PROCEDURE logisticamm_pop.SP_Cotizaciones_update; expected 24, got 25
+11/10/2020 23:40:01 ==> Incorrect number of arguments for PROCEDURE logisticamm_pop.SP_Cotizaciones_update; expected 24, got 25
+11/10/2020 23:45:03 ==> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,25,5,11,6,6500.00)' at line 1

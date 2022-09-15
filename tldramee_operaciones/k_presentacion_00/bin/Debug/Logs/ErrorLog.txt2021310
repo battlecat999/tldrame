@@ -1,0 +1,1 @@
+10/03/2021 12:19:40 ==> Authentication to host '190.228.29.57' for user 'logisticamm' using method 'mysql_native_password' failed with message: Access denied for user 'logisticamm'@'%' to database 'logisticamm_2'

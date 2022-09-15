@@ -1,0 +1,4 @@
+14/06/2022 13:39:21 ==> Authentication to host '200.80.43.130' for user 'myf_operaciones' using method 'mysql_native_password' failed with message: Access denied for user 'myf_operaciones'@'186.137.52.69' (using password: YES)
+14/06/2022 13:42:10 ==> Authentication to host '200.80.43.130' for user 'myf_operaciones' using method 'mysql_native_password' failed with message: Access denied for user 'myf_operaciones'@'186.137.52.69' (using password: YES)
+14/06/2022 13:52:42 ==> Authentication to host '200.80.43.130' for user 'myf_operaciones' using method 'mysql_native_password' failed with message: Access denied for user 'myf_operaciones'@'186.137.52.69' (using password: YES)
+14/06/2022 14:51:27 ==> Authentication to host '200.80.43.130' for user 'myf_operaciones' using method 'mysql_native_password' failed with message: Access denied for user 'myf_operaciones'@'186.137.52.69' (using password: YES)

@@ -1,0 +1,6 @@
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\bin\x86\Debug\Entidades_Gral.dll
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\bin\x86\Debug\Entidades_Gral.pdb
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\obj\x86\Debug\Entidades_Gral.csproj.AssemblyReference.cache
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\obj\x86\Debug\Entidades_Gral.csproj.CoreCompileInputs.cache
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\obj\x86\Debug\Entidades_Gral.dll
+D:\Kamus_Proyectos\LogisticaMyM\Entidades_Gral\obj\x86\Debug\Entidades_Gral.pdb

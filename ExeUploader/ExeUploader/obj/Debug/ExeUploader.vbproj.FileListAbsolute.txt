@@ -1,0 +1,12 @@
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\bin\Debug\ExeUploader.exe.config
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\bin\Debug\ExeUploader.exe
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\bin\Debug\ExeUploader.pdb
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\bin\Debug\ExeUploader.xml
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\obj\Debug\ExeUploader.vbproj.AssemblyReference.cache
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\obj\Debug\ExeUploader.Inicial.resources
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\obj\Debug\ExeUploader.Resources.resources
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\obj\Debug\ExeUploader.vbproj.GenerateResource.cache
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\obj\Debug\ExeUploader.vbproj.CoreCompileInputs.cache
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\obj\Debug\ExeUploader.exe
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\obj\Debug\ExeUploader.xml
+D:\Kamus_Proyectos\tldrame\ExeUploader\ExeUploader\obj\Debug\ExeUploader.pdb

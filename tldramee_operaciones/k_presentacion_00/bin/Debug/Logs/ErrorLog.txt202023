@@ -1,0 +1,2 @@
+03/02/2020 19:23:45 ==> Authentication to host '190.228.29.57' for user 'marco' using method 'mysql_native_password' failed with message: Reading from the stream has failed.
+03/02/2020 19:24:58 ==> Unable to connect to any of the specified MySQL hosts.
