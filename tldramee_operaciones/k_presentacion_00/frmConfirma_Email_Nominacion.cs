@@ -142,7 +142,7 @@ namespace k_presentacion_00
                     strBooking = grdEmails[6, e.RowIndex].Value.ToString();
 
                     funciones_envio_emails fee = new funciones_envio_emails();
-                    fee.Envio_Email_Cuadro_Control(intEmpresa, intOT, strBooking, intIdCliente, 0, 0, (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION,"lightblue");
+                    fee.Envio_Email_Cuadro_Control(intEmpresa, intOT, strBooking, intIdCliente, 0, 0, 0, (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION,"lightblue");
                     Cargar_Datos();
                 //}
             }

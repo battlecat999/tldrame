@@ -85,6 +85,7 @@
             this.cboClientes.Name = "cboClientes";
             this.cboClientes.Size = new System.Drawing.Size(218, 24);
             this.cboClientes.TabIndex = 3;
+            this.cboClientes.SelectedIndexChanged += new System.EventHandler(this.cboClientes_SelectedIndexChanged);
             // 
             // cboTransportista
             // 
@@ -126,7 +127,7 @@
             this.lblOT.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOT.Location = new System.Drawing.Point(11, 63);
             this.lblOT.Name = "lblOT";
-            this.lblOT.Size = new System.Drawing.Size(96, 16);
+            this.lblOT.Size = new System.Drawing.Size(95, 16);
             this.lblOT.TabIndex = 9;
             this.lblOT.Text = "por Nº de OT";
             // 
@@ -136,7 +137,7 @@
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(171, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 16);
+            this.label2.Size = new System.Drawing.Size(85, 16);
             this.label2.TabIndex = 11;
             this.label2.Text = "por Cliente";
             // 
@@ -146,7 +147,7 @@
             this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(421, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 16);
+            this.label3.Size = new System.Drawing.Size(127, 16);
             this.label3.TabIndex = 12;
             this.label3.Text = "por Transportista";
             // 
@@ -156,7 +157,7 @@
             this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(669, 62);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(192, 16);
+            this.label4.Size = new System.Drawing.Size(191, 16);
             this.label4.TabIndex = 13;
             this.label4.Text = "por Fecha de Finalización ";
             // 
@@ -166,7 +167,7 @@
             this.label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(891, 62);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(124, 16);
+            this.label6.Size = new System.Drawing.Size(123, 16);
             this.label6.TabIndex = 15;
             this.label6.Text = "por Nro de Cont.";
             // 
@@ -176,7 +177,7 @@
             this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(1021, 62);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(145, 16);
+            this.label7.Size = new System.Drawing.Size(144, 16);
             this.label7.TabIndex = 16;
             this.label7.Text = "por Nro de Booking";
             // 
@@ -216,7 +217,7 @@
             this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(1172, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(169, 16);
+            this.label5.Size = new System.Drawing.Size(168, 16);
             this.label5.TabIndex = 20;
             this.label5.Text = "por Patente del Tractor";
             // 

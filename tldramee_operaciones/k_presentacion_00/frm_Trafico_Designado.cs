@@ -360,7 +360,8 @@ namespace k_presentacion_00
             string intId_Cliente = GetRowValue(rowIndex, $"{columnNameIndex}_{COLUMN_ID}");
             string intIndTipo = GetRowValue(rowIndex, $"{columnNameIndex}_{COLUMN_INDTIPO}");
             string strBooking = GetRowValue(rowIndex, $"{columnNameIndex}_{COLUMN_BLBOOKING}");
-
+            string strTipoServicio  = GetRowValue(rowIndex, $"{columnNameIndex}_{COLUMN_TIPOSERVICIO}");
+            
             //Llamar POPUP
             frm_PopUp_Designa_Viaje_Conceptos._Empresa = Convert.ToInt32(intEmpresa);
             frm_PopUp_Designa_Viaje_Conceptos._OT = Convert.ToInt32(intOT);

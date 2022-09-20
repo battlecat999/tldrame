@@ -704,7 +704,7 @@
             this.IdTransporte.Name = "IdTransporte";
             this.IdTransporte.ReadOnly = true;
             this.IdTransporte.Visible = false;
-            this.IdTransporte.Width = 110;
+            this.IdTransporte.Width = 109;
             // 
             // Razon_Social
             // 

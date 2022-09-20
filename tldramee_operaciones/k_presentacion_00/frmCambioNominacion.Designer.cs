@@ -65,11 +65,13 @@
             this.ckAvisaCliente = new System.Windows.Forms.CheckBox();
             this.cmdEliminar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboHoraPosicion = new System.Windows.Forms.ComboBox();
             this.btnActualizar_Volver = new System.Windows.Forms.Button();
             this.datFechaPosic = new System.Windows.Forms.MaskedTextBox();
             this.datFechaRetiro = new System.Windows.Forms.MaskedTextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblFechaPos = new System.Windows.Forms.Label();
+            this.lblFechaRet = new System.Windows.Forms.Label();
             this.lblBlackList = new System.Windows.Forms.Label();
             this.Timer_Parpadeo = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
@@ -248,7 +250,7 @@
             this.label3.Location = new System.Drawing.Point(48, 290);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 16);
+            this.label3.Size = new System.Drawing.Size(54, 16);
             this.label3.TabIndex = 41;
             this.label3.Text = "Chofer:";
             // 
@@ -269,7 +271,7 @@
             this.label2.Location = new System.Drawing.Point(48, 258);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 16);
+            this.label2.Size = new System.Drawing.Size(54, 16);
             this.label2.TabIndex = 39;
             this.label2.Text = "Chasis:";
             // 
@@ -290,7 +292,7 @@
             this.label1.Location = new System.Drawing.Point(48, 226);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 37;
             this.label1.Text = "Tractor:";
             // 
@@ -311,9 +313,10 @@
             this.lblRazonSocial.Location = new System.Drawing.Point(48, 194);
             this.lblRazonSocial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRazonSocial.Name = "lblRazonSocial";
-            this.lblRazonSocial.Size = new System.Drawing.Size(95, 16);
+            this.lblRazonSocial.Size = new System.Drawing.Size(94, 16);
             this.lblRazonSocial.TabIndex = 35;
             this.lblRazonSocial.Text = "Transportista:";
+            this.lblRazonSocial.Click += new System.EventHandler(this.lblRazonSocial_Click);
             // 
             // cboTransportista
             // 
@@ -324,6 +327,7 @@
             this.cboTransportista.Name = "cboTransportista";
             this.cboTransportista.Size = new System.Drawing.Size(214, 24);
             this.cboTransportista.TabIndex = 34;
+            this.cboTransportista.SelectedIndexChanged += new System.EventHandler(this.cboTransportista_SelectedIndexChanged);
             this.cboTransportista.SelectedValueChanged += new System.EventHandler(this.CboTransportista_SelectedValueChanged);
             // 
             // lbl_Nombre_Chofer
@@ -347,6 +351,7 @@
             this.lbl_Nombre_Chasis.Size = new System.Drawing.Size(226, 18);
             this.lbl_Nombre_Chasis.TabIndex = 58;
             this.lbl_Nombre_Chasis.Text = "Nombre_Chasis";
+            this.lbl_Nombre_Chasis.Click += new System.EventHandler(this.lbl_Nombre_Chasis_Click);
             // 
             // lbl_Nombre_Transportista
             // 
@@ -464,7 +469,7 @@
             this.ckAvisaCliente.ForeColor = System.Drawing.Color.White;
             this.ckAvisaCliente.Location = new System.Drawing.Point(51, 317);
             this.ckAvisaCliente.Name = "ckAvisaCliente";
-            this.ckAvisaCliente.Size = new System.Drawing.Size(142, 20);
+            this.ckAvisaCliente.Size = new System.Drawing.Size(141, 20);
             this.ckAvisaCliente.TabIndex = 68;
             this.ckAvisaCliente.Text = "Aviso para Cliente";
             this.ckAvisaCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -484,24 +489,44 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.cboHoraPosicion);
             this.groupBox1.Controls.Add(this.btnActualizar_Volver);
             this.groupBox1.Controls.Add(this.datFechaPosic);
             this.groupBox1.Controls.Add(this.datFechaRetiro);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.lblFechaPos);
+            this.groupBox1.Controls.Add(this.lblFechaRet);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(17, 523);
+            this.groupBox1.Location = new System.Drawing.Point(18, 523);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(367, 194);
             this.groupBox1.TabIndex = 70;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fechas";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(280, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 42);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Hora de Posición";
+            // 
+            // cboHoraPosicion
+            // 
+            this.cboHoraPosicion.FormattingEnabled = true;
+            this.cboHoraPosicion.Location = new System.Drawing.Point(283, 68);
+            this.cboHoraPosicion.Name = "cboHoraPosicion";
+            this.cboHoraPosicion.Size = new System.Drawing.Size(66, 24);
+            this.cboHoraPosicion.TabIndex = 5;
+            this.cboHoraPosicion.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btnActualizar_Volver
             // 
             this.btnActualizar_Volver.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar_Volver.ForeColor = System.Drawing.Color.Black;
-            this.btnActualizar_Volver.Location = new System.Drawing.Point(57, 104);
+            this.btnActualizar_Volver.Location = new System.Drawing.Point(80, 112);
             this.btnActualizar_Volver.Name = "btnActualizar_Volver";
             this.btnActualizar_Volver.Size = new System.Drawing.Size(219, 52);
             this.btnActualizar_Volver.TabIndex = 4;
@@ -511,41 +536,43 @@
             // 
             // datFechaPosic
             // 
-            this.datFechaPosic.Location = new System.Drawing.Point(203, 59);
+            this.datFechaPosic.Location = new System.Drawing.Point(142, 68);
             this.datFechaPosic.Mask = "00/00/0000";
             this.datFechaPosic.Name = "datFechaPosic";
             this.datFechaPosic.Size = new System.Drawing.Size(87, 23);
             this.datFechaPosic.TabIndex = 3;
             this.datFechaPosic.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.datFechaPosic.ValidatingType = typeof(System.DateTime);
+            this.datFechaPosic.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.datFechaPosic_MaskInputRejected);
             // 
             // datFechaRetiro
             // 
-            this.datFechaRetiro.Location = new System.Drawing.Point(30, 59);
+            this.datFechaRetiro.Location = new System.Drawing.Point(9, 68);
             this.datFechaRetiro.Mask = "00/00/0000";
             this.datFechaRetiro.Name = "datFechaRetiro";
             this.datFechaRetiro.Size = new System.Drawing.Size(87, 23);
             this.datFechaRetiro.TabIndex = 2;
             this.datFechaRetiro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.datFechaRetiro.ValidatingType = typeof(System.DateTime);
+            this.datFechaRetiro.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.datFechaRetiro_MaskInputRejected);
             // 
-            // label7
+            // lblFechaPos
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(151, 26);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(175, 16);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Fecha de Posicionamiento";
+            this.lblFechaPos.Location = new System.Drawing.Point(139, 19);
+            this.lblFechaPos.Name = "lblFechaPos";
+            this.lblFechaPos.Size = new System.Drawing.Size(117, 33);
+            this.lblFechaPos.TabIndex = 1;
+            this.lblFechaPos.Text = "Fecha de Posicionamiento";
             // 
-            // label5
+            // lblFechaRet
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 16);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Fecha de Retiro";
+            this.lblFechaRet.AutoSize = true;
+            this.lblFechaRet.Location = new System.Drawing.Point(6, 23);
+            this.lblFechaRet.Name = "lblFechaRet";
+            this.lblFechaRet.Size = new System.Drawing.Size(109, 16);
+            this.lblFechaRet.TabIndex = 0;
+            this.lblFechaRet.Text = "Fecha de Retiro";
+            this.lblFechaRet.Click += new System.EventHandler(this.lblFechaRet_Click);
             // 
             // lblBlackList
             // 
@@ -663,9 +690,11 @@
         private System.Windows.Forms.Button btnActualizar_Volver;
         private System.Windows.Forms.MaskedTextBox datFechaPosic;
         private System.Windows.Forms.MaskedTextBox datFechaRetiro;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblFechaPos;
+        private System.Windows.Forms.Label lblFechaRet;
         private System.Windows.Forms.Label lblBlackList;
         private System.Windows.Forms.Timer Timer_Parpadeo;
+        private System.Windows.Forms.ComboBox cboHoraPosicion;
+        private System.Windows.Forms.Label label5;
     }
 }

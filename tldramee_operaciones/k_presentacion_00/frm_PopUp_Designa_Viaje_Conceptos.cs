@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using k_negocio_00;
 using MySql.Data.MySqlClient;
 using k_mysql;
+using System.IO;
+using static k_presentacion_00.funciones_envio_emails;
 
 namespace k_presentacion_00
 {
@@ -685,11 +687,11 @@ namespace k_presentacion_00
 
                     if (intEvento==(Int32)funciones_envio_emails.TipoArchivos.E_FIN_VIAJE_OW && this.lblTipo_Modalidad.Text=="OW")
                     {
-                        e.Envio_Email_Cuadro_Control(_Empresa, _OT, _strBooking, _IdCliente, -2,2, (Int32)funciones_envio_emails.TipoArchivos.E_FIN_VIAJE_OW,"lightgreen");//paso 0 en itemot para que el SP no tome un item especifico
+                        e.Envio_Email_Cuadro_Control(_Empresa, _OT, _strBooking, _IdCliente, -2,2,0, (Int32)funciones_envio_emails.TipoArchivos.E_FIN_VIAJE_OW,"lightgreen");//paso 0 en itemot para que el SP no tome un item especifico
                     }
                     else if (intEvento == (Int32)funciones_envio_emails.TipoArchivos.E_FIN_VIAJE_RT && this.lblTipo_Modalidad.Text == "RT")
                     {
-                        e.Envio_Email_Cuadro_Control(_Empresa, _OT, _strBooking, _IdCliente, -2, 2, (Int32)funciones_envio_emails.TipoArchivos.E_FIN_VIAJE_RT,"lightgreen");//paso 0 en itemot para que el SP no tome un item especifico
+                        e.Envio_Email_Cuadro_Control(_Empresa, _OT, _strBooking, _IdCliente, -2, 2,0, (Int32)funciones_envio_emails.TipoArchivos.E_FIN_VIAJE_RT,"lightgreen");//paso 0 en itemot para que el SP no tome un item especifico
                     }
                     else
                     {
@@ -1069,8 +1071,14 @@ namespace k_presentacion_00
             this.lblTieneAnticipo.DataBindings.Add(new Binding("Text", bindingSource, ((DataTable)bindingSource.DataSource).Columns["Tiene_Anticipo"].ColumnName));
             this.lblTieneFactura.DataBindings.Add(new Binding("Text", bindingSource, ((DataTable)bindingSource.DataSource).Columns["Tiene_Factura"].ColumnName));
 
+      
             this.cboEstados_OTs.DataBindings.Clear();
-
+            //ED 2022-08-29
+            this.lblTipoServicio.DataBindings.Add(new Binding("Text", bindingSource, ((DataTable)bindingSource.DataSource).Columns["TipoServicio"].ColumnName));
+            //ED 2022-09-08 cargamos datos a los labels;
+            this.lblFechaPosicion.DataBindings.Add(new Binding("Text", bindingSource, ((DataTable)bindingSource.DataSource).Columns["PosFecha"].ColumnName));
+            this.lblFechaRetiro.DataBindings.Add(new Binding("Text", bindingSource, ((DataTable)bindingSource.DataSource).Columns["RetiroFecha"].ColumnName));
+            this.lblHoraPosicion.DataBindings.Add(new Binding("Text", bindingSource, ((DataTable)bindingSource.DataSource).Columns["PosHora"].ColumnName));
             //this.cboRazonSocial.DataBindings.Clear();
             //this.cboContactos.DataBindings.Clear();
             //this.cboPresupuesto.DataBindings.Clear();
@@ -1264,18 +1272,15 @@ namespace k_presentacion_00
 
         }
 
-        private void txtNroContenedor_Leave(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void cmdGuardar_Contenedor_Click(object sender, EventArgs e)
         {
             string msg;
             string strContenedor;
             string strPrecinto;
             string strPrecintoEmpty;
+     
+
+
             if (this.opDual.CheckState != CheckState.Checked)
             {
                 if (this.txtNroContenedor.Text == string.Empty)
@@ -1347,7 +1352,7 @@ namespace k_presentacion_00
             cmdCommand.Connection = cnnConnection;
             cmdCommand.Transaction = trsTransaccion;
             cmdCommand.CommandType = CommandType.StoredProcedure;
-
+            
             try
             {
                 cmdCommand.CommandText = "SP_UPDATE_Contenedor_Precinto";
@@ -1366,16 +1371,15 @@ namespace k_presentacion_00
                 cmdCommand.Parameters["strPrecinto"].Value = strPrecinto;
                 cmdCommand.Parameters["strPrecintoEmpty"].Value = strPrecintoEmpty;
 
+
                 cmdCommand.ExecuteNonQuery();
                 trsTransaccion.Commit();
                 Nro_Conedor_Guardado = true;
-
-
-                funciones_envio_emails fee = new funciones_envio_emails();
-                fee.Envio_Email_Cuadro_Control(_Empresa, _OT, _strBooking,_IdCliente,0,0, (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION,"lightblue");//paso 0 en itemot para que el SP no tome un item especifico
-
              
-
+                funciones_envio_emails fee = new funciones_envio_emails();
+                //DDE 2022/09/13 
+                fee.Envio_Email_Cuadro_Control(_Empresa, _OT, _strBooking,_IdCliente,0,0,Convert.ToInt32(this.lblTipoServicio.Text), (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION,"lightblue");//paso 0 en itemot para que el SP no tome un item especifico
+           
             }
             catch (Exception ex)
             {
@@ -1397,12 +1401,15 @@ namespace k_presentacion_00
             {
                 cnnConnection.Close();
             }
+
+           
+
         }
 
         private void btnCambioNominacion_Click(object sender, EventArgs e)
         {
             frmCambioNominacion f = new frmCambioNominacion();
-            f._Empresa = datos.g_idEmpresa; ;
+            f._Empresa = datos.g_idEmpresa; 
             f._OT = _OT ;
             f._Item = _Item ;
             f._Corredor = _Corredor;
@@ -1417,6 +1424,11 @@ namespace k_presentacion_00
             f._nombre_Chofer = this.lblChofer.Text;
             f._BLBooking = this.lblBL_Booking.Text;
             f._IdCliente = _IdCliente;
+            //dde 08/09/22
+            f._FechaPosicion = this.lblFechaPosicion.Text;
+            f._FechaRetiro = this.lblFechaRetiro.Text;
+            f._HoraPosicion = this.lblHoraPosicion.Text;
+            //
 
             f.ShowDialog(this);
 
@@ -1618,6 +1630,36 @@ namespace k_presentacion_00
 
 
             
+        }
+
+        private void lblTipoServicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDescripcion_Item_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTieneAnticipo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblOT_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

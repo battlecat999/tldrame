@@ -13,6 +13,7 @@ using MySql.Data.Types;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 using k_mysql;
+using System.Data.SqlClient;
 
 namespace k_presentacion_00
 {
@@ -104,7 +105,7 @@ namespace k_presentacion_00
             DataGridViewColumn colFecha_Posicion = new clsCalendar_Column();
 
             //https://stackoverflow.com/questions/1807621/c-sharp-winforms-datagridview-time-column
-            //DataGridViewColumn colHora_Posicion = new clsTime_Column();
+            DataGridViewComboBoxColumn colHora_Posicion = new DataGridViewComboBoxColumn();
 
             DataGridViewColumn colFecha_Retiro = new clsCalendar_Column();
             //DataGridViewColumn colHora_Retiro = new clsTime_Column();
@@ -129,7 +130,7 @@ namespace k_presentacion_00
             dg.Columns.Add(colNumero_Precinto);
             dg.Columns.Add(colPeso_Toneladas);
             dg.Columns.Add(colFecha_Posicion);
-            //grdViajes.Columns.Add(colHora_Posicion);
+            dg.Columns.Add(colHora_Posicion);
             dg.Columns.Add(colFecha_Retiro);
             //grdViajes.Columns.Add(colHora_Retiro);
             dg.Columns.Add(colCodigo_Contenedor);
@@ -150,14 +151,14 @@ namespace k_presentacion_00
             dg.Columns[8].Name = "Peso_Toneladas";
 
             dg.Columns[9].Name = "Fecha_Posicion";
-            //grdViajes.Columns[10].Name = "Hora_Posicion";
-            dg.Columns[10].Name = "Fecha_Retiro";
+            dg.Columns[10].Name = "Hora_Posicion";
+            dg.Columns[11].Name = "Fecha_Retiro";
             //grdViajes.Columns[12].Name = "Hora_Retiro";
 
-            dg.Columns[11].Name = "Codigo_Contenedor";
-            dg.Columns[12].Name = "Codigo_Generador";
-            dg.Columns[13].Name = "Estado";
-            dg.Columns[14].Name = "Especial";
+            dg.Columns[12].Name = "Codigo_Contenedor";
+            dg.Columns[13].Name = "Codigo_Generador";
+            dg.Columns[14].Name = "Estado";
+            dg.Columns[15].Name = "Especial";
 
 
             //grdViajes.Columns[6].Name = "Estado";
@@ -165,7 +166,7 @@ namespace k_presentacion_00
             dg.Columns[6].DefaultCellStyle.Format = "N2";
             dg.Columns[8].DefaultCellStyle.Format = "N2";
 
-            //grdViajes.Columns[10].DefaultCellStyle.Format = "HH:mm:ss";
+            dg.Columns[10].DefaultCellStyle.Format = "HH:mm:ss";
             //grdViajes.Columns[12].DefaultCellStyle.Format = "HH:mm:ss";
 
             dg.Columns[0].HeaderText = "Ítem";
@@ -178,14 +179,14 @@ namespace k_presentacion_00
             dg.Columns[7].HeaderText = "Precinto";
             dg.Columns[8].HeaderText = "Peso en Toneladas";
             dg.Columns[9].HeaderText = "Fecha Posición";
-            //grdViajes.Columns[10].HeaderText = "Hora Posición";
-            dg.Columns[10].HeaderText = "Fecha Retiro";
+            dg.Columns[10].HeaderText = "Hora Posición";
+            dg.Columns[11].HeaderText = "Fecha Retiro";
             //grdViajes.Columns[12].HeaderText = "Hora Retiro";
-            dg.Columns[11].HeaderText = "Codigo Contenedor";
-            dg.Columns[12].HeaderText = "Codigo Generador";
-            dg.Columns[13].HeaderText = "Estado";
+            dg.Columns[12].HeaderText = "Codigo Contenedor";
+            dg.Columns[13].HeaderText = "Codigo Generador";
+            dg.Columns[14].HeaderText = "Estado";
             //
-            dg.Columns[14].HeaderText = "Especial";
+            dg.Columns[15].HeaderText = "Especial";
 
 
 
@@ -202,7 +203,7 @@ namespace k_presentacion_00
             dg.Columns["Numero_Precinto"].DataPropertyName = "Numero_Precinto";
             dg.Columns["Peso_Toneladas"].DataPropertyName = "Peso_Toneladas";
             dg.Columns["Fecha_Posicion"].DataPropertyName = "Fecha_Posicion";
-            //grdViajes.Columns["Hora_Posicion"].DataPropertyName = "Hora_Posicion";
+            dg.Columns["Hora_Posicion"].DataPropertyName = "Hora_Posicion";
             dg.Columns["Fecha_Retiro"].DataPropertyName = "Fecha_Retiro";
             //grdViajes.Columns["Hora_Retiro"].DataPropertyName = "Hora_Retiro";
             dg.Columns["Codigo_Contenedor"].DataPropertyName = "Codigo_Contenedor";
@@ -221,7 +222,7 @@ namespace k_presentacion_00
             dg.Columns["Cantidad"].ReadOnly = true;
             dg.Columns["Codigo_Contenedor"].ReadOnly = true;
             dg.Columns["Codigo_Generador"].ReadOnly = true;
-
+            
             dg.Columns["Estado"].ReadOnly = true;
             dg.Columns["Estado"].Visible = false;
 
@@ -246,6 +247,7 @@ namespace k_presentacion_00
 
             this.dg.Columns["Peso_Generador"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dg.Columns["Peso_Toneladas"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            
 
             this.dg.Columns["Especial"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -263,6 +265,11 @@ namespace k_presentacion_00
             colGenerador.ValueMember = "Codigo_Generador";
             colGenerador.DisplayMember = "descripcion";
             colGenerador.DataSource = Carga_Generadores();
+
+            colHora_Posicion.ValueMember = "Codigo_Hora";
+            colHora_Posicion.DisplayMember = "descripcion";
+            colHora_Posicion.DataSource = carga_horarios();
+          
 
             //colItem.Width = 5;
 
@@ -406,6 +413,16 @@ namespace k_presentacion_00
             return dtOTs;
         }
 
+        private DataTable carga_horarios()
+        {
+            DN_ABM o = new DN_ABM();
+
+            DataTable horarios = new DataTable();
+
+            horarios = o.DN_Traer_DataTable("SP_CargaHorarios", 0, datos.g_idEmpresa);
+
+            return horarios;
+        }
 
         private DataTable Carga_Generadores()
         {
@@ -683,6 +700,7 @@ namespace k_presentacion_00
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            
 
             if (this.cboContenedores.SelectedIndex ==-1)
             {
@@ -726,7 +744,9 @@ namespace k_presentacion_00
                     rd["Codigo_Contenedor"] = Convert.ToInt32(this.cboContenedores.SelectedValue);
                     rd["Peso_Toneladas"] = Convert.ToInt32(this.txtPeso.Text);
                     rd["Fecha_Posicion"] = this.datFechaPos.Text;
+                    rd["Hora_Posicion"] = "06:00";
                     rd["Fecha_Retiro"] = this.datFechaRetiro.Text;
+
 
                     _dtItems.Tables[0].Rows.Add(rd);
                 }
@@ -984,10 +1004,12 @@ namespace k_presentacion_00
             int intMoro;
            //int intUnidad_Medida = 0;
 
+
             DateTime datFecha_Posicion;
-            //DateTime datHora_Posicion;
+            string datHora_Posicion;
             DateTime datFecha_Retiro;
             //DateTime datHora_Retiro;
+           
 
             if (this.txtNumero_OT.Text.Trim() != string.Empty)
             {
@@ -1163,7 +1185,7 @@ namespace k_presentacion_00
                 cmdCommand.Parameters.Add("decPeso", MySqlDbType.Decimal);
                 cmdCommand.Parameters.Add("intID_Unidad_Medida", MySqlDbType.Int32);
                 cmdCommand.Parameters.Add("datFecha_Posicion", MySqlDbType.DateTime);
-                //cmdCommand.Parameters.Add("datHora_Posicion", MySqlDbType.DateTime);
+                cmdCommand.Parameters.Add("datHora_Posicion", MySqlDbType.String);
                 cmdCommand.Parameters.Add("datFecha_Retiro", MySqlDbType.DateTime);
                 //cmdCommand.Parameters.Add("datHora_Retiro", MySqlDbType.DateTime);
                 cmdCommand.Parameters.Add("decVenta", MySqlDbType.Decimal);
@@ -1208,21 +1230,22 @@ namespace k_presentacion_00
                         decPeso = decimal.Parse(dgvRenglon.Cells["Peso_Toneladas"].Value.ToString());
 
                         datFecha_Posicion = DateTime.Parse(dgvRenglon.Cells["Fecha_Posicion"].Value.ToString());
-//                        datHora_Posicion = DateTime.Parse(dgvRenglon.Cells["Hora_Posicion"].Value.ToString());
+                        datHora_Posicion = dgvRenglon.Cells["Hora_Posicion"].Value.ToString();
                         datFecha_Retiro = DateTime.Parse(dgvRenglon.Cells["Fecha_Retiro"].Value.ToString());
                     //                        datHora_Retiro = DateTime.Parse(dgvRenglon.Cells["Hora_Retiro"].Value.ToString());
                         intMoro = Convert.ToInt32(dgvRenglon.Cells["Especial"].Value);
 
-                        cmdCommand.CommandText = "SP_OT_Item_Alta";
+                cmdCommand.CommandText = "SP_OT_Item_Alta";
 
-                        cmdCommand.Parameters["intEmpresa"].Value = datos.g_idEmpresa;
-                        cmdCommand.Parameters["intNumero_OT"].Value = intNumero_OT;
-                        cmdCommand.Parameters["intItem"].Value = intItem;
-                        cmdCommand.Parameters["decCantidad"].Value = decCantidad;
-                        cmdCommand.Parameters["intID_Contenedor"].Value = intID_Contenedor;
-                        cmdCommand.Parameters["strNumero_Contenedor"].Value = strNumero_Contenedor;
+                cmdCommand.Parameters["intEmpresa"].Value = datos.g_idEmpresa;
+                cmdCommand.Parameters["intNumero_OT"].Value = intNumero_OT;
+                cmdCommand.Parameters["intItem"].Value = intItem;
+                cmdCommand.Parameters["decCantidad"].Value = decCantidad;
+                cmdCommand.Parameters["intID_Contenedor"].Value = intID_Contenedor;
+                cmdCommand.Parameters["strNumero_Contenedor"].Value = strNumero_Contenedor;
+                        
 
-                        if (intID_Generador == 0)
+                    if (intID_Generador == 0)
                         {
                             cmdCommand.Parameters["intID_Generador"].Value = DBNull.Value;
                             cmdCommand.Parameters["strNumero_Generador"].Value = DBNull.Value;
@@ -1249,18 +1272,18 @@ namespace k_presentacion_00
                         cmdCommand.Parameters["intID_Unidad_Medida"].Value = DBNull.Value;
                         cmdCommand.Parameters["decVenta"].Value = decImporte;
 
-                    //cmdCommand.Parameters["datFecha_Posicion"].Value = datFecha_Posicion.ToString("yyyy-MM-dd");
-                    //cmdCommand.Parameters["datHora_Posicion"].Value = datHora_Posicion.ToString("HH:MM");
+                cmdCommand.Parameters["datFecha_Posicion"].Value = datFecha_Posicion.ToString("yyyy-MM-dd");
+                cmdCommand.Parameters["datHora_Posicion"].Value = datHora_Posicion.ToString();
                     //cmdCommand.Parameters["datFecha_Retiro"].Value = datFecha_Retiro.ToString("yyyy-MM-dd");
                     //cmdCommand.Parameters["datHora_Retiro"].Value = datHora_Retiro.ToString("HH:MM");
 
-                        cmdCommand.Parameters["datFecha_Posicion"].Value = datFecha_Posicion;
- //                   cmdCommand.Parameters["datHora_Posicion"].Value = datHora_Posicion;
-                        cmdCommand.Parameters["datFecha_Retiro"].Value = datFecha_Retiro;
-                    //                   cmdCommand.Parameters["datHora_Retiro"].Value = datHora_Retiro;
-                    cmdCommand.Parameters["intMoro"].Value = intMoro;
+                    //cmdCommand.Parameters["datFecha_Posicion"].Value = datFecha_Posicion;
+                    //cmdCommand.Parameters["datHora_Posicion"].Value = datHora_Posicion;
+                cmdCommand.Parameters["datFecha_Retiro"].Value = datFecha_Retiro;
+                    //cmdCommand.Parameters["datHora_Retiro"].Value = datHora_Retiro;
+                cmdCommand.Parameters["intMoro"].Value = intMoro;
 
-                    cmdCommand.ExecuteNonQuery();
+                cmdCommand.ExecuteNonQuery();
 
                     //}
 
@@ -1753,6 +1776,31 @@ namespace k_presentacion_00
                 chk.Value = IsChecked;
                 chk.ReadOnly = IsChecked;
             }
+        }
+
+        private void dg_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboContenedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboContactos_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtObservacion_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

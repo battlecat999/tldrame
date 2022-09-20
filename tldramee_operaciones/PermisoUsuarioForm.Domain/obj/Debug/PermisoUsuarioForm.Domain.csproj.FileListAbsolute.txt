@@ -15,3 +15,9 @@ D:\Kamus_Proyectos\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\De
 D:\Kamus_Proyectos\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.csproj.CoreCompileInputs.cache
 D:\Kamus_Proyectos\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.dll
 D:\Kamus_Proyectos\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.pdb
+C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\bin\Debug\PermisoUsuarioForm.Domain.dll
+C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\bin\Debug\PermisoUsuarioForm.Domain.pdb
+C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.csproj.AssemblyReference.cache
+C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.dll
+C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\PermisoUsuarioForm.Domain\obj\Debug\PermisoUsuarioForm.Domain.pdb

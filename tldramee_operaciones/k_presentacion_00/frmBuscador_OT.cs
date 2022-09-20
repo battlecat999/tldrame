@@ -127,10 +127,12 @@ namespace k_presentacion_00
             dgv.DataSource = dtOT;
             dgv.Columns[0].Width = 45;
             dgv.Columns[1].Width = 45;
+            dgv.Columns[2].Width = 200;
             dgv.Columns[5].Width = 45;
             dgv.Columns[6].Width = 55;
+            dgv.Columns[7].Width = 200;
             dgv.Columns[8].Width = 55;
-            dgv.Columns[9].Width = 55;//posic
+            dgv.Columns[9].Width = 100;//posic
             dgv.Columns[11].Width = 180;
             dgv.Columns[12].Width = 55;
             dgv.Columns[13].Width = 55;
@@ -151,6 +153,11 @@ namespace k_presentacion_00
         }
 
         private void frmBuscador_OT_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

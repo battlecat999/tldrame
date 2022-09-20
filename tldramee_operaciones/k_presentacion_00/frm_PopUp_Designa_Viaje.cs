@@ -453,7 +453,7 @@ namespace k_presentacion_00
         private void MandarCuadro_Control()
         {
             funciones_envio_emails fee = new funciones_envio_emails();
-            fee.Envio_Email_Cuadro_Control(_Empresa, _OT, _strBooking, _IdCliente, 0,0, (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION,"lightblue");//paso 0 en itemot para que el SP no tome un item especifico
+            fee.Envio_Email_Cuadro_Control(_Empresa, _OT, _strBooking, _IdCliente, 0,0,0, (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION,"lightblue");//paso 0 en itemot para que el SP no tome un item especifico
         }
         private void MandarEmail()
         {

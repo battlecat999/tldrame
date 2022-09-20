@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace k_presentacion_00
 {
+    //dde 08/09/22 declaramos objetos traemos sus datos _FechaPosicion _FechaRetiro _HoraPosicion// 
     public partial class frmCambioNominacion : Form
     {
         bool IsBlackList = false;
@@ -21,6 +22,9 @@ namespace k_presentacion_00
         public int _Item { get; set; }
         public int _codigo_Transportista { get; set; }
         public string _nombre_Transportista { get; set; }
+        public string _FechaPosicion { get; set; }
+        public string _FechaRetiro { get; set; }
+        public string _HoraPosicion { get; set; }
 
         public int _codigo_Tractor { get; set; }
         public string _nombre_Tractor { get; set; }
@@ -50,12 +54,13 @@ namespace k_presentacion_00
 
         }
 
+        //DDE 08/09/22 agregamos datfechaposic/datfecharetiro/cboHoraPosicion//
         private void Inicia()
         {
-
+            
             this.lblOT.Text = string.Empty;
             this.lblItem.Text = string.Empty;
-
+      
             this.lbl_Codigo_Transportista.Text = string.Empty;
             this.lbl_Codigo_Tractor.Text = string.Empty;
             this.lbl_Codigo_Chasis.Text = string.Empty;
@@ -66,6 +71,11 @@ namespace k_presentacion_00
             this.lbl_Nombre_Chasis.Text = string.Empty;
             this.lbl_Nombre_Chofer.Text = string.Empty;
 
+            //dde 08/09/22 llamamos al metodo;
+            Carga_Horarios();
+            this.datFechaPosic.Text = _FechaPosicion.ToString();
+            this.datFechaRetiro.Text = _FechaRetiro.ToString();
+            this.cboHoraPosicion.Text = _HoraPosicion.ToString();
             this.lblOT.Text = _OT.ToString();
             this.lblItem.Text = _Item.ToString();
 
@@ -85,7 +95,8 @@ namespace k_presentacion_00
             this.lbl_BL_Booking.Text = _BLBooking.ToString();
 
             Cursor.Current = Cursors.WaitCursor;
-
+            //dde 08/09/22 llamaos al metodo;
+            
             Carga_Combo_Transportistas();
             Verifico_Existe_Anticipo();
             //Carga_Combo_Choferes();
@@ -146,6 +157,31 @@ namespace k_presentacion_00
             o.CargarComboDataTable(this.cboTransportista, p, "id", "Descripcion", false, true, true, false);
 
             this.cboTransportista.SelectedValueChanged += new EventHandler(this.CboTransportista_SelectedValueChanged);
+
+        }
+        //dde 08/09/22 llamamos al storeprocedure para cargar horarios;
+        private void Carga_Horarios()
+        {
+
+            funciones_Varias o = new funciones_Varias();
+            DNTablas_Gral lista = new DNTablas_Gral();
+
+            var parameters = new[]
+            {
+                new MySqlParameter(){ ParameterName="pIdEmpresa", Value = _Empresa },
+                new MySqlParameter(){ ParameterName="pIdCorredor", Value = _Corredor },
+                new MySqlParameter(){ ParameterName="pCosto", Value = _Costo }
+            };
+
+            DataTable p;
+
+            p = lista.Get_Datos("SP_CargaHorarios", parameters);
+
+        
+
+            o.CargarComboDataTable(this.cboHoraPosicion, p, "Codigo_Hora", "Descripcion", false, false, false, false);
+
+           
 
         }
 
@@ -213,6 +249,11 @@ namespace k_presentacion_00
             o.CargarComboDataTable(this.cboChoferes, p, "IdChofer", "Apellido", false, false,true,false);
 
         }
+
+
+
+
+
 
         private void CboTransportista_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -515,8 +556,8 @@ namespace k_presentacion_00
 
             //    e.SendEmailWithOutlook(direcciones, strAsunto, strCuerpo, string.Empty);
             //}
-
-            fee.Envio_Email_Cuadro_Control(_Empresa, _OT, _BLBooking, _IdCliente, _Item, 1, (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION, "lightblue");
+            
+            fee.Envio_Email_Cuadro_Control(_Empresa, _OT, _BLBooking, _IdCliente, _Item, 1, 1 , (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION, "lightblue");
         }
         private void BtnSalir_Click(object sender, EventArgs e)
         {
@@ -684,21 +725,21 @@ namespace k_presentacion_00
             try
             {
                 cmdCommand.Parameters.Clear();
-                cmdCommand.CommandText = "SP_Elimina_Nominacion";
+                cmdCommand.CommandText = "SP_Cambio_Fecha_Nominacion";
 
                 cmdCommand.Parameters.Add("intEmpresa", MySqlDbType.Int32);
-                cmdCommand.Parameters.Add("intOT", MySqlDbType.Int32);
+                cmdCommand.Parameters.Add("intNumero_OT", MySqlDbType.Int32);
                 cmdCommand.Parameters.Add("intItem", MySqlDbType.Int32);
-                cmdCommand.Parameters.Add("datFechaRetiro", MySqlDbType.Date);
-                cmdCommand.Parameters.Add("datFechaPosic", MySqlDbType.Date);
-
+                cmdCommand.Parameters.Add("datFecha_Retiro", MySqlDbType.DateTime);
+                cmdCommand.Parameters.Add("datFecha_Posicion", MySqlDbType.DateTime);
+                cmdCommand.Parameters.Add("datHora_Posicion", MySqlDbType.String);
 
                 cmdCommand.Parameters["intEmpresa"].Value = _Empresa;
-                cmdCommand.Parameters["intOT"].Value = _OT;
+                cmdCommand.Parameters["intNumero_OT"].Value = _OT;
                 cmdCommand.Parameters["intItem"].Value = _Item;
-                cmdCommand.Parameters["datFechaRetiro"].Value = this.datFechaRetiro.Text;
-                cmdCommand.Parameters["datFechaPosic"].Value = this.datFechaPosic.Text;
-
+                cmdCommand.Parameters["datFecha_Retiro"].Value = Convert.ToDateTime(this.datFechaRetiro.Text).ToString("yyyy-MM-dd");
+                cmdCommand.Parameters["datFecha_Posicion"].Value = Convert.ToDateTime(this.datFechaPosic.Text).ToString("yyyy-MM-dd");
+                cmdCommand.Parameters["datHora_Posicion"].Value = this.cboHoraPosicion.Text; 
 
                 cmdCommand.ExecuteNonQuery();
 
@@ -813,6 +854,46 @@ namespace k_presentacion_00
                 this.lblBlackList.Visible = false;
                 this.Close();
             }
+        }
+
+        private void datFechaRetiro_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void cboTransportista_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Nombre_Chasis_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRazonSocial_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFechaRet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void datFechaPosic_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 

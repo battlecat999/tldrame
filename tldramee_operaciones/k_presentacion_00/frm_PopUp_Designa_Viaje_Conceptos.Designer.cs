@@ -1,4 +1,6 @@
-﻿namespace k_presentacion_00
+﻿using System;
+
+namespace k_presentacion_00
 {
     partial class frm_PopUp_Designa_Viaje_Conceptos
     {
@@ -89,6 +91,10 @@
             this.cmdLimpiar = new System.Windows.Forms.Button();
             this.txtNroPrecintoVacio = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.lblTipoServicio = new System.Windows.Forms.Label();
+            this.lblFechaRetiro = new System.Windows.Forms.Label();
+            this.lblFechaPosicion = new System.Windows.Forms.Label();
+            this.lblHoraPosicion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgw)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,6 +107,7 @@
             this.lblDescripcion_Item.Size = new System.Drawing.Size(145, 18);
             this.lblDescripcion_Item.TabIndex = 43;
             this.lblDescripcion_Item.Text = "lblDescripcion_Item";
+            this.lblDescripcion_Item.Click += new System.EventHandler(this.lblDescripcion_Item_Click);
             // 
             // lblCosto
             // 
@@ -122,6 +129,7 @@
             this.lblOT.Size = new System.Drawing.Size(49, 19);
             this.lblOT.TabIndex = 41;
             this.lblOT.Text = "lblOT";
+            this.lblOT.Click += new System.EventHandler(this.lblOT_Click);
             // 
             // btnSalir
             // 
@@ -358,6 +366,7 @@
             this.label8.Size = new System.Drawing.Size(149, 19);
             this.label8.TabIndex = 60;
             this.label8.Text = "Orden Transporte:";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -450,7 +459,6 @@
             this.txtNroContenedor.Size = new System.Drawing.Size(168, 21);
             this.txtNroContenedor.TabIndex = 70;
             this.txtNroContenedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtNroContenedor.Leave += new System.EventHandler(this.txtNroContenedor_Leave);
             // 
             // cmdGuardar_Contenedor
             // 
@@ -702,21 +710,22 @@
             // 
             this.lblTieneFactura.AutoSize = true;
             this.lblTieneFactura.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTieneFactura.Location = new System.Drawing.Point(528, 266);
+            this.lblTieneFactura.Location = new System.Drawing.Point(528, 230);
             this.lblTieneFactura.Name = "lblTieneFactura";
-            this.lblTieneFactura.Size = new System.Drawing.Size(58, 18);
+            this.lblTieneFactura.Size = new System.Drawing.Size(114, 18);
             this.lblTieneFactura.TabIndex = 89;
-            this.lblTieneFactura.Text = "label11";
+            this.lblTieneFactura.Text = "lblTieneFactura";
             // 
             // lblTieneAnticipo
             // 
             this.lblTieneAnticipo.AutoSize = true;
             this.lblTieneAnticipo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTieneAnticipo.Location = new System.Drawing.Point(528, 237);
+            this.lblTieneAnticipo.Location = new System.Drawing.Point(528, 208);
             this.lblTieneAnticipo.Name = "lblTieneAnticipo";
-            this.lblTieneAnticipo.Size = new System.Drawing.Size(59, 18);
+            this.lblTieneAnticipo.Size = new System.Drawing.Size(118, 18);
             this.lblTieneAnticipo.TabIndex = 90;
-            this.lblTieneAnticipo.Text = "label15";
+            this.lblTieneAnticipo.Text = "lblTieneAnticipo";
+            this.lblTieneAnticipo.Click += new System.EventHandler(this.lblTieneAnticipo_Click);
             // 
             // cmdLimpiar
             // 
@@ -746,12 +755,58 @@
             this.label11.TabIndex = 92;
             this.label11.Text = "Nº Precinto Empty:";
             // 
+            // lblTipoServicio
+            // 
+            this.lblTipoServicio.AutoSize = true;
+            this.lblTipoServicio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoServicio.Location = new System.Drawing.Point(527, 179);
+            this.lblTipoServicio.Name = "lblTipoServicio";
+            this.lblTipoServicio.Size = new System.Drawing.Size(110, 18);
+            this.lblTipoServicio.TabIndex = 94;
+            this.lblTipoServicio.Text = "lblTipoServicio";
+            this.lblTipoServicio.Click += new System.EventHandler(this.lblTipoServicio_Click);
+            // 
+            // lblFechaRetiro
+            // 
+            this.lblFechaRetiro.AutoSize = true;
+            this.lblFechaRetiro.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaRetiro.Location = new System.Drawing.Point(303, 208);
+            this.lblFechaRetiro.Name = "lblFechaRetiro";
+            this.lblFechaRetiro.Size = new System.Drawing.Size(59, 18);
+            this.lblFechaRetiro.TabIndex = 95;
+            this.lblFechaRetiro.Text = "label15";
+            this.lblFechaRetiro.Click += new System.EventHandler(this.label15_Click);
+            // 
+            // lblFechaPosicion
+            // 
+            this.lblFechaPosicion.AutoSize = true;
+            this.lblFechaPosicion.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaPosicion.Location = new System.Drawing.Point(303, 179);
+            this.lblFechaPosicion.Name = "lblFechaPosicion";
+            this.lblFechaPosicion.Size = new System.Drawing.Size(59, 18);
+            this.lblFechaPosicion.TabIndex = 97;
+            this.lblFechaPosicion.Text = "label15";
+            // 
+            // lblHoraPosicion
+            // 
+            this.lblHoraPosicion.AutoSize = true;
+            this.lblHoraPosicion.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoraPosicion.Location = new System.Drawing.Point(303, 230);
+            this.lblHoraPosicion.Name = "lblHoraPosicion";
+            this.lblHoraPosicion.Size = new System.Drawing.Size(59, 18);
+            this.lblHoraPosicion.TabIndex = 98;
+            this.lblHoraPosicion.Text = "label15";
+            // 
             // frm_PopUp_Designa_Viaje_Conceptos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(855, 677);
+            this.Controls.Add(this.lblHoraPosicion);
+            this.Controls.Add(this.lblFechaPosicion);
+            this.Controls.Add(this.lblFechaRetiro);
+            this.Controls.Add(this.lblTipoServicio);
             this.Controls.Add(this.txtNroPrecintoVacio);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cmdLimpiar);
@@ -880,5 +935,9 @@
         private System.Windows.Forms.Button cmdLimpiar;
         private System.Windows.Forms.TextBox txtNroPrecintoVacio;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblTipoServicio;
+        private System.Windows.Forms.Label lblFechaRetiro;
+        private System.Windows.Forms.Label lblFechaPosicion;
+        private System.Windows.Forms.Label lblHoraPosicion;
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using k_negocio_00;
 using MySql.Data.MySqlClient;
 using k_mysql;
-
+using k_presentacion_00;
 using System.Windows;
 
 namespace k_presentacion_00

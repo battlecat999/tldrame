@@ -100,7 +100,6 @@
             this.dg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dg.Size = new System.Drawing.Size(1516, 645);
             this.dg.TabIndex = 41;
-            this.dg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellContentClick);
             this.dg.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellContentDoubleClick);
             this.dg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dg_KeyPress);
             // 

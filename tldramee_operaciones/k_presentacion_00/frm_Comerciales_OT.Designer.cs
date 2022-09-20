@@ -165,6 +165,7 @@
             this.cboContactos.Name = "cboContactos";
             this.cboContactos.Size = new System.Drawing.Size(119, 23);
             this.cboContactos.TabIndex = 3;
+            this.cboContactos.SelectedIndexChanged += new System.EventHandler(this.cboContactos_SelectedIndexChanged_1);
             // 
             // dtpCOD
             // 
@@ -312,6 +313,7 @@
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(479, 35);
             this.txtObservacion.TabIndex = 24;
+            this.txtObservacion.TextChanged += new System.EventHandler(this.txtObservacion_TextChanged);
             // 
             // label18
             // 
@@ -623,6 +625,7 @@
             this.dg.Name = "dg";
             this.dg.Size = new System.Drawing.Size(1137, 175);
             this.dg.TabIndex = 20;
+            this.dg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellContentClick);
             this.dg.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViajes_CellValueChanged);
             this.dg.CurrentCellDirtyStateChanged += new System.EventHandler(this.GrdViajes_CurrentCellDirtyStateChanged);
             // 
@@ -686,6 +689,7 @@
             this.groupBox4.TabIndex = 24;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Acciones Generales";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // lblFechaHasta
             // 
@@ -745,6 +749,7 @@
             this.cboContenedores.Size = new System.Drawing.Size(124, 23);
             this.cboContenedores.TabIndex = 32;
             this.cboContenedores.Text = "Contenedor";
+            this.cboContenedores.SelectedIndexChanged += new System.EventHandler(this.cboContenedores_SelectedIndexChanged);
             // 
             // txtPeso
             // 
@@ -950,6 +955,7 @@
             this.txtNumero_OT.Name = "txtNumero_OT";
             this.txtNumero_OT.Size = new System.Drawing.Size(111, 21);
             this.txtNumero_OT.TabIndex = 68;
+            this.txtNumero_OT.TextChanged += new System.EventHandler(this.groupBox4_Enter);
             this.txtNumero_OT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumero_OT_KeyPress);
             this.txtNumero_OT.Leave += new System.EventHandler(this.TxtNumero_OT_Leave);
             // 

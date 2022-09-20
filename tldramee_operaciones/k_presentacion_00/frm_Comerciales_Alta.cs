@@ -12,6 +12,7 @@ using MySql.Data;
 using MySql.Data.Types;
 using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices;
+using k_presentacion_00;
 
 namespace k_presentacion_00
 {

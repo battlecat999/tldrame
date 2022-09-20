@@ -14,6 +14,9 @@ using k_mysql;
 using System.IO;
 using System.Web.UI;
 using System.Windows.Forms;
+using k_presentacion_00;
+using iTextSharp.tool.xml.html;
+
 
 namespace k_presentacion_00
 {
@@ -71,27 +74,27 @@ namespace k_presentacion_00
           //  }
             return true;
         }
-        public bool SendEmailWithOutlook(string mailDirection, string mailSubject, string mailContent,string pathAttachment,Boolean boolAutomatico)
+        public bool SendEmailWithOutlook(string mailDirection, string mailSubject, string mailContent, string pathAttachment, Boolean boolAutomatico)
         {
             try
             {
                 //Microsoft.Office.Interop.Outlook My_OutLook = new Microsoft.Office.Interop.Outlook(); 
-               var oApp=new  Microsoft.Office.Interop.Outlook.Application();
+                var oApp = new Microsoft.Office.Interop.Outlook.Application();
 
                 Microsoft.Office.Interop.Outlook.NameSpace ns = oApp.GetNamespace("MAPI");
 
-                var f = ns.GetDefaultFolder(Microsoft.Office.Interop.Outlook.OlDefaultFolders.olFolderInbox);
+                object f = ns.GetDefaultFolder(Microsoft.Office.Interop.Outlook.OlDefaultFolders.olFolderInbox);
 
                 System.Threading.Thread.Sleep(1000);
 
-                var mailItem = (Microsoft.Office.Interop.Outlook.MailItem)oApp.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
+                Outlook.MailItem mailItem = oApp.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
                 mailItem.Subject = mailSubject;
-                
+
                 mailItem.HTMLBody = mailContent;
                 mailItem.BodyFormat = Outlook.OlBodyFormat.olFormatHTML;
                 mailItem.To = mailDirection;
                 //Adjunto
-                if(pathAttachment!=string.Empty)
+                if (pathAttachment!=string.Empty)
                 {
                     int iPosition = (int)mailItem.Body.Length + 1;
                     int iAttachType = (int)Microsoft.Office.Interop.Outlook.OlAttachmentType.olByValue;
@@ -105,10 +108,10 @@ namespace k_presentacion_00
                 }
                 else
                 {
-                   mailItem.Display();
+                    mailItem.Display();
                 }
-                
-                
+
+
 
                 oApp = null;
                 f = null;
@@ -124,9 +127,10 @@ namespace k_presentacion_00
             finally
             {
             }
-             return true;
-            
+            return true;
+
         }
+
         public string armar_Cadena_Emails(string SP,int intEmpresa, int intEvento, int intCliente,string param_name)
         {
             funciones_Varias o = new funciones_Varias();
@@ -168,22 +172,28 @@ namespace k_presentacion_00
             E_GENERA_ANTICIPOS=10
 
         }
-        public  string ExportDatatableToHtml(DataTable dt,string color_Fondo_DataTable)
+
+
+        //DED 31/08/22 //REMPLAZAMOS BODY STR.HTMLBUILDER X CuerpoEmail.html PARA COMBINAR LOS CODIGOS Y DAR FORMATO ADECUADO//
+        public string ExportDatatableToHtml(DataTable dt,string color_Fondo_DataTable)
         {
+
+
+            string archivo = "C:\\Users\\Usuario\\Downloads\\Telegram Desktop\\CuerpoEmail.html";
             StringBuilder strHTMLBuilder = new StringBuilder();
-            //strHTMLBuilder.Append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\" >");
-            //strHTMLBuilder.Append("<html xmlns=\"http://www.w3.org/1999/xhtml\" >");
-            strHTMLBuilder.Append("<html >");
+            ////strHTMLBuilder.Append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\" >");
+            ////strHTMLBuilder.Append("<html xmlns=\"http://www.w3.org/1999/xhtml\" >");
+            //strHTMLBuilder.Append("<html >");
 
-            strHTMLBuilder.Append("<head>");
-            strHTMLBuilder.Append("</head>");
-            strHTMLBuilder.Append("<body><br/><br/>");
-            strHTMLBuilder.Append("<table border=3px bordercolor=#000000 cellpadding='10' cellspacing='3' bgcolor=#FFFFFF style='font-family:Arial; font-size:10pt '>");
+            ////strHTMLBuilder.Append("<head>");
+            ////strHTMLBuilder.Append("</head>");
+            //strHTMLBuilder.Append("<body><br/><br/>");
+            //strHTMLBuilder.Append("<table border=3px bordercolor=#000000 cellpadding='3' cellspacing='10' bgcolor=#FFFFFF style='font-family:Arial; font-size:10pt '>");
 
-            strHTMLBuilder.Append("<tr bgcolor=#FFFFFF><font color='white'>");
+            //strHTMLBuilder.Append("<tr font color='white'>");
             foreach (DataColumn myColumn in dt.Columns)
             {
-                strHTMLBuilder.Append("<td bgcolor=#000000 align='center' style='padding: 20px 0 20px 0;'>");
+                strHTMLBuilder.Append("<td align='center' style='padding: 10px 0 10px 0;'>");
                 strHTMLBuilder.Append(myColumn.ColumnName);
                 strHTMLBuilder.Append("</td>");
 
@@ -194,10 +204,10 @@ namespace k_presentacion_00
             foreach (DataRow myRow in dt.Rows)
             {
 
-                strHTMLBuilder.Append("<tr  bgcolor=#FFFFFF>");
+                //strHTMLBuilder.Append("<tr  bgcolor=#FFFFFF>");
                 foreach (DataColumn myColumn in dt.Columns)
                 {
-                    strHTMLBuilder.Append("<td style='font-size: 9pt; line - height: 0;  height=10' bgcolor='"+ color_Fondo_DataTable + "' padding: 20px 0 0px 0;>&nbsp;");
+                    strHTMLBuilder.Append("<td style='font-size: 15pt; line - height: 0;  height=80' bgcolor='"+ color_Fondo_DataTable + "' padding: 80px 0 0px 0;>&nbsp;");
                     strHTMLBuilder.Append(myRow[myColumn.ColumnName].ToString());
                     strHTMLBuilder.Append("</td>");
 
@@ -206,14 +216,18 @@ namespace k_presentacion_00
             }
 
             //Close tags.  
-            strHTMLBuilder.Append("</table>");
-            strHTMLBuilder.Append("</body>");
-            strHTMLBuilder.Append("</html><br/><br/>");
+            //strHTMLBuilder.Append("</table>");
+            //strHTMLBuilder.Append("</body>");
+            //strHTMLBuilder.Append("</html><br/><br/>");
 
+            //LEEMOS ARCHIVO HTML CuerpoEmail.html
+            var html = File.ReadAllText(archivo);
+            //LO REEMPLAZAMOS
             string Htmltext = strHTMLBuilder.ToString();
+            var html1 = html.Replace("<reemplazar>", Htmltext);
 
-            return Htmltext;
-
+            return html1;
+            
         }
         private string ReadSignature()
         {
@@ -399,7 +413,8 @@ namespace k_presentacion_00
                 fee.SendEmailWithOutlook(direcciones, strAsunto, strCuerpo, string.Empty, false);
             }
         }
-        public void Envio_Email_Cuadro_Control(int intEmpresa, int intOT, string strBooking,int intCliente, int intItemOT,int intOpcion,int intEvento_Param,string color_Fondo_DataTable)//intOPcion, lista individual=0 o todo el paquete cuando =1
+        //intTipoServicio entra si es 1=impo si es 2=expo//DDE 2022/09/13//
+        public void Envio_Email_Cuadro_Control(int intEmpresa, int intOT, string strBooking,int intCliente, int intItemOT,int intOpcion,int intTipoServicio,int intEvento_Param,string color_Fondo_DataTable)//intOPcion, lista individual=0 o todo el paquete cuando =1
         {
 
             clsConn cnMarco = new clsConn();
@@ -426,13 +441,25 @@ namespace k_presentacion_00
 
 
             cnnConnection.Open();
+           
 
             MySqlCommand cmdCommand = cnnConnection.CreateCommand();
             cmdCommand.Connection = cnnConnection;
             cmdCommand.CommandType = CommandType.StoredProcedure;
             //verifico envio de email al final de la carga del ultimo contenedor
             cmdCommand.Parameters.Clear();//limpio los parametros.
-            cmdCommand.CommandText = "SP_Emails_Fin_Nominacion";
+            // ED 30/08/22 // Aca validamos si es 1(impo)o si es 2(expo) generar cuadro con datos para cada uno//
+            if (intTipoServicio==1)
+            {
+                cmdCommand.CommandText ="SP_Emails_Fin_Nominacion_impo";
+
+            }
+            else
+            {
+                cmdCommand.CommandText ="SP_Emails_Fin_Nominacion_expo";
+            }
+
+            //cmdCommand.CommandText = "SP_Emails_Fin_Nominacion";
 
 
 
