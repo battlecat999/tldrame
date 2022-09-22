@@ -13,6 +13,7 @@ namespace k_presentacion_00
     //DED 2022/09/20 
     public partial class frm_ABM_Conceptos_Cotizacion : Form
     {
+        
         guardar_datos_login datos = guardar_datos_login.Instance();
         public frm_ABM_Conceptos_Cotizacion()
         {
@@ -60,7 +61,7 @@ namespace k_presentacion_00
         }
         
 
-    private void form_TraerCotizaciones_Load(object sender, EventArgs e)
+        private void form_TraerCotizaciones_Load(object sender, EventArgs e)
         {
             Iniciar();
 
@@ -70,20 +71,40 @@ namespace k_presentacion_00
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-           
+            ConceptoCotizacion(0);
+            btnNuevo_Click(sender, e);
         }
 
         private void cboItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+            DNTablas_Gral lista = new DNTablas_Gral();
+            DataTable p;
             
+            var parameters = new[]
+{
+                new MySqlParameter(){ ParameterName="intEmpresa", Value = datos.g_idEmpresa},
+                new MySqlParameter(){ ParameterName="intId", Value = this.cboItem.SelectedValue},
+                new MySqlParameter(){ ParameterName="intAccion", Value = 1}
+            };
 
-          
 
-            
-          
+            p = lista.Get_Datos("SP_Conceptos_Cotizaciones", parameters);
+
+            try
+            {
+                if (p.Rows.Count > 0)
+                {
+                    DataRow dr;
+                    dr = p.Rows[0];
+                    this.txtDetalle.Text = dr["Detalle"].ToString();
+                    this.cboEstado.SelectedValue= dr["IdEstado"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
         }
-
         private void cboEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -92,6 +113,45 @@ namespace k_presentacion_00
         private void txtDetalle_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        
+
+        private void ConceptoCotizacion(int intAccion)
+        {
+
+            DNTablas_Gral lista = new DNTablas_Gral();
+            DataTable p;
+
+            var parameters = new[]
+            {
+                new MySqlParameter(){ ParameterName="intEmpresa", Value = datos.g_idEmpresa},                
+                new MySqlParameter(){ ParameterName="intId", Value = this.cboItem.SelectedValue},
+                new MySqlParameter(){ ParameterName="strItem", Value = this.cboItem.Text},
+                new MySqlParameter(){ ParameterName="strDetalle", Value = this.txtDetalle.Text},
+                new MySqlParameter(){ ParameterName="idEstado", Value = this.cboEstado.SelectedValue},
+                new MySqlParameter(){ ParameterName="intAccion", Value = intAccion }
+
+            };
+
+
+            p = lista.Get_Datos("SP_ConceptosCotizaciones_Trans", parameters);
+
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ConceptoCotizacion(1);
+            btnNuevo_Click(sender, e);
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            frm_ABM_Conceptos_Cotizacion frm = new frm_ABM_Conceptos_Cotizacion();
+            frm.Location = new Point(this.Location.X, this.Location.Y);
+            frm.Show();
+            this.Close();
         }
     }
 }

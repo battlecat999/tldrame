@@ -35,6 +35,8 @@
             this.lblDetalle = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
             this.txtDetalle = new System.Windows.Forms.TextBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cboItem
@@ -70,7 +72,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.btnGuardar.Location = new System.Drawing.Point(314, 468);
+            this.btnGuardar.Location = new System.Drawing.Point(105, 468);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(173, 69);
             this.btnGuardar.TabIndex = 4;
@@ -108,12 +110,36 @@
             this.txtDetalle.TabIndex = 8;
             this.txtDetalle.TextChanged += new System.EventHandler(this.txtDetalle_TextChanged);
             // 
-            // form_TraerCotizaciones
+            // btnNuevo
+            // 
+            this.btnNuevo.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.btnNuevo.Location = new System.Drawing.Point(317, 468);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(173, 69);
+            this.btnNuevo.TabIndex = 9;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.Location = new System.Drawing.Point(529, 468);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(173, 69);
+            this.btnEliminar.TabIndex = 10;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // frm_ABM_Conceptos_Cotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(771, 576);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.txtDetalle);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.lblDetalle);
@@ -121,7 +147,7 @@
             this.Controls.Add(this.cboEstado);
             this.Controls.Add(this.lblItem);
             this.Controls.Add(this.cboItem);
-            this.Name = "form_TraerCotizaciones";
+            this.Name = "frm_ABM_Conceptos_Cotizacion";
             this.Text = "Cotizaciones";
             this.Load += new System.EventHandler(this.form_TraerCotizaciones_Load);
             this.ResumeLayout(false);
@@ -138,5 +164,7 @@
         private System.Windows.Forms.Label lblDetalle;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.TextBox txtDetalle;
+        private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
