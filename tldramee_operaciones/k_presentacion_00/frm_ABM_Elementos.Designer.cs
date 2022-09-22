@@ -90,6 +90,7 @@
             this.cboLocalidad.Name = "cboLocalidad";
             this.cboLocalidad.Size = new System.Drawing.Size(285, 25);
             this.cboLocalidad.TabIndex = 4;
+            this.cboLocalidad.SelectedIndexChanged += new System.EventHandler(this.cboLocalidad_SelectedIndexChanged_1);
             // 
             // cboProvincia
             // 
@@ -108,6 +109,7 @@
             this.cboPais.Name = "cboPais";
             this.cboPais.Size = new System.Drawing.Size(286, 25);
             this.cboPais.TabIndex = 2;
+            this.cboPais.SelectedIndexChanged += new System.EventHandler(this.cboPais_SelectedIndexChanged_1);
             // 
             // txtElementos
             // 
@@ -123,6 +125,7 @@
             this.cboElementos.Name = "cboElementos";
             this.cboElementos.Size = new System.Drawing.Size(288, 25);
             this.cboElementos.TabIndex = 1;
+            this.cboElementos.SelectedIndexChanged += new System.EventHandler(this.cboElementos_SelectedIndexChanged);
             // 
             // gb
             // 
@@ -203,6 +206,7 @@
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(286, 72);
             this.txtDireccion.TabIndex = 5;
+            this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
             // 
             // label2
             // 

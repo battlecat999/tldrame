@@ -1802,5 +1802,10 @@ namespace k_presentacion_00
         {
 
         }
+
+        private void cboRazonSocial_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

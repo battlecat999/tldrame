@@ -1,4 +1,4 @@
-﻿namespace k_mysql
+﻿namespace k_presentacion_00
 {
     partial class form_TraerCotizaciones
     {
@@ -65,6 +65,7 @@
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.Size = new System.Drawing.Size(84, 23);
             this.cboEstado.TabIndex = 3;
+            this.cboEstado.SelectedIndexChanged += new System.EventHandler(this.cboEstado_SelectedIndexChanged);
             // 
             // btnGuardar
             // 

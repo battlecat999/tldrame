@@ -409,6 +409,12 @@
     <Compile Include="frm_PopUp_Designa_Viaje.Designer.cs">
       <DependentUpon>frm_PopUp_Designa_Viaje.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_ABM_Conceptos_Cotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ABM_Conceptos_Cotizacion.Designer.cs">
+      <DependentUpon>frm_ABM_Conceptos_Cotizacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Trafico_a_Designar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -562,6 +568,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_PopUp_Designa_Viaje.resx">
       <DependentUpon>frm_PopUp_Designa_Viaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ABM_Conceptos_Cotizacion.resx">
+      <DependentUpon>frm_ABM_Conceptos_Cotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Trafico_a_Designar.resx">
       <DependentUpon>frm_Trafico_a_Designar.cs</DependentUpon>

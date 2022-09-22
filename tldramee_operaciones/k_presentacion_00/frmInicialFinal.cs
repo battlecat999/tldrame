@@ -746,7 +746,7 @@ namespace k_presentacion_00
 
         private void pruebaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pruebas ofrm = new pruebas();
+            frm_ABM_Conceptos_Cotizacion ofrm = new frm_ABM_Conceptos_Cotizacion();
             ofrm.Show();
         }
 

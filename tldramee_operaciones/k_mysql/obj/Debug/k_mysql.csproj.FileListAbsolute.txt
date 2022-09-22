@@ -98,8 +98,6 @@ C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_mysql
 C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_mysql\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_mysql\bin\Debug\k_loger.pdb
 C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_mysql\obj\Debug\k_mysql.csproj.AssemblyReference.cache
-C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_mysql\obj\Debug\k_mysql.form_TraerCotizaciones.resources
-C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_mysql\obj\Debug\k_mysql.csproj.GenerateResource.cache
 C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_mysql\obj\Debug\k_mysql.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_mysql\obj\Debug\k_mysql.csproj.CopyComplete
 C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_mysql\obj\Debug\k_mysql.dll

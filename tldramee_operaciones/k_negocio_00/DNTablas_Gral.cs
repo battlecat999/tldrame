@@ -232,7 +232,7 @@ namespace k_negocio_00
             public bool DN_Grabar_Tabla_Gral()
             {
                 bool ok_Trans;
-
+                
                 DBTablas_Gral objDatos = new DBTablas_Gral();
                 objDatos.Tabla = Tabla;
                 objDatos.Descripcion = Descripcion;

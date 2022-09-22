@@ -332,5 +332,24 @@ namespace k_presentacion_00
             this.Close();
         }
 
+        private void cboLocalidad_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboElementos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboPais_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDireccion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -482,3 +482,4 @@ C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_prese
 C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_presentacion_00\obj\Debug\k_presentacion_00.csproj.CopyComplete
 C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_presentacion_00\obj\Debug\k_presentacion_00.exe
 C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_presentacion_00\obj\Debug\k_presentacion_00.pdb
+C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\k_presentacion_00\obj\Debug\k_presentacion_00.frm_ABM_Conceptos_Cotizacion.resources

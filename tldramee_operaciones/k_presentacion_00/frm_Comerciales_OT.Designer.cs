@@ -146,6 +146,7 @@
             this.cboRazonSocial.Name = "cboRazonSocial";
             this.cboRazonSocial.Size = new System.Drawing.Size(153, 23);
             this.cboRazonSocial.TabIndex = 1;
+            this.cboRazonSocial.SelectedIndexChanged += new System.EventHandler(this.cboRazonSocial_SelectedIndexChanged_1);
             // 
             // cboPresupuesto
             // 
