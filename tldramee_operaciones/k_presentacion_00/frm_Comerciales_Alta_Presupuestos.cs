@@ -35,6 +35,12 @@ namespace k_presentacion_00
 
        
         guardar_datos_login datos = guardar_datos_login.Instance();
+        
+
+        System.Data.DataSet _dsOTs = new System.Data.DataSet("OTs");
+        BindingSource _bindingSource = new BindingSource();
+
+        DataSet _dtItems = new DataSet();
 
         public frm_Comerciales_Alta_Presupuestos()
         {
@@ -250,6 +256,14 @@ namespace k_presentacion_00
             DataTable p;
             funciones_Varias o = new funciones_Varias();
 
+            var parameters = new[]
+           {
+                new MySqlParameter(){ ParameterName="intEmpresa", Value = datos.g_idEmpresa},
+                new MySqlParameter(){ ParameterName="intId", Value = 0},
+                new MySqlParameter(){ ParameterName="intAccion", Value = 0}
+            };
+
+
             p = lista.DN_CargarDataTableGral("SP_GET_Tipo_Servicios_ALL", 0, 0);
             o.CargarComboDataTable(cboTipoServicio, p, "id", "descripcion", false, true);
 
@@ -273,9 +287,12 @@ namespace k_presentacion_00
             o.CargarComboDataTable(cboEstado, p, "Codigo_Estado", "Descripcion", false, true);
             this.cboEstado.SelectedValue = 1;//COM+EFEC 
 
-            cargarcombo_Mercaderia();
+            p = lista.Get_Datos("SP_Conceptos_Cotizaciones", parameters);
+            o.CargarComboDataTable(cboItem, p, "Id", "Item", false, true, true, false);
 
+            cargarcombo_Mercaderia();
             DN_ABM_TC l = new DN_ABM_TC();
+
 
         }
 
@@ -960,5 +977,105 @@ namespace k_presentacion_00
         {
 
         }
+
+        private void cboItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboContenedores_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+                
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Cargamos_Grilla();
+            DataRow rd = _dtItems.Tables[0].NewRow();
+          
+            
+            rd["Id"] = this.cboItem.SelectedValue;
+            rd["Item"] = this.cboItem.SelectedValue;
+
+            _dtItems.Tables[0].Rows.Add(rd);
+
+            
+        }
+
+        private void Cargamos_Grilla()
+        {
+
+            //funciones_Varias o = new funciones_Varias();
+            DNTablas_Gral lista = new DNTablas_Gral();
+
+            int intEmpresa = datos.g_idEmpresa;  //POR AHORA!
+
+            //int intNumero_OT = 0;
+
+            //if (!_blnAlta)
+            //{
+            //    intNumero_OT = Convert.ToInt32(this.txtNumero_OT.Text.ToString());
+            //}
+
+
+
+            var parameters = new[]
+            {
+                new MySqlParameter(){ ParameterName="intEmpresa", Value = datos.g_idEmpresa},
+                new MySqlParameter(){ ParameterName="intId", Value = this.cboItem.SelectedValue},
+                new MySqlParameter(){ ParameterName="intAccion", Value = 0}
+
+
+
+                //new MySqlParameter(){ ParameterName="intTransportista", Value = intTransportista },
+                //new MySqlParameter(){ ParameterName="intTractor", Value = intTractor },
+                //new MySqlParameter(){ ParameterName="intChasis", Value = intChasis },
+                //new MySqlParameter(){ ParameterName="intChofer", Value = intChofer },
+                //new MySqlParameter(){ ParameterName="intItem", Value = _Item }
+            };
+            
+
+            DataTable dtItems;
+
+            dtItems = lista.Get_Datos("SP_Conceptos_Cotizaciones", parameters);
+
+            if (_dtItems.Tables.Count > 0)
+            {
+                _dtItems.Tables.RemoveAt(0);
+            }
+
+            _dtItems.Tables.Add(dtItems);
+
+            //grdViajes.DataSource = dtItems;
+            dg.DataSource = _dtItems.Tables[0];
+            
+
+            //this.btnAgregar.Enabled = true;
+            //this.dg.Enabled = true;
+            //this.lblAviso.Visible = false;
+            //foreach (DataRow dr in dtItems.Rows)
+            //{
+            //    //if (dr["Numero_Contenedor"].ToString()!=string.Empty)
+            //    //{
+            //    //    this.btnAgregar.Enabled = false;
+            //    //    this.dg.Enabled = false;
+            //    //}
+            //    if (dr["TieneFactura"].ToString() == "0")
+            //    {
+            //        this.btnAgregar.Enabled = false;
+            //        this.dg.Enabled = false;
+            //        this.lblAviso.Visible = true;
+            //    }
+            //}
+
+        }
+
+
+
+
+
+
+
+
     }
 }

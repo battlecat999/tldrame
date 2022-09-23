@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace k_presentacion_00
 {
@@ -70,9 +71,19 @@ namespace k_presentacion_00
        
 
         private void btnGuardar_Click(object sender, EventArgs e)
+
         {
+
+            if (validarControles() == false)
+            {
+                this.cboItem.Focus();
+                return;
+                
+            }
+
             ConceptoCotizacion(0);
             btnNuevo_Click(sender, e);
+
         }
 
         private void cboItem_SelectedIndexChanged(object sender, EventArgs e)
@@ -127,7 +138,7 @@ namespace k_presentacion_00
             {
                 new MySqlParameter(){ ParameterName="intEmpresa", Value = datos.g_idEmpresa},                
                 new MySqlParameter(){ ParameterName="intId", Value = this.cboItem.SelectedValue},
-                new MySqlParameter(){ ParameterName="strItem", Value = this.cboItem.Text},
+                new MySqlParameter(){ ParameterName="strItem", Value = this.cboItem.Text.ToUpper()},
                 new MySqlParameter(){ ParameterName="strDetalle", Value = this.txtDetalle.Text},
                 new MySqlParameter(){ ParameterName="idEstado", Value = this.cboEstado.SelectedValue},
                 new MySqlParameter(){ ParameterName="intAccion", Value = intAccion }
@@ -153,5 +164,32 @@ namespace k_presentacion_00
             frm.Show();
             this.Close();
         }
+
+        //DED 2022/09/23 VALIDAMOS LOS CONTROLES
+        private bool validarControles()
+        {
+            if (this.cboItem.SelectedIndex == -1)
+            {
+                MessageBox.Show("El Item Concepto no puede estar vacío", "Atención");
+                this.cboItem.Focus();
+                //return false;
+            }
+            if (this.txtDetalle.Text == "")
+            {
+                MessageBox.Show("El Detalle Del Concepto no puede estar vacío", "Atención");
+                this.txtDetalle.Focus();
+                //return false;
+            }
+            if (this.cboEstado.SelectedIndex == -1)
+            {
+                MessageBox.Show("El Estado Del Concepto no puede estar vacío", "Atención");
+                this.cboEstado.Focus();
+                //return false;
+            }
+
+            return  false;
+            
+        }
+
     }
 }

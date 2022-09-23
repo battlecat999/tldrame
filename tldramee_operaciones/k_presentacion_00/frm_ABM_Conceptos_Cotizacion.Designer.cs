@@ -52,11 +52,11 @@
             // lblItem
             // 
             this.lblItem.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItem.Location = new System.Drawing.Point(349, 34);
+            this.lblItem.Location = new System.Drawing.Point(292, 27);
             this.lblItem.Name = "lblItem";
-            this.lblItem.Size = new System.Drawing.Size(102, 20);
+            this.lblItem.Size = new System.Drawing.Size(216, 47);
             this.lblItem.TabIndex = 1;
-            this.lblItem.Text = "Item";
+            this.lblItem.Text = "Nombre Del Concepto";
             this.lblItem.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // cboEstado
@@ -66,7 +66,7 @@
             this.cboEstado.Location = new System.Drawing.Point(358, 393);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.Size = new System.Drawing.Size(84, 23);
-            this.cboEstado.TabIndex = 3;
+            this.cboEstado.TabIndex = 2;
             this.cboEstado.SelectedIndexChanged += new System.EventHandler(this.cboEstado_SelectedIndexChanged);
             // 
             // btnGuardar
@@ -75,7 +75,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(105, 468);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(173, 69);
-            this.btnGuardar.TabIndex = 4;
+            this.btnGuardar.TabIndex = 3;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -83,11 +83,11 @@
             // lblDetalle
             // 
             this.lblDetalle.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.lblDetalle.Location = new System.Drawing.Point(349, 123);
+            this.lblDetalle.Location = new System.Drawing.Point(299, 128);
             this.lblDetalle.Name = "lblDetalle";
-            this.lblDetalle.Size = new System.Drawing.Size(102, 20);
+            this.lblDetalle.Size = new System.Drawing.Size(203, 20);
             this.lblDetalle.TabIndex = 6;
-            this.lblDetalle.Text = "Detalle";
+            this.lblDetalle.Text = "Detalle Del Concepto";
             this.lblDetalle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblEstado
@@ -107,7 +107,7 @@
             this.txtDetalle.Multiline = true;
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(342, 168);
-            this.txtDetalle.TabIndex = 8;
+            this.txtDetalle.TabIndex = 1;
             this.txtDetalle.TextChanged += new System.EventHandler(this.txtDetalle_TextChanged);
             // 
             // btnNuevo
@@ -116,7 +116,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(317, 468);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(173, 69);
-            this.btnNuevo.TabIndex = 9;
+            this.btnNuevo.TabIndex = 4;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -127,7 +127,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(529, 468);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(173, 69);
-            this.btnEliminar.TabIndex = 10;
+            this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -136,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(771, 576);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);

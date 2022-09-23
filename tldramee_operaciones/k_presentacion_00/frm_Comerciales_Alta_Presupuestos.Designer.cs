@@ -84,6 +84,11 @@
             this.mFechaVigDesde = new System.Windows.Forms.MaskedTextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cboEstado = new System.Windows.Forms.ComboBox();
+            this.cboItem = new System.Windows.Forms.ComboBox();
+            this.lblItem = new System.Windows.Forms.Label();
+            this.dg = new System.Windows.Forms.DataGridView();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUsuario
@@ -157,7 +162,7 @@
             // 
             // cmdGuardar
             // 
-            this.cmdGuardar.Location = new System.Drawing.Point(58, 615);
+            this.cmdGuardar.Location = new System.Drawing.Point(20, 751);
             this.cmdGuardar.Name = "cmdGuardar";
             this.cmdGuardar.Size = new System.Drawing.Size(163, 49);
             this.cmdGuardar.TabIndex = 21;
@@ -167,7 +172,7 @@
             // 
             // cmdLimpiar
             // 
-            this.cmdLimpiar.Location = new System.Drawing.Point(466, 615);
+            this.cmdLimpiar.Location = new System.Drawing.Point(428, 751);
             this.cmdLimpiar.Name = "cmdLimpiar";
             this.cmdLimpiar.Size = new System.Drawing.Size(171, 49);
             this.cmdLimpiar.TabIndex = 23;
@@ -470,7 +475,7 @@
             // 
             // cmdImprimir
             // 
-            this.cmdImprimir.Location = new System.Drawing.Point(260, 615);
+            this.cmdImprimir.Location = new System.Drawing.Point(222, 751);
             this.cmdImprimir.Name = "cmdImprimir";
             this.cmdImprimir.Size = new System.Drawing.Size(179, 49);
             this.cmdImprimir.TabIndex = 22;
@@ -495,6 +500,7 @@
             this.cboContenedores.Name = "cboContenedores";
             this.cboContenedores.Size = new System.Drawing.Size(148, 23);
             this.cboContenedores.TabIndex = 15;
+            this.cboContenedores.SelectedIndexChanged += new System.EventHandler(this.cboContenedores_SelectedIndexChanged_1);
             // 
             // mFechaVencimiento
             // 
@@ -654,7 +660,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(59, 557);
+            this.label21.Location = new System.Drawing.Point(21, 693);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(158, 17);
             this.label21.TabIndex = 130;
@@ -663,17 +669,63 @@
             // cboEstado
             // 
             this.cboEstado.FormattingEnabled = true;
-            this.cboEstado.Location = new System.Drawing.Point(58, 577);
+            this.cboEstado.Location = new System.Drawing.Point(20, 713);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.Size = new System.Drawing.Size(148, 23);
             this.cboEstado.TabIndex = 129;
+            // 
+            // cboItem
+            // 
+            this.cboItem.FormattingEnabled = true;
+            this.cboItem.Location = new System.Drawing.Point(120, 566);
+            this.cboItem.Name = "cboItem";
+            this.cboItem.Size = new System.Drawing.Size(148, 23);
+            this.cboItem.TabIndex = 131;
+            this.cboItem.SelectedIndexChanged += new System.EventHandler(this.cboItem_SelectedIndexChanged);
+            // 
+            // lblItem
+            // 
+            this.lblItem.AutoSize = true;
+            this.lblItem.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItem.Location = new System.Drawing.Point(19, 572);
+            this.lblItem.Name = "lblItem";
+            this.lblItem.Size = new System.Drawing.Size(95, 17);
+            this.lblItem.TabIndex = 132;
+            this.lblItem.Text = "Concepto Item";
+            // 
+            // dg
+            // 
+            this.dg.AllowUserToAddRows = false;
+            this.dg.BackgroundColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg.Location = new System.Drawing.Point(22, 595);
+            this.dg.Name = "dg";
+            this.dg.Size = new System.Drawing.Size(618, 88);
+            this.dg.TabIndex = 133;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.Black;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregar.Image = global::k_presentacion_00.Properties.Resources.descarga;
+            this.btnAgregar.Location = new System.Drawing.Point(293, 564);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(24, 24);
+            this.btnAgregar.TabIndex = 134;
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // frm_Comerciales_Alta_Presupuestos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(235)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(670, 688);
+            this.ClientSize = new System.Drawing.Size(752, 812);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.dg);
+            this.Controls.Add(this.lblItem);
+            this.Controls.Add(this.cboItem);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.cboEstado);
             this.Controls.Add(this.label20);
@@ -737,6 +789,7 @@
             this.Text = "Solicitud de Transporte";
             this.Load += new System.EventHandler(this.Frm_Comerciales_Alta_Presupuestos_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frm_Comerciales_Alta_Presupuestos_MouseDown);
+            ((System.ComponentModel.ISupportInitialize)(this.dg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -800,5 +853,9 @@
         private System.Windows.Forms.MaskedTextBox mFechaVigDesde;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cboEstado;
+        private System.Windows.Forms.ComboBox cboItem;
+        private System.Windows.Forms.Label lblItem;
+        private System.Windows.Forms.DataGridView dg;
+        private System.Windows.Forms.Button btnAgregar;
     }
 }
