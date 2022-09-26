@@ -988,19 +988,7 @@ namespace k_presentacion_00
                 
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Cargamos_Grilla();
-            DataRow rd = _dtItems.Tables[0].NewRow();
-          
-            
-            rd["Id"] = this.cboItem.SelectedValue;
-            rd["Item"] = this.cboItem.SelectedValue;
 
-            _dtItems.Tables[0].Rows.Add(rd);
-
-            
-        }
 
         private void Cargamos_Grilla()
         {
@@ -1025,15 +1013,13 @@ namespace k_presentacion_00
                 new MySqlParameter(){ ParameterName="intId", Value = this.cboItem.SelectedValue},
                 new MySqlParameter(){ ParameterName="intAccion", Value = 0}
 
-
-
                 //new MySqlParameter(){ ParameterName="intTransportista", Value = intTransportista },
                 //new MySqlParameter(){ ParameterName="intTractor", Value = intTractor },
                 //new MySqlParameter(){ ParameterName="intChasis", Value = intChasis },
                 //new MySqlParameter(){ ParameterName="intChofer", Value = intChofer },
                 //new MySqlParameter(){ ParameterName="intItem", Value = _Item }
             };
-            
+
 
             DataTable dtItems;
 
@@ -1048,7 +1034,7 @@ namespace k_presentacion_00
 
             //grdViajes.DataSource = dtItems;
             dg.DataSource = _dtItems.Tables[0];
-            
+
 
             //this.btnAgregar.Enabled = true;
             //this.dg.Enabled = true;
@@ -1069,8 +1055,36 @@ namespace k_presentacion_00
             //}
 
         }
+        private void configuraGrilla()
+        {
+            //DataGridViewColumn colIdEmpresa = new DataGridViewTextBoxColumn();
+            //DataGridViewColumn colIdCotizacion = new DataGridViewTextBoxColumn();
+            //DataGridViewComboBoxColumn colId = new DataGridViewComboBoxColumn();
+            //DataGridViewColumn colItem = new DataGridViewTextBoxColumn();
+            //DataGridViewColumn colDescripcion = new DataGridViewTextBoxColumn();
+
+            //dg.AutoGenerateColumns = false;
 
 
+
+
+
+
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            //Cargamos_Grilla();
+            DataRow rd = _dtItems.Tables[0].NewRow();
+
+
+            rd["Id"] = this.cboItem.SelectedIndex;
+            rd["Item"] = this.cboItem.SelectedValue;
+           
+            _dtItems.Tables[0].Rows.Add(rd);
+            //dg.DataSource = _dtItems.Tables[0];
+
+        }
 
 
 
