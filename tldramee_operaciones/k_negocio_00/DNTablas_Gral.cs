@@ -181,7 +181,7 @@ namespace k_negocio_00
             trans = con.Conexion.Begin_Trans();
             try
             {
-
+                ID = con.DB_SP_NonQuery_Transaction_TEXT(strDetalle, con.cmmd);
                 ID = con.DB_SP_NonQuery_Transaction_TEXT(strCabecera, con.cmmd);
                 if (ID==-1)
                 {

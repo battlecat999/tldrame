@@ -746,7 +746,7 @@ namespace k_presentacion_00
 
         private void pruebaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_Comerciales_Alta_Presupuestos ofrm = new frm_Comerciales_Alta_Presupuestos();
+            frm_Comerciales_OT ofrm = new frm_Comerciales_OT();
             ofrm.Show();
         }
 

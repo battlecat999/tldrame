@@ -185,12 +185,15 @@ namespace k_presentacion_00
         {
 
             this.cboRazonSocial.SelectedIndexChanged -= new System.EventHandler(cboRazonSocial_SelectedIndexChanged);
-            
-            
 
+
+            
             limpiarControles();
+
             cargarPresupuestos();
             cargarclientes();
+            Cargamos_Grilla();
+
             this.cboRazonSocial.SelectedIndexChanged += new System.EventHandler(cboRazonSocial_SelectedIndexChanged);
 
         }
@@ -226,6 +229,7 @@ namespace k_presentacion_00
 
             this.cboPresupuesto.SelectedIndexChanged -= new System.EventHandler(cboPresupuesto_SelectedIndexChanged);
 
+            
 
             p = lista.DN_CargarDataTableGral("SP_Cotizaciones_ALL",0,datos.g_idEmpresa);
             cboPresupuesto.DataSource = null;
@@ -250,7 +254,7 @@ namespace k_presentacion_00
         }
         private void cargarcombos()
         {
-
+            
             DNTablas_Gral lista = new DNTablas_Gral();
 
             DataTable p;
@@ -261,8 +265,9 @@ namespace k_presentacion_00
                 new MySqlParameter(){ ParameterName="intEmpresa", Value = datos.g_idEmpresa},
                 new MySqlParameter(){ ParameterName="intId", Value = 0},
                 new MySqlParameter(){ ParameterName="intAccion", Value = 0}
+                
             };
-
+            
 
             p = lista.DN_CargarDataTableGral("SP_GET_Tipo_Servicios_ALL", 0, 0);
             o.CargarComboDataTable(cboTipoServicio, p, "id", "descripcion", false, true);
@@ -289,6 +294,9 @@ namespace k_presentacion_00
 
             p = lista.Get_Datos("SP_Conceptos_Cotizaciones", parameters);
             o.CargarComboDataTable(cboItem, p, "Id", "Item", false, true, true, false);
+
+            //p = lista.Get_Datos("SP_Conceptos_Cotizaciones", parameters);
+            //o.CargarComboDataTable(cboDetalleConcepto, p, "Id", "Detalle", false, true, true, false);
 
             cargarcombo_Mercaderia();
             DN_ABM_TC l = new DN_ABM_TC();
@@ -475,6 +483,8 @@ namespace k_presentacion_00
                     this.mFechaVigDesde.Text = dr["FechaVigenciaDesde"].ToString();
 
                     this.cboEstado.SelectedValue = dr["Estado"];
+
+                    Cargamos_Grilla();
                     esNuevo = false;
                 }
             }
@@ -489,6 +499,7 @@ namespace k_presentacion_00
 
         private void CmdGuardar_Click(object sender, EventArgs e)
         {
+            
             //valido datos
 
 
@@ -522,14 +533,16 @@ namespace k_presentacion_00
 
             string strSP_Cabecera;
             string str_NroCotizacion;
-
+            string strSP_Detalle;
             if (esNuevo == true)
             {
                 strSP_Cabecera = "SP_Cotizaciones_Insert";
                 //strSP_Items = "SP_Cotizaciones_Items_Insert";
                 str_NroCotizacion = "0";
+                strSP_Detalle = "SP_Cotizacion_Gastos";
             }
             else
+
             {
                 strSP_Cabecera = "SP_Cotizaciones_update";
                 //strSP_Items = "SP_Cotizaciones_Items_Update";
@@ -544,11 +557,73 @@ namespace k_presentacion_00
             qCab = string.Concat(qCab, this.cboRutas.SelectedValue, ",", this.txtCosto.Text.Replace(",", "."), ",", this.txtVenta.Text.Replace(",", "."), ",", this.cboCondicionPago.SelectedValue, ",", this.txtMKP.Text.Replace(",", "."), ",0,'");
             qCab = string.Concat(qCab, this.txtObservacion.Text, "',", this.cboEstado.SelectedValue, ",", this.txtContedores.Text, ",", this.txtPeso.Text, ",", this.cboDuracion.SelectedValue, ",", this.cboContenedores.SelectedValue, ",", this.k_dias_Validez.Text, ",", this.txtEstadia.Text.Replace(",", "."), "); ");
 
+            qDet = string.Empty;
+            
+            int intCotizacion = 0;
+            int intGastos = 0;
+            string strItem = string.Empty;
+            string strDetalle = string.Empty;
+
+            foreach (DataGridViewRow dgvRenglon in dg.Rows)
+            {
+
+               
+
+                datos.g_idEmpresa = int.Parse(dgvRenglon.Cells["IdEmpresa"].Value.ToString());
+                intCotizacion = int.Parse(dgvRenglon.Cells["IdCotizacion"].Value.ToString());
+                intGastos = int.Parse(dgvRenglon.Cells["IdGastos"].Value.ToString());
+                strItem = dgvRenglon.Cells["Item"].Value.ToString();
+                strDetalle = dgvRenglon.Cells["Descripcion"].Value.ToString();
 
 
+                if (dgvRenglon.Cells["IdEmpresa"].Value != DBNull.Value)
+                {
+                    datos.g_idEmpresa = int.Parse(dgvRenglon.Cells["IdEmpresa"].Value.ToString());
+                }
+
+                if (dgvRenglon.Cells["IdCotizacion"].Value != DBNull.Value)
+                {
+                    intCotizacion = int.Parse(dgvRenglon.Cells["IdCotizacion"].Value.ToString());
+                }
+
+                if (dgvRenglon.Cells["IdGastos"].Value != DBNull.Value)
+                {
+                    intGastos = int.Parse(dgvRenglon.Cells["IdGastos"].Value.ToString());
+                }
+
+                if (dgvRenglon.Cells["Item"].Value != DBNull.Value)
+                {
+                    strItem = dgvRenglon.Cells["Item"].Value.ToString();
+                }
+
+                if (dgvRenglon.Cells["Descripcion"].Value != DBNull.Value)
+                {
+                    strDetalle = dgvRenglon.Cells["Descripcion"].Value.ToString();
+                }
+                
+                qDet = string.Concat(qDet, "CALL ", strSP_Detalle, " (", datos.g_idEmpresa, ", ", intCotizacion, ",", intGastos, ", '", strItem, "','", strDetalle, "')");
+
+
+            }
+
+            //if (esNuevo == true)
+            //{
+            //    strSP_Cabecera = "SP_Cotizacion_Gastos";
+                
+                
+            //}
+            //else
+            //{
+            //    strSP_Cabecera = "SP_Cotizacion_Gastos";
+                
+                
+            //}
+
+           
             bool termino;
             DNTablas_Gral ej = new DNTablas_Gral();
             termino = ej.DN_Grabar_Cab_Detalle(qCab, qDet);
+
 
             //VARIABLES
             if ((Int32)this.cboEstado.SelectedValue == 2)
@@ -980,8 +1055,9 @@ namespace k_presentacion_00
 
         private void cboItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
+    
 
         private void cboContenedores_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -991,8 +1067,9 @@ namespace k_presentacion_00
 
 
         private void Cargamos_Grilla()
+        
         {
-
+            
             //funciones_Varias o = new funciones_Varias();
             DNTablas_Gral lista = new DNTablas_Gral();
 
@@ -1004,15 +1081,24 @@ namespace k_presentacion_00
             //{
             //    intNumero_OT = Convert.ToInt32(this.txtNumero_OT.Text.ToString());
             //}
-
+            int intCotizacion = 0;
+            if (this.cboPresupuesto.SelectedValue==null)
+            {
+                intCotizacion=0;
+            }
+            else
+            {
+                intCotizacion=Convert.ToInt32(this.cboPresupuesto.SelectedValue);
+            }
 
 
             var parameters = new[]
             {
                 new MySqlParameter(){ ParameterName="intEmpresa", Value = datos.g_idEmpresa},
-                new MySqlParameter(){ ParameterName="intId", Value = this.cboItem.SelectedValue},
-                new MySqlParameter(){ ParameterName="intAccion", Value = 0}
-
+                new MySqlParameter(){ ParameterName="intCotizacion", Value = intCotizacion}
+                
+                //new MySqlParameter(){ ParameterName="intAccion", Value = 0}
+                //new MySqlParameter(){ ParameterName="intCotizacion", Value = cboItem.SelectedValue}
                 //new MySqlParameter(){ ParameterName="intTransportista", Value = intTransportista },
                 //new MySqlParameter(){ ParameterName="intTractor", Value = intTractor },
                 //new MySqlParameter(){ ParameterName="intChasis", Value = intChasis },
@@ -1023,7 +1109,7 @@ namespace k_presentacion_00
 
             DataTable dtItems;
 
-            dtItems = lista.Get_Datos("SP_Conceptos_Cotizaciones", parameters);
+            dtItems = lista.Get_Datos("SP_Cotizacion_Gastos_Select", parameters);
 
             if (_dtItems.Tables.Count > 0)
             {
@@ -1074,22 +1160,43 @@ namespace k_presentacion_00
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            //Cargamos_Grilla();
+            
             DataRow rd = _dtItems.Tables[0].NewRow();
+            DataTable dt;
+            dt = (DataTable)this.cboItem.DataSource;
+            DataRow[] Busco_Dato;
+            Busco_Dato = dt.Select("id=" + (Int32)this.cboItem.SelectedValue);
+            //if (Busco_Dato.Count() > 0)
+            //{
+            //    this.cboItem.Text = Busco_Dato[0][2].ToString();
+            //}
 
 
-            rd["Id"] = this.cboItem.SelectedIndex;
-            rd["Item"] = this.cboItem.SelectedValue;
-           
+
+            rd["IdEmpresa"] = 2;
+            rd["IdCotizacion"] = 0;
+            rd["IdGastos"] = cboItem.SelectedValue;
+            rd["Item"] = cboItem.Text;
+            rd["Descripcion"] = Busco_Dato[0][2].ToString(); 
+
             _dtItems.Tables[0].Rows.Add(rd);
             //dg.DataSource = _dtItems.Tables[0];
 
         }
 
+        private void cboPresupuesto_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
 
+        }
 
+        private void cboDetalleConcepto_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
 
-
+        private void cboItem_SelectedValueChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -76,7 +76,7 @@ namespace k_mysql
             cmmd.Connection = Conexion.AbrirConexion();
             cmmd.CommandText = "SP_Get_Provincias";
             cmmd.CommandType = CommandType.StoredProcedure;
-            cmmd.Parameters.AddWithValue("@p_idPais",p_IdPais);
+            cmmd.Parameters.AddWithValue("@p_idPais", p_IdPais);
             leer = cmmd.ExecuteReader();
             dt.Load(leer);
             leer.Close();
@@ -96,7 +96,7 @@ namespace k_mysql
             Conexion.CerrarConexion();
             return dt;
         }
-        
+
         public DataTable Listar_TipoChasis()
         {
             DataTable dt = new DataTable();
@@ -134,7 +134,7 @@ namespace k_mysql
             return dt;
         }
 
-        public DataTable Get_Transportistas(MySqlParameter[] Parametros )
+        public DataTable Get_Transportistas(MySqlParameter[] Parametros)
         {
             DataTable dt = new DataTable();
 
@@ -254,7 +254,7 @@ namespace k_mysql
 
             cmmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            cmmd.Parameters.AddWithValue("@pTabla", Tabla );
+            cmmd.Parameters.AddWithValue("@pTabla", Tabla);
             cmmd.Parameters.AddWithValue("@pDetalle", Descripcion);
 
             cmmd.ExecuteNonQuery();
@@ -275,7 +275,8 @@ namespace k_mysql
             leer.Close();
             Conexion.CerrarConexion();
             return dt;
-        }
-    }
 
+        }
+        
+    }
 }
