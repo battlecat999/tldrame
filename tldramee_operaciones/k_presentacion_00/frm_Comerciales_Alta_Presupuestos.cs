@@ -534,12 +534,15 @@ namespace k_presentacion_00
             string strSP_Cabecera;
             string str_NroCotizacion;
             string strSP_Detalle;
+            int intCotizacion = 0;
+            //DDE agregamos en el if strSP_Detalle 2022-09-29
             if (esNuevo == true)
             {
                 strSP_Cabecera = "SP_Cotizaciones_Insert";
                 //strSP_Items = "SP_Cotizaciones_Items_Insert";
                 str_NroCotizacion = "0";
                 strSP_Detalle = "SP_Cotizacion_Gastos";
+                intCotizacion = 0;
             }
             else
 
@@ -547,6 +550,7 @@ namespace k_presentacion_00
                 strSP_Cabecera = "SP_Cotizaciones_update";
                 //strSP_Items = "SP_Cotizaciones_Items_Update";
                 str_NroCotizacion = this.cboPresupuesto.Text;
+                intCotizacion = Convert.ToInt32(this.cboPresupuesto.SelectedValue);
             }
 
 
@@ -559,7 +563,7 @@ namespace k_presentacion_00
 
             qDet = string.Empty;
             
-            int intCotizacion = 0;
+            
             int intGastos = 0;
             string strItem = string.Empty;
             string strDetalle = string.Empty;
@@ -570,11 +574,18 @@ namespace k_presentacion_00
                
 
                 datos.g_idEmpresa = int.Parse(dgvRenglon.Cells["IdEmpresa"].Value.ToString());
-                intCotizacion = int.Parse(dgvRenglon.Cells["IdCotizacion"].Value.ToString());
+                if (intCotizacion == 0)
+                {
+                    intCotizacion = int.Parse(dgvRenglon.Cells["IdCotizacion"].Value.ToString());
+                }
+                else
+                {
+                    intCotizacion = Convert.ToInt32(this.cboPresupuesto.SelectedValue);
+                }
                 intGastos = int.Parse(dgvRenglon.Cells["IdGastos"].Value.ToString());
                 strItem = dgvRenglon.Cells["Item"].Value.ToString();
                 strDetalle = dgvRenglon.Cells["Descripcion"].Value.ToString();
-
+                strSP_Detalle = "SP_Cotizacion_Gastos";
 
                 if (dgvRenglon.Cells["IdEmpresa"].Value != DBNull.Value)
                 {
@@ -583,7 +594,14 @@ namespace k_presentacion_00
 
                 if (dgvRenglon.Cells["IdCotizacion"].Value != DBNull.Value)
                 {
-                    intCotizacion = int.Parse(dgvRenglon.Cells["IdCotizacion"].Value.ToString());
+                    if (intCotizacion == 0)
+                    {
+                        intCotizacion = int.Parse(dgvRenglon.Cells["IdCotizacion"].Value.ToString());
+                    }
+                    else
+                    {
+                        intCotizacion = Convert.ToInt32(this.cboPresupuesto.SelectedValue);
+                    }
                 }
 
                 if (dgvRenglon.Cells["IdGastos"].Value != DBNull.Value)
@@ -600,9 +618,10 @@ namespace k_presentacion_00
                 {
                     strDetalle = dgvRenglon.Cells["Descripcion"].Value.ToString();
                 }
-                
-                qDet = string.Concat(qDet, "CALL ", strSP_Detalle, " (", datos.g_idEmpresa, ", ", intCotizacion, ",", intGastos, ", '", strItem, "','", strDetalle, "')");
 
+                
+                qDet = string.Concat(qDet, "CALL ", strSP_Detalle, " (", datos.g_idEmpresa, ", ", intCotizacion, ",", intGastos, ", '", strItem, "','", strDetalle, "')",Environment.NewLine);
+                //Console.WriteLine(qDet);
 
             }
 

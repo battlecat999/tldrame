@@ -1,0 +1,19 @@
+30/09/2022 02:22:29 p. m. ==> Out of range value for column 'pCostoCorredor' at row 1
+30/09/2022 02:41:13 p. m. ==> Out of range value for column 'pCostoCorredor' at row 1
+30/09/2022 02:53:13 p. m. ==> Unknown column 'pIdEmpresa' in 'where clause'
+30/09/2022 03:18:00 p. m. ==> Out of range value for column 'pCostoCorredor' at row 1
+30/09/2022 03:21:35 p. m. ==> Out of range value for column 'pCostoCorredor' at row 1
+30/09/2022 03:26:39 p. m. ==> Out of range value for column 'pCostoCorredor' at row 1
+30/09/2022 05:07:43 p. m. ==> The CommandText property has not been properly initialized.
+30/09/2022 05:14:45 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 168,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 1
+30/09/2022 05:17:09 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 168,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 1
+30/09/2022 05:19:08 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 168,2, 'NUEVO CONCEPTO','23000+IV')' at line 1
+30/09/2022 05:35:12 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 1
+30/09/2022 05:37:32 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 1
+30/09/2022 05:39:31 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NUEVO CONCEPTO2','123333+IVA,' at line 1
+30/09/2022 05:51:05 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 1
+30/09/2022 05:58:01 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '/nCALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')/n' at line 1
+30/09/2022 05:59:19 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+30/09/2022 06:03:34 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+30/09/2022 06:09:01 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+30/09/2022 06:11:03 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
