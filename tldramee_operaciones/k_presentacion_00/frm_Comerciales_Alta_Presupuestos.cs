@@ -512,6 +512,7 @@ namespace k_presentacion_00
 
             string qCab = string.Empty;
             string qDet = string.Empty;
+            string qDetElimino = string.Empty;
 
             DateTime fecCot;
             DateTime fecVen;
@@ -535,6 +536,9 @@ namespace k_presentacion_00
             string str_NroCotizacion;
             string strSP_Detalle;
             int intCotizacion = 0;
+            string strEliminoDetalle;
+
+
             //DDE agregamos en el if strSP_Detalle 2022-09-29
             if (esNuevo == true)
             {
@@ -551,6 +555,7 @@ namespace k_presentacion_00
                 //strSP_Items = "SP_Cotizaciones_Items_Update";
                 str_NroCotizacion = this.cboPresupuesto.Text;
                 intCotizacion = Convert.ToInt32(this.cboPresupuesto.SelectedValue);
+                strEliminoDetalle = "SP_Cotizacion_Gastos_Delete";
             }
 
 
@@ -567,6 +572,7 @@ namespace k_presentacion_00
             int intGastos = 0;
             string strItem = string.Empty;
             string strDetalle = string.Empty;
+            
 
             foreach (DataGridViewRow dgvRenglon in dg.Rows)
             {
@@ -582,10 +588,12 @@ namespace k_presentacion_00
                 {
                     intCotizacion = Convert.ToInt32(this.cboPresupuesto.SelectedValue);
                 }
+                //EDD 2022/03/10 le pasamos el valor corespondiente//
                 intGastos = int.Parse(dgvRenglon.Cells["IdGastos"].Value.ToString());
                 strItem = dgvRenglon.Cells["Item"].Value.ToString();
                 strDetalle = dgvRenglon.Cells["Descripcion"].Value.ToString();
                 strSP_Detalle = "SP_Cotizacion_Gastos";
+                strEliminoDetalle = "SP_Cotizacion_Gastos_Delete";
 
                 if (dgvRenglon.Cells["IdEmpresa"].Value != DBNull.Value)
                 {
@@ -619,8 +627,9 @@ namespace k_presentacion_00
                     strDetalle = dgvRenglon.Cells["Descripcion"].Value.ToString();
                 }
 
-                
-                qDet = string.Concat(qDet, "CALL ", strSP_Detalle, " (", datos.g_idEmpresa, ", ", intCotizacion, ",", intGastos, ", '", strItem, "','", strDetalle, "')",Environment.NewLine);
+                //EDD 2022/03/10
+                qDetElimino = string.Concat(qDetElimino, "CALL ", strEliminoDetalle, " (", datos.g_idEmpresa, ", ", intCotizacion, ");",Environment.NewLine);
+                qDet = string.Concat(qDet, "CALL ", strSP_Detalle, " (", datos.g_idEmpresa, ", ", intCotizacion, ",", intGastos, ", '", strItem, "','", strDetalle, "');",Environment.NewLine);
                 //Console.WriteLine(qDet);
 
             }
@@ -641,7 +650,7 @@ namespace k_presentacion_00
            
             bool termino;
             DNTablas_Gral ej = new DNTablas_Gral();
-            termino = ej.DN_Grabar_Cab_Detalle(qCab, qDet);
+            termino = ej.DN_Grabar_Cab_Detalle(qCab, qDet, qDetElimino);
 
 
             //VARIABLES
@@ -1160,26 +1169,11 @@ namespace k_presentacion_00
             //}
 
         }
-        private void configuraGrilla()
-        {
-            //DataGridViewColumn colIdEmpresa = new DataGridViewTextBoxColumn();
-            //DataGridViewColumn colIdCotizacion = new DataGridViewTextBoxColumn();
-            //DataGridViewComboBoxColumn colId = new DataGridViewComboBoxColumn();
-            //DataGridViewColumn colItem = new DataGridViewTextBoxColumn();
-            //DataGridViewColumn colDescripcion = new DataGridViewTextBoxColumn();
-
-            //dg.AutoGenerateColumns = false;
-
-
-
-
-
-
-        }
+     
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            
+            int intCotizacion;
             DataRow rd = _dtItems.Tables[0].NewRow();
             DataTable dt;
             dt = (DataTable)this.cboItem.DataSource;
@@ -1190,13 +1184,21 @@ namespace k_presentacion_00
             //    this.cboItem.Text = Busco_Dato[0][2].ToString();
             //}
 
+            if (this.cboPresupuesto.SelectedIndex >= 0)
+            {
+                intCotizacion = (Int32)this.cboPresupuesto.SelectedValue;
+            }
+            else
+            {
+                intCotizacion = 0; 
+            }
 
-
-            rd["IdEmpresa"] = 2;
-            rd["IdCotizacion"] = 0;
+            rd["IdEmpresa"] = datos.g_idEmpresa;
+            rd["IdCotizacion"] = intCotizacion;
             rd["IdGastos"] = cboItem.SelectedValue;
             rd["Item"] = cboItem.Text;
             rd["Descripcion"] = Busco_Dato[0][2].ToString(); 
+
 
             _dtItems.Tables[0].Rows.Add(rd);
             //dg.DataSource = _dtItems.Tables[0];

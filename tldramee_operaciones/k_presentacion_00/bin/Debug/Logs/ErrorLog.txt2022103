@@ -1,0 +1,23 @@
+03/10/2022 12:14:16 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+03/10/2022 12:27:30 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+03/10/2022 12:33:19 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+03/10/2022 12:50:22 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+03/10/2022 12:54:22 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+03/10/2022 01:00:55 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+03/10/2022 01:07:42 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+03/10/2022 01:19:29 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+03/10/2022 01:24:06 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+03/10/2022 01:27:04 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 169,4, 'NUEVO CONCEPTO2','123333+IVA')' at line 2
+03/10/2022 01:48:28 p. m. ==> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CALL SP_Cotizacion_Gastos (2, 168,2, 'NUEVO CONCEPTO','23000+IV')' at line 2
+03/10/2022 02:59:57 p. m. ==> Duplicate entry '2-169-1' for key 'PRIMARY'
+03/10/2022 02:59:57 p. m. ==> Duplicate entry '2-169-1' for key 'PRIMARY'
+03/10/2022 03:13:09 p. m. ==> Duplicate entry '2-169-2' for key 'PRIMARY'
+03/10/2022 03:13:09 p. m. ==> Duplicate entry '2-169-2' for key 'PRIMARY'
+03/10/2022 04:57:30 p. m. ==> Duplicate entry '2-169-4' for key 'PRIMARY'
+03/10/2022 04:57:30 p. m. ==> Duplicate entry '2-169-4' for key 'PRIMARY'
+03/10/2022 05:03:51 p. m. ==> Duplicate entry '2-169-4' for key 'PRIMARY'
+03/10/2022 05:03:51 p. m. ==> Duplicate entry '2-169-4' for key 'PRIMARY'
+03/10/2022 05:19:19 p. m. ==> The CommandText property has not been properly initialized.
+03/10/2022 05:19:19 p. m. ==> The CommandText property has not been properly initialized.
+03/10/2022 05:34:35 p. m. ==> Duplicate entry '2-169-1' for key 'PRIMARY'
+03/10/2022 05:41:17 p. m. ==> Duplicate entry '2-168-2' for key 'PRIMARY'

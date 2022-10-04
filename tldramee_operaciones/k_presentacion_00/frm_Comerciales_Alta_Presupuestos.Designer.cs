@@ -88,7 +88,6 @@
             this.lblItem = new System.Windows.Forms.Label();
             this.dg = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.cboDetalleConcepto = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -719,23 +718,12 @@
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // cboDetalleConcepto
-            // 
-            this.cboDetalleConcepto.FormattingEnabled = true;
-            this.cboDetalleConcepto.Location = new System.Drawing.Point(410, 565);
-            this.cboDetalleConcepto.Name = "cboDetalleConcepto";
-            this.cboDetalleConcepto.Size = new System.Drawing.Size(155, 23);
-            this.cboDetalleConcepto.TabIndex = 135;
-            this.cboDetalleConcepto.Visible = false;
-            this.cboDetalleConcepto.SelectedIndexChanged += new System.EventHandler(this.cboDetalleConcepto_SelectedIndexChanged);
-            // 
             // frm_Comerciales_Alta_Presupuestos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(235)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(752, 812);
-            this.Controls.Add(this.cboDetalleConcepto);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dg);
             this.Controls.Add(this.lblItem);
@@ -871,6 +859,5 @@
         private System.Windows.Forms.Label lblItem;
         private System.Windows.Forms.DataGridView dg;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.ComboBox cboDetalleConcepto;
     }
 }

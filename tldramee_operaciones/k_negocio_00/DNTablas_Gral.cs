@@ -172,7 +172,8 @@ namespace k_negocio_00
             dt = lista.Listar_Estados();
             return dt;
         }
-        public bool DN_Grabar_Cab_Detalle(string strCabecera, string strDetalle)
+        //EDD 2022/03/10 agregamos 3 param para ejecutar eliminodetalle//
+        public bool DN_Grabar_Cab_Detalle(string strCabecera, string strDetalle, string strEliminoDetalle)
         {
             int ID = 0;
             DB_Ejecutar_SP con = new DB_Ejecutar_SP();
@@ -181,6 +182,8 @@ namespace k_negocio_00
             trans = con.Conexion.Begin_Trans();
             try
             {
+
+                ID = con.DB_SP_NonQuery_Transaction_TEXT(strEliminoDetalle, con.cmmd);
                 ID = con.DB_SP_NonQuery_Transaction_TEXT(strDetalle, con.cmmd);
                 ID = con.DB_SP_NonQuery_Transaction_TEXT(strCabecera, con.cmmd);
                 if (ID==-1)
