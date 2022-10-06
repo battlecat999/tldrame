@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,8 +37,30 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.FechaHoraActual = new System.Windows.Forms.Timer(this.components);
-            this.lblTitulo = new System.Windows.Forms.Label();
+            this.PanelPrincipal = new k_presentacion_00.GradientPanel();
+            this.cmdAprobarCambios = new System.Windows.Forms.Button();
+            this.dt = new System.Windows.Forms.DataGridView();
+            this.IdOt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdTransporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Razon_Social = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaCambio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Confirmado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.chartViajesDiarios = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartViajesPorMes = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.mnuStatus = new System.Windows.Forms.StatusStrip();
+            this.st_Fecha = new System.Windows.Forms.ToolStripStatusLabel();
+            this.st_Hora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.st_Version = new System.Windows.Forms.ToolStripStatusLabel();
+            this.st_Fecha_Version = new System.Windows.Forms.ToolStripStatusLabel();
             this.barraPrincipal = new System.Windows.Forms.MenuStrip();
             this.menúClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +98,8 @@
             this.informeCM2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.estadoDeCombustibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.gastosParaPresupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menúListadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menúParametrizaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargaDeEventosParaEmailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,31 +111,13 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.minimizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuStatus = new System.Windows.Forms.StatusStrip();
-            this.st_Fecha = new System.Windows.Forms.ToolStripStatusLabel();
-            this.st_Hora = new System.Windows.Forms.ToolStripStatusLabel();
-            this.st_Version = new System.Windows.Forms.ToolStripStatusLabel();
-            this.st_Fecha_Version = new System.Windows.Forms.ToolStripStatusLabel();
-            this.chartViajesPorMes = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartViajesDiarios = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.dt = new System.Windows.Forms.DataGridView();
-            this.IdOt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdTransporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Razon_Social = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaCambio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Confirmado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cmdAprobarCambios = new System.Windows.Forms.Button();
-            this.PanelPrincipal = new k_presentacion_00.GradientPanel();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
-            this.gastosParaPresupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.barraPrincipal.SuspendLayout();
-            this.mnuStatus.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartViajesPorMes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartViajesDiarios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt)).BeginInit();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.PanelPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartViajesDiarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartViajesPorMes)).BeginInit();
+            this.mnuStatus.SuspendLayout();
+            this.barraPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // FechaHoraActual
@@ -126,18 +126,263 @@
             this.FechaHoraActual.Interval = 1000;
             this.FechaHoraActual.Tick += new System.EventHandler(this.FechaHoraActual_Tick);
             // 
-            // lblTitulo
+            // PanelPrincipal
             // 
-            this.lblTitulo.BackColor = System.Drawing.Color.Black;
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitulo.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(1232, 47);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "SCHININI MARCO PABLO";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PanelPrincipal.ColorButtom = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(137)))), ((int)(((byte)(143)))));
+            this.PanelPrincipal.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.PanelPrincipal.Controls.Add(this.cmdAprobarCambios);
+            this.PanelPrincipal.Controls.Add(this.dt);
+            this.PanelPrincipal.Controls.Add(this.chartViajesDiarios);
+            this.PanelPrincipal.Controls.Add(this.chartViajesPorMes);
+            this.PanelPrincipal.Controls.Add(this.mnuStatus);
+            this.PanelPrincipal.Controls.Add(this.barraPrincipal);
+            this.PanelPrincipal.Controls.Add(this.lblTitulo);
+            this.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.PanelPrincipal.Name = "PanelPrincipal";
+            this.PanelPrincipal.Size = new System.Drawing.Size(1232, 642);
+            this.PanelPrincipal.TabIndex = 1;
+            this.PanelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPrincipal_Paint);
+            // 
+            // cmdAprobarCambios
+            // 
+            this.cmdAprobarCambios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdAprobarCambios.Location = new System.Drawing.Point(9, 535);
+            this.cmdAprobarCambios.Margin = new System.Windows.Forms.Padding(2);
+            this.cmdAprobarCambios.Name = "cmdAprobarCambios";
+            this.cmdAprobarCambios.Size = new System.Drawing.Size(157, 28);
+            this.cmdAprobarCambios.TabIndex = 9;
+            this.cmdAprobarCambios.Text = "Aprobar Cambios";
+            this.cmdAprobarCambios.UseVisualStyleBackColor = true;
+            this.cmdAprobarCambios.Visible = false;
+            this.cmdAprobarCambios.Click += new System.EventHandler(this.cmdAprobarCambios_Click);
+            // 
+            // dt
+            // 
+            this.dt.AllowUserToAddRows = false;
+            this.dt.AllowUserToDeleteRows = false;
+            this.dt.AllowUserToOrderColumns = true;
+            this.dt.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            this.dt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dt.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dt.ColumnHeadersHeight = 30;
+            this.dt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdOt,
+            this.Item,
+            this.IdTransporte,
+            this.Razon_Social,
+            this.FechaCambio,
+            this.Estado,
+            this.Confirmado});
+            this.dt.EnableHeadersVisualStyles = false;
+            this.dt.GridColor = System.Drawing.Color.SteelBlue;
+            this.dt.Location = new System.Drawing.Point(9, 147);
+            this.dt.Margin = new System.Windows.Forms.Padding(2);
+            this.dt.Name = "dt";
+            this.dt.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dt.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.dt.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dt.Size = new System.Drawing.Size(843, 384);
+            this.dt.TabIndex = 8;
+            this.dt.Visible = false;
+            this.dt.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_CellContentClick);
+            this.dt.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_CellEndEdit);
+            this.dt.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dt_CellMouseUp);
+            // 
+            // IdOt
+            // 
+            this.IdOt.DataPropertyName = "IdOt";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.IdOt.DefaultCellStyle = dataGridViewCellStyle2;
+            this.IdOt.HeaderText = "NV";
+            this.IdOt.MaxInputLength = 4;
+            this.IdOt.Name = "IdOt";
+            this.IdOt.ReadOnly = true;
+            this.IdOt.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Item
+            // 
+            this.Item.DataPropertyName = "Item";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Item.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Item.HeaderText = "Item";
+            this.Item.MaxInputLength = 4;
+            this.Item.Name = "Item";
+            this.Item.ReadOnly = true;
+            this.Item.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // IdTransporte
+            // 
+            this.IdTransporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.IdTransporte.DataPropertyName = "IdTransporte";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.IdTransporte.DefaultCellStyle = dataGridViewCellStyle4;
+            this.IdTransporte.HeaderText = "IdTransporte";
+            this.IdTransporte.Name = "IdTransporte";
+            this.IdTransporte.ReadOnly = true;
+            this.IdTransporte.Visible = false;
+            this.IdTransporte.Width = 109;
+            // 
+            // Razon_Social
+            // 
+            this.Razon_Social.DataPropertyName = "Razon_Social";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Razon_Social.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Razon_Social.HeaderText = "Razon Social";
+            this.Razon_Social.Name = "Razon_Social";
+            this.Razon_Social.ReadOnly = true;
+            this.Razon_Social.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Razon_Social.Width = 250;
+            // 
+            // FechaCambio
+            // 
+            this.FechaCambio.DataPropertyName = "Fechacambio";
+            this.FechaCambio.HeaderText = "Fecha Cambio";
+            this.FechaCambio.Name = "FechaCambio";
+            this.FechaCambio.ReadOnly = true;
+            this.FechaCambio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Estado
+            // 
+            this.Estado.DataPropertyName = "ESTADO";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Estado.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            this.Estado.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Confirmado
+            // 
+            this.Confirmado.DataPropertyName = "Confirmado";
+            this.Confirmado.HeaderText = "Confirmado";
+            this.Confirmado.Name = "Confirmado";
+            // 
+            // chartViajesDiarios
+            // 
+            this.chartViajesDiarios.BackColor = System.Drawing.Color.Silver;
+            this.chartViajesDiarios.BorderlineColor = System.Drawing.Color.Snow;
+            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisX.Title = "Días";
+            chartArea1.AxisY.Title = "Viajes";
+            chartArea1.Name = "ChartArea1";
+            this.chartViajesDiarios.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartViajesDiarios.Legends.Add(legend1);
+            this.chartViajesDiarios.Location = new System.Drawing.Point(439, 146);
+            this.chartViajesDiarios.Name = "chartViajesDiarios";
+            this.chartViajesDiarios.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.Color = System.Drawing.Color.Black;
+            series1.CustomProperties = "IsXAxisQuantitative=True";
+            series1.EmptyPointStyle.Color = System.Drawing.Color.Red;
+            series1.EmptyPointStyle.IsValueShownAsLabel = true;
+            series1.IsValueShownAsLabel = true;
+            series1.IsXValueIndexed = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Viajes";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            this.chartViajesDiarios.Series.Add(series1);
+            this.chartViajesDiarios.Size = new System.Drawing.Size(655, 258);
+            this.chartViajesDiarios.TabIndex = 7;
+            this.chartViajesDiarios.Text = "chart1";
+            this.chartViajesDiarios.Visible = false;
+            // 
+            // chartViajesPorMes
+            // 
+            this.chartViajesPorMes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.chartViajesPorMes.BorderlineColor = System.Drawing.Color.Black;
+            chartArea2.Name = "ChartArea1";
+            this.chartViajesPorMes.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartViajesPorMes.Legends.Add(legend2);
+            this.chartViajesPorMes.Location = new System.Drawing.Point(8, 146);
+            this.chartViajesPorMes.Name = "chartViajesPorMes";
+            this.chartViajesPorMes.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.IsValueShownAsLabel = true;
+            series2.LabelForeColor = System.Drawing.Color.White;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartViajesPorMes.Series.Add(series2);
+            this.chartViajesPorMes.Size = new System.Drawing.Size(408, 260);
+            this.chartViajesPorMes.TabIndex = 6;
+            this.chartViajesPorMes.Text = "erererere";
+            this.chartViajesPorMes.Visible = false;
+            // 
+            // mnuStatus
+            // 
+            this.mnuStatus.BackColor = System.Drawing.Color.Transparent;
+            this.mnuStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.mnuStatus.Font = new System.Drawing.Font("Arial", 9F);
+            this.mnuStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.st_Fecha,
+            this.st_Hora,
+            this.st_Version,
+            this.st_Fecha_Version});
+            this.mnuStatus.Location = new System.Drawing.Point(0, 73);
+            this.mnuStatus.Name = "mnuStatus";
+            this.mnuStatus.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
+            this.mnuStatus.Size = new System.Drawing.Size(1232, 30);
+            this.mnuStatus.TabIndex = 5;
+            this.mnuStatus.Text = "statusStrip1";
+            // 
+            // st_Fecha
+            // 
+            this.st_Fecha.Font = new System.Drawing.Font("Arial", 14F);
+            this.st_Fecha.ForeColor = System.Drawing.Color.Black;
+            this.st_Fecha.Name = "st_Fecha";
+            this.st_Fecha.Size = new System.Drawing.Size(191, 25);
+            this.st_Fecha.Text = "toolStripStatusLabel1";
+            // 
+            // st_Hora
+            // 
+            this.st_Hora.Font = new System.Drawing.Font("Arial", 14F);
+            this.st_Hora.ForeColor = System.Drawing.Color.Black;
+            this.st_Hora.Name = "st_Hora";
+            this.st_Hora.Size = new System.Drawing.Size(191, 25);
+            this.st_Hora.Text = "toolStripStatusLabel2";
+            // 
+            // st_Version
+            // 
+            this.st_Version.Font = new System.Drawing.Font("Arial", 14F);
+            this.st_Version.ForeColor = System.Drawing.Color.Black;
+            this.st_Version.Name = "st_Version";
+            this.st_Version.Size = new System.Drawing.Size(191, 25);
+            this.st_Version.Text = "toolStripStatusLabel3";
+            // 
+            // st_Fecha_Version
+            // 
+            this.st_Fecha_Version.Font = new System.Drawing.Font("Arial", 16F);
+            this.st_Fecha_Version.ForeColor = System.Drawing.Color.Black;
+            this.st_Fecha_Version.Name = "st_Fecha_Version";
+            this.st_Fecha_Version.Size = new System.Drawing.Size(218, 25);
+            this.st_Fecha_Version.Text = "toolStripStatusLabel4";
+            this.st_Fecha_Version.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // barraPrincipal
             // 
@@ -434,6 +679,18 @@
             this.estadoDeCombustibleToolStripMenuItem.Text = "Estado de Combustible";
             this.estadoDeCombustibleToolStripMenuItem.Click += new System.EventHandler(this.estadoDeCombustibleToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(259, 6);
+            // 
+            // gastosParaPresupuestosToolStripMenuItem
+            // 
+            this.gastosParaPresupuestosToolStripMenuItem.Name = "gastosParaPresupuestosToolStripMenuItem";
+            this.gastosParaPresupuestosToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.gastosParaPresupuestosToolStripMenuItem.Text = "Gastos para Presupuestos";
+            this.gastosParaPresupuestosToolStripMenuItem.Click += new System.EventHandler(this.gastosParaPresupuestosToolStripMenuItem_Click);
+            // 
             // menúListadosToolStripMenuItem
             // 
             this.menúListadosToolStripMenuItem.Name = "menúListadosToolStripMenuItem";
@@ -518,275 +775,18 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // mnuStatus
+            // lblTitulo
             // 
-            this.mnuStatus.BackColor = System.Drawing.Color.Transparent;
-            this.mnuStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.mnuStatus.Font = new System.Drawing.Font("Arial", 9F);
-            this.mnuStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.st_Fecha,
-            this.st_Hora,
-            this.st_Version,
-            this.st_Fecha_Version});
-            this.mnuStatus.Location = new System.Drawing.Point(0, 73);
-            this.mnuStatus.Name = "mnuStatus";
-            this.mnuStatus.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.mnuStatus.Size = new System.Drawing.Size(1232, 30);
-            this.mnuStatus.TabIndex = 5;
-            this.mnuStatus.Text = "statusStrip1";
-            // 
-            // st_Fecha
-            // 
-            this.st_Fecha.Font = new System.Drawing.Font("Arial", 14F);
-            this.st_Fecha.ForeColor = System.Drawing.Color.Black;
-            this.st_Fecha.Name = "st_Fecha";
-            this.st_Fecha.Size = new System.Drawing.Size(191, 25);
-            this.st_Fecha.Text = "toolStripStatusLabel1";
-            // 
-            // st_Hora
-            // 
-            this.st_Hora.Font = new System.Drawing.Font("Arial", 14F);
-            this.st_Hora.ForeColor = System.Drawing.Color.Black;
-            this.st_Hora.Name = "st_Hora";
-            this.st_Hora.Size = new System.Drawing.Size(191, 25);
-            this.st_Hora.Text = "toolStripStatusLabel2";
-            // 
-            // st_Version
-            // 
-            this.st_Version.Font = new System.Drawing.Font("Arial", 14F);
-            this.st_Version.ForeColor = System.Drawing.Color.Black;
-            this.st_Version.Name = "st_Version";
-            this.st_Version.Size = new System.Drawing.Size(191, 25);
-            this.st_Version.Text = "toolStripStatusLabel3";
-            // 
-            // st_Fecha_Version
-            // 
-            this.st_Fecha_Version.Font = new System.Drawing.Font("Arial", 16F);
-            this.st_Fecha_Version.ForeColor = System.Drawing.Color.Black;
-            this.st_Fecha_Version.Name = "st_Fecha_Version";
-            this.st_Fecha_Version.Size = new System.Drawing.Size(218, 25);
-            this.st_Fecha_Version.Text = "toolStripStatusLabel4";
-            this.st_Fecha_Version.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // chartViajesPorMes
-            // 
-            this.chartViajesPorMes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.chartViajesPorMes.BorderlineColor = System.Drawing.Color.Black;
-            chartArea1.Name = "ChartArea1";
-            this.chartViajesPorMes.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartViajesPorMes.Legends.Add(legend1);
-            this.chartViajesPorMes.Location = new System.Drawing.Point(8, 146);
-            this.chartViajesPorMes.Name = "chartViajesPorMes";
-            this.chartViajesPorMes.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.IsValueShownAsLabel = true;
-            series1.LabelForeColor = System.Drawing.Color.White;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartViajesPorMes.Series.Add(series1);
-            this.chartViajesPorMes.Size = new System.Drawing.Size(408, 260);
-            this.chartViajesPorMes.TabIndex = 6;
-            this.chartViajesPorMes.Text = "erererere";
-            this.chartViajesPorMes.Visible = false;
-            // 
-            // chartViajesDiarios
-            // 
-            this.chartViajesDiarios.BackColor = System.Drawing.Color.Silver;
-            this.chartViajesDiarios.BorderlineColor = System.Drawing.Color.Snow;
-            chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea2.AxisX.Title = "Días";
-            chartArea2.AxisY.Title = "Viajes";
-            chartArea2.Name = "ChartArea1";
-            this.chartViajesDiarios.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartViajesDiarios.Legends.Add(legend2);
-            this.chartViajesDiarios.Location = new System.Drawing.Point(439, 146);
-            this.chartViajesDiarios.Name = "chartViajesDiarios";
-            this.chartViajesDiarios.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series2.Color = System.Drawing.Color.Black;
-            series2.CustomProperties = "IsXAxisQuantitative=True";
-            series2.EmptyPointStyle.Color = System.Drawing.Color.Red;
-            series2.EmptyPointStyle.IsValueShownAsLabel = true;
-            series2.IsValueShownAsLabel = true;
-            series2.IsXValueIndexed = true;
-            series2.Legend = "Legend1";
-            series2.Name = "Viajes";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            this.chartViajesDiarios.Series.Add(series2);
-            this.chartViajesDiarios.Size = new System.Drawing.Size(655, 258);
-            this.chartViajesDiarios.TabIndex = 7;
-            this.chartViajesDiarios.Text = "chart1";
-            this.chartViajesDiarios.Visible = false;
-            // 
-            // dt
-            // 
-            this.dt.AllowUserToAddRows = false;
-            this.dt.AllowUserToDeleteRows = false;
-            this.dt.AllowUserToOrderColumns = true;
-            this.dt.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            this.dt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dt.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dt.ColumnHeadersHeight = 30;
-            this.dt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdOt,
-            this.Item,
-            this.IdTransporte,
-            this.Razon_Social,
-            this.FechaCambio,
-            this.Estado,
-            this.Confirmado});
-            this.dt.EnableHeadersVisualStyles = false;
-            this.dt.GridColor = System.Drawing.Color.SteelBlue;
-            this.dt.Location = new System.Drawing.Point(9, 147);
-            this.dt.Margin = new System.Windows.Forms.Padding(2);
-            this.dt.Name = "dt";
-            this.dt.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dt.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dt.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dt.Size = new System.Drawing.Size(843, 384);
-            this.dt.TabIndex = 8;
-            this.dt.Visible = false;
-            this.dt.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_CellContentClick);
-            this.dt.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_CellEndEdit);
-            this.dt.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dt_CellMouseUp);
-            // 
-            // IdOt
-            // 
-            this.IdOt.DataPropertyName = "IdOt";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.IdOt.DefaultCellStyle = dataGridViewCellStyle2;
-            this.IdOt.HeaderText = "NV";
-            this.IdOt.MaxInputLength = 4;
-            this.IdOt.Name = "IdOt";
-            this.IdOt.ReadOnly = true;
-            this.IdOt.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Item
-            // 
-            this.Item.DataPropertyName = "Item";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Item.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Item.HeaderText = "Item";
-            this.Item.MaxInputLength = 4;
-            this.Item.Name = "Item";
-            this.Item.ReadOnly = true;
-            this.Item.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // IdTransporte
-            // 
-            this.IdTransporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.IdTransporte.DataPropertyName = "IdTransporte";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.IdTransporte.DefaultCellStyle = dataGridViewCellStyle4;
-            this.IdTransporte.HeaderText = "IdTransporte";
-            this.IdTransporte.Name = "IdTransporte";
-            this.IdTransporte.ReadOnly = true;
-            this.IdTransporte.Visible = false;
-            this.IdTransporte.Width = 109;
-            // 
-            // Razon_Social
-            // 
-            this.Razon_Social.DataPropertyName = "Razon_Social";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Razon_Social.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Razon_Social.HeaderText = "Razon Social";
-            this.Razon_Social.Name = "Razon_Social";
-            this.Razon_Social.ReadOnly = true;
-            this.Razon_Social.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Razon_Social.Width = 250;
-            // 
-            // FechaCambio
-            // 
-            this.FechaCambio.DataPropertyName = "Fechacambio";
-            this.FechaCambio.HeaderText = "Fecha Cambio";
-            this.FechaCambio.Name = "FechaCambio";
-            this.FechaCambio.ReadOnly = true;
-            this.FechaCambio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Estado
-            // 
-            this.Estado.DataPropertyName = "ESTADO";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Estado.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            this.Estado.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Confirmado
-            // 
-            this.Confirmado.DataPropertyName = "Confirmado";
-            this.Confirmado.HeaderText = "Confirmado";
-            this.Confirmado.Name = "Confirmado";
-            // 
-            // cmdAprobarCambios
-            // 
-            this.cmdAprobarCambios.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdAprobarCambios.Location = new System.Drawing.Point(9, 535);
-            this.cmdAprobarCambios.Margin = new System.Windows.Forms.Padding(2);
-            this.cmdAprobarCambios.Name = "cmdAprobarCambios";
-            this.cmdAprobarCambios.Size = new System.Drawing.Size(157, 28);
-            this.cmdAprobarCambios.TabIndex = 9;
-            this.cmdAprobarCambios.Text = "Aprobar Cambios";
-            this.cmdAprobarCambios.UseVisualStyleBackColor = true;
-            this.cmdAprobarCambios.Visible = false;
-            this.cmdAprobarCambios.Click += new System.EventHandler(this.cmdAprobarCambios_Click);
-            // 
-            // PanelPrincipal
-            // 
-            this.PanelPrincipal.ColorButtom = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(137)))), ((int)(((byte)(143)))));
-            this.PanelPrincipal.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PanelPrincipal.Controls.Add(this.cmdAprobarCambios);
-            this.PanelPrincipal.Controls.Add(this.dt);
-            this.PanelPrincipal.Controls.Add(this.chartViajesDiarios);
-            this.PanelPrincipal.Controls.Add(this.chartViajesPorMes);
-            this.PanelPrincipal.Controls.Add(this.mnuStatus);
-            this.PanelPrincipal.Controls.Add(this.barraPrincipal);
-            this.PanelPrincipal.Controls.Add(this.lblTitulo);
-            this.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.PanelPrincipal.Name = "PanelPrincipal";
-            this.PanelPrincipal.Size = new System.Drawing.Size(1232, 642);
-            this.PanelPrincipal.TabIndex = 1;
-            this.PanelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPrincipal_Paint);
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(259, 6);
-            // 
-            // gastosParaPresupuestosToolStripMenuItem
-            // 
-            this.gastosParaPresupuestosToolStripMenuItem.Name = "gastosParaPresupuestosToolStripMenuItem";
-            this.gastosParaPresupuestosToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
-            this.gastosParaPresupuestosToolStripMenuItem.Text = "Gastos para Presupuestos";
-            this.gastosParaPresupuestosToolStripMenuItem.Click += new System.EventHandler(this.gastosParaPresupuestosToolStripMenuItem_Click);
+            this.lblTitulo.BackColor = System.Drawing.Color.Black;
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitulo.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(1232, 47);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "SCHININI MARCO PABLO";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmInicialFinal
             // 
@@ -801,15 +801,15 @@
             this.Text = "frmInicialFinal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmInicialFinal_FormClosing);
             this.Load += new System.EventHandler(this.frmInicialFinal_Load);
-            this.barraPrincipal.ResumeLayout(false);
-            this.barraPrincipal.PerformLayout();
-            this.mnuStatus.ResumeLayout(false);
-            this.mnuStatus.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartViajesPorMes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartViajesDiarios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dt)).EndInit();
             this.PanelPrincipal.ResumeLayout(false);
             this.PanelPrincipal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartViajesDiarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartViajesPorMes)).EndInit();
+            this.mnuStatus.ResumeLayout(false);
+            this.mnuStatus.PerformLayout();
+            this.barraPrincipal.ResumeLayout(false);
+            this.barraPrincipal.PerformLayout();
             this.ResumeLayout(false);
 
         }
