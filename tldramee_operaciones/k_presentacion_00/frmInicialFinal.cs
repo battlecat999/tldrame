@@ -765,5 +765,11 @@ namespace k_presentacion_00
         {
 
         }
+
+        private void gastosParaPresupuestosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_ABM_Conceptos_Cotizacion ofrm = new frm_ABM_Conceptos_Cotizacion();
+            ofrm.Show();
+        }
     }
 }

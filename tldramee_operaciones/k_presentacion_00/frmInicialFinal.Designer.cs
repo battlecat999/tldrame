@@ -110,6 +110,8 @@
             this.Confirmado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cmdAprobarCambios = new System.Windows.Forms.Button();
             this.PanelPrincipal = new k_presentacion_00.GradientPanel();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.gastosParaPresupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barraPrincipal.SuspendLayout();
             this.mnuStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartViajesPorMes)).BeginInit();
@@ -392,7 +394,9 @@
             this.confirmarAnticiposToolStripMenuItem,
             this.informeCM2ToolStripMenuItem,
             this.toolStripMenuItem4,
-            this.estadoDeCombustibleToolStripMenuItem});
+            this.estadoDeCombustibleToolStripMenuItem,
+            this.toolStripMenuItem7,
+            this.gastosParaPresupuestosToolStripMenuItem});
             this.administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
             this.administraciónToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.administraciónToolStripMenuItem.Text = "Administración";
@@ -400,33 +404,33 @@
             // buscadorDeAnticiposToolStripMenuItem1
             // 
             this.buscadorDeAnticiposToolStripMenuItem1.Name = "buscadorDeAnticiposToolStripMenuItem1";
-            this.buscadorDeAnticiposToolStripMenuItem1.Size = new System.Drawing.Size(240, 22);
+            this.buscadorDeAnticiposToolStripMenuItem1.Size = new System.Drawing.Size(262, 22);
             this.buscadorDeAnticiposToolStripMenuItem1.Text = "Buscador de Anticipos";
             this.buscadorDeAnticiposToolStripMenuItem1.Click += new System.EventHandler(this.buscadorDeAnticiposToolStripMenuItem1_Click);
             // 
             // confirmarAnticiposToolStripMenuItem
             // 
             this.confirmarAnticiposToolStripMenuItem.Name = "confirmarAnticiposToolStripMenuItem";
-            this.confirmarAnticiposToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.confirmarAnticiposToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.confirmarAnticiposToolStripMenuItem.Text = "Confirmar Anticipos";
             this.confirmarAnticiposToolStripMenuItem.Click += new System.EventHandler(this.confirmarAnticiposToolStripMenuItem_Click);
             // 
             // informeCM2ToolStripMenuItem
             // 
             this.informeCM2ToolStripMenuItem.Name = "informeCM2ToolStripMenuItem";
-            this.informeCM2ToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.informeCM2ToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.informeCM2ToolStripMenuItem.Text = "Informe CM2";
             this.informeCM2ToolStripMenuItem.Click += new System.EventHandler(this.informeCM2ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(237, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(259, 6);
             // 
             // estadoDeCombustibleToolStripMenuItem
             // 
             this.estadoDeCombustibleToolStripMenuItem.Name = "estadoDeCombustibleToolStripMenuItem";
-            this.estadoDeCombustibleToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.estadoDeCombustibleToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.estadoDeCombustibleToolStripMenuItem.Text = "Estado de Combustible";
             this.estadoDeCombustibleToolStripMenuItem.Click += new System.EventHandler(this.estadoDeCombustibleToolStripMenuItem_Click);
             // 
@@ -772,6 +776,18 @@
             this.PanelPrincipal.TabIndex = 1;
             this.PanelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPrincipal_Paint);
             // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(259, 6);
+            // 
+            // gastosParaPresupuestosToolStripMenuItem
+            // 
+            this.gastosParaPresupuestosToolStripMenuItem.Name = "gastosParaPresupuestosToolStripMenuItem";
+            this.gastosParaPresupuestosToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.gastosParaPresupuestosToolStripMenuItem.Text = "Gastos para Presupuestos";
+            this.gastosParaPresupuestosToolStripMenuItem.Click += new System.EventHandler(this.gastosParaPresupuestosToolStripMenuItem_Click);
+            // 
             // frmInicialFinal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -866,5 +882,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Confirmado;
         private System.Windows.Forms.Button cmdAprobarCambios;
         private GradientPanel PanelPrincipal;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem gastosParaPresupuestosToolStripMenuItem;
     }
 }

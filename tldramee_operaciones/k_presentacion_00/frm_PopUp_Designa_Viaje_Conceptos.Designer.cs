@@ -775,6 +775,7 @@ namespace k_presentacion_00
             this.lblFechaRetiro.Size = new System.Drawing.Size(59, 18);
             this.lblFechaRetiro.TabIndex = 95;
             this.lblFechaRetiro.Text = "label15";
+            this.lblFechaRetiro.Visible = false;
             this.lblFechaRetiro.Click += new System.EventHandler(this.label15_Click);
             // 
             // lblFechaPosicion
@@ -786,6 +787,7 @@ namespace k_presentacion_00
             this.lblFechaPosicion.Size = new System.Drawing.Size(59, 18);
             this.lblFechaPosicion.TabIndex = 97;
             this.lblFechaPosicion.Text = "label15";
+            this.lblFechaPosicion.Visible = false;
             // 
             // lblHoraPosicion
             // 
@@ -796,6 +798,7 @@ namespace k_presentacion_00
             this.lblHoraPosicion.Size = new System.Drawing.Size(59, 18);
             this.lblHoraPosicion.TabIndex = 98;
             this.lblHoraPosicion.Text = "label15";
+            this.lblHoraPosicion.Visible = false;
             // 
             // frm_PopUp_Designa_Viaje_Conceptos
             // 

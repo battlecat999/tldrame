@@ -178,8 +178,8 @@ namespace k_presentacion_00
         public string ExportDatatableToHtml(DataTable dt,string color_Fondo_DataTable)
         {
 
-
-            string archivo = "C:\\Users\\Usuario\\Downloads\\Telegram Desktop\\CuerpoEmail.html";
+           
+            string archivo = Application.StartupPath.ToString() + "\\CuerpoEmail.html";
             StringBuilder strHTMLBuilder = new StringBuilder();
             ////strHTMLBuilder.Append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\" >");
             ////strHTMLBuilder.Append("<html xmlns=\"http://www.w3.org/1999/xhtml\" >");
