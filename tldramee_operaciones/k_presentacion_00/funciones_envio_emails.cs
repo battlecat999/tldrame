@@ -207,7 +207,7 @@ namespace k_presentacion_00
                 //strHTMLBuilder.Append("<tr  bgcolor=#FFFFFF>");
                 foreach (DataColumn myColumn in dt.Columns)
                 {
-                    strHTMLBuilder.Append("<td style='font-size: 15pt; line - height: 0;  height=80' bgcolor='"+ color_Fondo_DataTable + "' padding: 80px 0 0px 0;>&nbsp;");
+                    strHTMLBuilder.Append("<td style='font-size: 12pt; line - height: 0;  height=80' bgcolor='"+ color_Fondo_DataTable + "' padding: 80px 0 0px 0;>&nbsp;");
                     strHTMLBuilder.Append(myRow[myColumn.ColumnName].ToString());
                     strHTMLBuilder.Append("</td>");
 
