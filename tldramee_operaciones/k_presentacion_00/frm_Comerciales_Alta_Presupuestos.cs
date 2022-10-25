@@ -17,6 +17,12 @@ using DocumentFormat.OpenXml.Vml.Spreadsheet;
 using VB = Microsoft.VisualBasic;
 using System.Drawing.Text;
 using k_mysql;
+using DocumentFormat.OpenXml.Math;
+using FluentNHibernate.Mapping;
+using System.Data.OleDb;
+using System.IO;
+
+
 
 namespace k_presentacion_00
 {
@@ -499,11 +505,31 @@ namespace k_presentacion_00
 
         private void CmdGuardar_Click(object sender, EventArgs e)
         {
+            string connstring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\PresupuestosDat.accdb";
+            using (OleDbConnection con = new OleDbConnection(connstring))
+
+            {
+                con.Open();
+
+                string sql = "INSERT INTO ptoCabecera (idEmpresa, razonSocial, nombrePersona, telefono, email, fechaPto, item, descItem, detalleItem) VALUES(@idEmpresa, @razonSocial, @nombrePersona, @telefono, @email, @fechaPto, @item, @descItem, @detalleItem);";
+
+                OleDbCommand comando = new OleDbCommand(sql, con);
+                comando.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+                comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
+                comando.Parameters.AddWithValue("@nombrePersona", cboContactos.Text);
+                comando.Parameters.AddWithValue("@telefono", txtIdentificacion.Text);
+                comando.Parameters.AddWithValue("@email", identificacion);
+                comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
+                comando.Parameters.AddWithValue("@item", txtIdentificacion.Text);
+                comando.Parameters.AddWithValue("@descItem", identificacion);
+                comando.Parameters.AddWithValue("@detalleItem", txtNombre.Text);
+
+                //resto parametros
             
+                comando.ExecuteNonQuery();
+            }
+
             //valido datos
-
-
-
             if (ValidoForm() == false)
             {
                 MessageBox.Show("Corrija los campos marcados");
