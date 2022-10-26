@@ -335,6 +335,7 @@
             this.cboRazonSocial.Name = "cboRazonSocial";
             this.cboRazonSocial.Size = new System.Drawing.Size(420, 23);
             this.cboRazonSocial.TabIndex = 2;
+            this.cboRazonSocial.SelectedIndexChanged += new System.EventHandler(this.cboRazonSocial_SelectedIndexChanged_1);
             this.cboRazonSocial.Leave += new System.EventHandler(this.cboRazonSocial_Leave);
             // 
             // label1
@@ -785,6 +786,7 @@
             this.Controls.Add(this.cboTipoServicio);
             this.Controls.Add(this.lblUsuario);
             this.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frm_Comerciales_Alta_Presupuestos";

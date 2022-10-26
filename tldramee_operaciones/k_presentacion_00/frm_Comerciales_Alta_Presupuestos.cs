@@ -12,7 +12,7 @@ using MySql.Data;
 using MySql.Data.Types;
 using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices;
-using Excel = Microsoft.Office.Interop.Excel;
+//using Excel = Microsoft.Office.Interop.Excel;
 using DocumentFormat.OpenXml.Vml.Spreadsheet;
 using VB = Microsoft.VisualBasic;
 using System.Drawing.Text;
@@ -21,6 +21,9 @@ using DocumentFormat.OpenXml.Math;
 using FluentNHibernate.Mapping;
 using System.Data.OleDb;
 using System.IO;
+using System.Diagnostics;
+using System.Reflection;
+using Access = Microsoft.Office.Interop.Access;
 
 
 
@@ -281,7 +284,7 @@ namespace k_presentacion_00
             p = lista.DN_CargarDataTableGral("SP_GET_Tipo_Modalidad_ALL", 0 ,datos.g_idEmpresa);
             o.CargarComboDataTable(cboModalidad , p, "Codigo_Modalidad", "Descripcion", false, true);
 
-            p = lista.DN_CargarDataTableGral  ("SP_Condicion_de_Pago", 0, 0);
+            p = lista.DN_CargarDataTableGral("SP_Condicion_de_Pago", 0, 0);
             o.CargarComboDataTable(cboCondicionPago , p, "id", "descripcion", false, true);
             this.cboCondicionPago.SelectedValue = 10;//COM+EFEC 
 
@@ -300,6 +303,9 @@ namespace k_presentacion_00
 
             p = lista.Get_Datos("SP_Conceptos_Cotizaciones", parameters);
             o.CargarComboDataTable(cboItem, p, "Id", "Item", false, true, true, false);
+
+            //p = lista.DN_CargarDataTableGral("SP_Carga_Data_Cliente", 0, datos.g_idEmpresa);
+            //o.CargarComboDataTable(cboDataCliente, p, "Telefonos", "Email", false, true);
 
             //p = lista.Get_Datos("SP_Conceptos_Cotizaciones", parameters);
             //o.CargarComboDataTable(cboDetalleConcepto, p, "Id", "Detalle", false, true, true, false);
@@ -505,29 +511,7 @@ namespace k_presentacion_00
 
         private void CmdGuardar_Click(object sender, EventArgs e)
         {
-            string connstring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\PresupuestosDat.accdb";
-            using (OleDbConnection con = new OleDbConnection(connstring))
-
-            {
-                con.Open();
-
-                string sql = "INSERT INTO ptoCabecera (idEmpresa, razonSocial, nombrePersona, telefono, email, fechaPto, item, descItem, detalleItem) VALUES(@idEmpresa, @razonSocial, @nombrePersona, @telefono, @email, @fechaPto, @item, @descItem, @detalleItem);";
-
-                OleDbCommand comando = new OleDbCommand(sql, con);
-                comando.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
-                comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
-                comando.Parameters.AddWithValue("@nombrePersona", cboContactos.Text);
-                comando.Parameters.AddWithValue("@telefono", txtIdentificacion.Text);
-                comando.Parameters.AddWithValue("@email", identificacion);
-                comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
-                comando.Parameters.AddWithValue("@item", txtIdentificacion.Text);
-                comando.Parameters.AddWithValue("@descItem", identificacion);
-                comando.Parameters.AddWithValue("@detalleItem", txtNombre.Text);
-
-                //resto parametros
-            
-                comando.ExecuteNonQuery();
-            }
+           
 
             //valido datos
             if (ValidoForm() == false)
@@ -659,25 +643,51 @@ namespace k_presentacion_00
                 //Console.WriteLine(qDet);
 
             }
+            bool termino;
+            DNTablas_Gral ej = new DNTablas_Gral();
+            termino = ej.DN_Grabar_Cab_Detalle(qCab, qDet, qDetElimino);
+            
+            string connstring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\PresupuestosDat.accdb";
+            using (OleDbConnection con = new OleDbConnection(connstring))
+
+            {
+                con.Open();
+
+                string sql = "INSERT INTO ptoCabecera (idEmpresa, razonSocial, nombrePersona, item,descItem, detalleItem) VALUES(@idEmpresa, @razonSocial, @nombrePersona,@item, @descItem, @detalleItem);";
+
+                OleDbCommand comando = new OleDbCommand(sql, con);
+                comando.Parameters.AddWithValue("@idEmpresa", cboRazonSocial.SelectedValue);
+                comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
+                comando.Parameters.AddWithValue("@nombrePersona", cboContactos.Text);
+                //comando.Parameters.AddWithValue("@telefono", cboDataCliente.SelectedValue);
+                //comando.Parameters.AddWithValue("@email", cboDataCliente.Text);
+                //comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
+                comando.Parameters.AddWithValue("@item", cboItem.SelectedValue);
+                comando.Parameters.AddWithValue("@descItem", cboItem.Text);
+                comando.Parameters.AddWithValue("@detalleItem", strDetalle);
+
+                //resto parametros
+
+                comando.ExecuteNonQuery();
+
+                //ptoFirma
+                //sql = string.Empty;
+                
+                //string sql = " ";
+            }
 
             //if (esNuevo == true)
             //{
             //    strSP_Cabecera = "SP_Cotizacion_Gastos";
-                
-                
+
+
             //}
             //else
             //{
             //    strSP_Cabecera = "SP_Cotizacion_Gastos";
-                
-                
+
+
             //}
-
-           
-            bool termino;
-            DNTablas_Gral ej = new DNTablas_Gral();
-            termino = ej.DN_Grabar_Cab_Detalle(qCab, qDet, qDetElimino);
-
 
             //VARIABLES
             if ((Int32)this.cboEstado.SelectedValue == 2)
@@ -1016,6 +1026,59 @@ namespace k_presentacion_00
 
         private void cmdImprimir_Click(object sender, EventArgs e)
         {
+
+            Microsoft.Office.Interop.Access.Application oAccess = new Microsoft.Office.Interop.Access.Application();
+            oAccess.OpenCurrentDatabase("C:\\Users\\Usuario\\OneDrive\\Documentos\\GitHub\\tldrame\\tldramee_operaciones\\PresupuestosDat.accdb", false, "");
+
+            // Select the Employees report in the database window:
+            oAccess.DoCmd.SelectObject(
+               Access.AcObjectType.acReport, //ObjectType
+               "ptoCabecera", //ObjectName
+               true //InDatabaseWindow
+               );
+
+            // Preview a report named Sales:
+            oAccess.DoCmd.OpenReport(
+               "ptoCabecera", //ReportName
+               Access.AcView.acViewPreview, //View
+               System.Reflection.Missing.Value, //FilterName
+               System.Reflection.Missing.Value //WhereCondition
+               );
+
+            //// Print a report named Sales:
+            //oAccess.DoCmd.OpenReport(
+            //   "ptoCabecera", //ReportName
+            //   Access.AcView.acViewNormal, //View
+            //   System.Reflection.Missing.Value, //FilterName
+            //   System.Reflection.Missing.Value //WhereCondition
+            //   );
+
+
+            //// Preview a report named Sales:
+            //oAccess.DoCmd.OpenReport(
+            //   "ptoCabecera", //ReportName
+            //   Access.AcView.acViewPreview, //View
+            //   System.Reflection.Missing.Value, //FilterName
+            //   System.Reflection.Missing.Value //WhereCondition
+            //   );
+
+            // Print a report named Sales:
+            //oAccess.DoCmd.OpenReport(
+            //   "ptoCabecera", //ReportName
+            //   Access.AcView.acViewNormal, //View
+            //   System.Reflection.Missing.Value, //FilterName
+            //   System.Reflection.Missing.Value //WhereCondition
+            //   );
+
+            //ReportDocument rd = new ReportDocument();
+
+            ////cargas el contendido del reporte.
+
+            //PrintDialog prt = new PrintDialog();
+            //rd.PrintOptions.PrinterName = prt.PrinterSettings.PrinterName;
+            //rd.PrintToPrinter(copies, true, 1, 1000);
+
+
             //funciones_Varias f = new funciones_Varias();
             //int[] ProcesosAntes;
             //int[] ProcesosDespues;
@@ -1046,8 +1109,7 @@ namespace k_presentacion_00
             //f.DescargarProceso(PID);
             try
             {
-
-
+                
             funciones_envio_emails fee = new funciones_envio_emails();
             int intTipoEvento;
             intTipoEvento = (Int32)funciones_envio_emails.TipoArchivos.E_COTI;
@@ -1244,6 +1306,11 @@ namespace k_presentacion_00
         private void cboItem_SelectedValueChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void cboRazonSocial_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
