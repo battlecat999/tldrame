@@ -653,27 +653,35 @@ namespace k_presentacion_00
             {
                 con.Open();
 
-                string sql = "INSERT INTO ptoCabecera (idEmpresa, razonSocial, nombrePersona, item,descItem, detalleItem) VALUES(@idEmpresa, @razonSocial, @nombrePersona,@item, @descItem, @detalleItem);";
+                //tabla ptoCabecera
+                string sql = "INSERT INTO ptoCabecera (idEmpresa, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto) VALUES(@idEmpresa, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto);";
 
                 OleDbCommand comando = new OleDbCommand(sql, con);
-                comando.Parameters.AddWithValue("@idEmpresa", cboRazonSocial.SelectedValue);
+                comando.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+                comando.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
+                comando.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
                 comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
-                comando.Parameters.AddWithValue("@nombrePersona", cboContactos.Text);
-                //comando.Parameters.AddWithValue("@telefono", cboDataCliente.SelectedValue);
-                //comando.Parameters.AddWithValue("@email", cboDataCliente.Text);
-                //comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
-                comando.Parameters.AddWithValue("@item", cboItem.SelectedValue);
-                comando.Parameters.AddWithValue("@descItem", cboItem.Text);
-                comando.Parameters.AddWithValue("@detalleItem", strDetalle);
-
-                //resto parametros
+                comando.Parameters.AddWithValue("@Nombre", cboContactos.Text);
+                comando.Parameters.AddWithValue("@fechaPto", mFecha.Text);
 
                 comando.ExecuteNonQuery();
 
-                //ptoFirma
-                //sql = string.Empty;
+                //tabla ptoFirma
+
+                string SQL = "INSERT INTO ptoItems (idEmpresa, numeroPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @numeroPresupuesto, @idGastos,@Item, @Detalle);";
+
+
+                OleDbCommand comand = new OleDbCommand(SQL, con);
+                comand.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+                comand.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
+                comand.Parameters.AddWithValue("@idGastos", cboItem.SelectedValue);
+                //comando.Parameters.AddWithValue("@telefono", cboDataCliente.SelectedValue);
+                //comando.Parameters.AddWithValue("@email", cboDataCliente.Text);
+                //comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
+                comand.Parameters.AddWithValue("@Item", cboItem.Text);
+                comand.Parameters.AddWithValue("@Detalle", strDetalle);
                 
-                //string sql = " ";
+                comand.ExecuteNonQuery();
             }
 
             //if (esNuevo == true)
@@ -1028,39 +1036,22 @@ namespace k_presentacion_00
         {
 
             Microsoft.Office.Interop.Access.Application oAccess = new Microsoft.Office.Interop.Access.Application();
-            oAccess.OpenCurrentDatabase("C:\\Users\\Usuario\\OneDrive\\Documentos\\GitHub\\tldrame\\tldramee_operaciones\\PresupuestosDat.accdb", false, "");
+            oAccess.OpenCurrentDatabase(Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb");
 
             // Select the Employees report in the database window:
             oAccess.DoCmd.SelectObject(
                Access.AcObjectType.acReport, //ObjectType
-               "ptoCabecera", //ObjectName
+               "Presupuesto", //ObjectName
                true //InDatabaseWindow
                );
 
             // Preview a report named Sales:
             oAccess.DoCmd.OpenReport(
-               "ptoCabecera", //ReportName
+               "Presupuesto", //ReportName
                Access.AcView.acViewPreview, //View
                System.Reflection.Missing.Value, //FilterName
                System.Reflection.Missing.Value //WhereCondition
                );
-
-            //// Print a report named Sales:
-            //oAccess.DoCmd.OpenReport(
-            //   "ptoCabecera", //ReportName
-            //   Access.AcView.acViewNormal, //View
-            //   System.Reflection.Missing.Value, //FilterName
-            //   System.Reflection.Missing.Value //WhereCondition
-            //   );
-
-
-            //// Preview a report named Sales:
-            //oAccess.DoCmd.OpenReport(
-            //   "ptoCabecera", //ReportName
-            //   Access.AcView.acViewPreview, //View
-            //   System.Reflection.Missing.Value, //FilterName
-            //   System.Reflection.Missing.Value //WhereCondition
-            //   );
 
             // Print a report named Sales:
             //oAccess.DoCmd.OpenReport(
@@ -1113,7 +1104,7 @@ namespace k_presentacion_00
             funciones_envio_emails fee = new funciones_envio_emails();
             int intTipoEvento;
             intTipoEvento = (Int32)funciones_envio_emails.TipoArchivos.E_COTI;
-            fee.Envio_Email_Cotizacion(datos.g_idEmpresa, (Int32)this.cboRazonSocial.SelectedValue, this.cboPresupuesto.Text, intTipoEvento);
+            //fee.Envio_Email_Cotizacion(datos.g_idEmpresa, (Int32)this.cboRazonSocial.SelectedValue, this.cboPresupuesto.Text, intTipoEvento);
             }
             catch (Exception)
             {
