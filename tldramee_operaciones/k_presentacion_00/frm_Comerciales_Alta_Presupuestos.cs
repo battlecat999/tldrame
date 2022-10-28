@@ -646,34 +646,48 @@ namespace k_presentacion_00
             bool termino;
             DNTablas_Gral ej = new DNTablas_Gral();
             termino = ej.DN_Grabar_Cab_Detalle(qCab, qDet, qDetElimino);
-            
-            string connstring = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Usuario\OneDrive\Documentos\GitHub\tldrame\tldramee_operaciones\PresupuestosDat.accdb";
+
+            string path = Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb";
+
+            string connstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path;
             using (OleDbConnection con = new OleDbConnection(connstring))
 
             {
                 con.Open();
 
                 //tabla ptoCabecera
-                string sql = "INSERT INTO ptoCabecera (idEmpresa, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto) VALUES(@idEmpresa, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto);";
+                string sql = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa,wspEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa,@wspEmpresa);";
 
                 OleDbCommand comando = new OleDbCommand(sql, con);
                 comando.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+                comando.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
                 comando.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
                 comando.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
                 comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
                 comando.Parameters.AddWithValue("@Nombre", cboContactos.Text);
                 comando.Parameters.AddWithValue("@fechaPto", mFecha.Text);
+                comando.Parameters.AddWithValue("@telefono", "");
+                comando.Parameters.AddWithValue("@email", "");
+                comando.Parameters.AddWithValue("@descServicio", cboModalidad.Text + "-" + cboRutas.Text);
+                comando.Parameters.AddWithValue("@valorUni", txtVenta.Text + "+ IVA");
+
+                comando.Parameters.AddWithValue("@validez", k_dias_Validez.Text);
+                comando.Parameters.AddWithValue("@nombreFirma","" );
+                comando.Parameters.AddWithValue("@puesto", "");
+                comando.Parameters.AddWithValue("@emailEmpresa","" );
+                comando.Parameters.AddWithValue("@telefonoEmpresa","" );
+                comando.Parameters.AddWithValue("@wspEmpresa", "");
 
                 comando.ExecuteNonQuery();
 
                 //tabla ptoFirma
 
-                string SQL = "INSERT INTO ptoItems (idEmpresa, numeroPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @numeroPresupuesto, @idGastos,@Item, @Detalle);";
+                string SQL = "INSERT INTO ptoItems (idEmpresa, idPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @idPresupuesto, @idGastos,@Item, @Detalle);";
 
 
                 OleDbCommand comand = new OleDbCommand(SQL, con);
                 comand.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
-                comand.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
+                comand.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
                 comand.Parameters.AddWithValue("@idGastos", cboItem.SelectedValue);
                 //comando.Parameters.AddWithValue("@telefono", cboDataCliente.SelectedValue);
                 //comando.Parameters.AddWithValue("@email", cboDataCliente.Text);
@@ -1035,23 +1049,27 @@ namespace k_presentacion_00
         private void cmdImprimir_Click(object sender, EventArgs e)
         {
 
-            Microsoft.Office.Interop.Access.Application oAccess = new Microsoft.Office.Interop.Access.Application();
-            oAccess.OpenCurrentDatabase(Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb");
+            Microsoft.Office.Interop.Access.Application oAccess = null;
+            oAccess=new Microsoft.Office.Interop.Access.Application();
+
+            oAccess.OpenCurrentDatabase(Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb",true);
 
             // Select the Employees report in the database window:
-            oAccess.DoCmd.SelectObject(
-               Access.AcObjectType.acReport, //ObjectType
-               "Presupuesto", //ObjectName
-               true //InDatabaseWindow
-               );
+            //oAccess.DoCmd.SelectObject(
+            //   Access.AcObjectType.acReport, //ObjectType
+            //   "Presupuesto", //ObjectName
+            //   true //InDatabaseWindow
+            //   );
 
             // Preview a report named Sales:
             oAccess.DoCmd.OpenReport(
                "Presupuesto", //ReportName
                Access.AcView.acViewPreview, //View
                System.Reflection.Missing.Value, //FilterName
-               System.Reflection.Missing.Value //WhereCondition
+               System.Reflection.Missing.Value,//WhereCondition
+               Access.AcWindowMode.acWindowNormal 
                );
+            oAccess.Visible=true;
 
             // Print a report named Sales:
             //oAccess.DoCmd.OpenReport(
