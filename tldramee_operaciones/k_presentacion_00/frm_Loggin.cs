@@ -114,6 +114,9 @@ namespace k_presentacion_00
                         datos.g_lastName = objUsuario.LastName;
                         datos.g_email = objUsuario.Email;
                         datos.g_permiso = objUsuario.Permiso;
+                        datos.g_telefono1 = objUsuario.telefono1;
+                        datos.g_funciones = objUsuario.funciones;
+                        datos.g_nombreUser = objUsuario.nombreUser;
                         //MPS20210216
                         datos.g_Ruta_Firma_HTMP = ConfigurationManager.AppSettings["Ruta_Firma_html"].ToString();
                         datos.g_Ruta_Comp_Anticipos = ConfigurationManager.AppSettings["ruta_anticipos_pdf"].ToString();

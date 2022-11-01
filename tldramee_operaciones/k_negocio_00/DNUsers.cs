@@ -24,6 +24,10 @@ namespace k_negocio_00
         private string _lastName;
         private string _email;
         private int _permiso;
+        private string _telefono1;
+        private string _funciones;
+        private string _nombreUser;
+
 
         //todas las demas....
         // METODOS GET Y SET -->para el manejo de variables.
@@ -55,6 +59,10 @@ namespace k_negocio_00
         public string LastName { get => _lastName; set => _lastName = value; }
         public string Email { get => _email; set => _email = value; }
         public int Permiso { get => _permiso; set => _permiso = value; }
+        public string telefono1 { get => _telefono1; set => _telefono1 = value; }
+        public string funciones { get => _funciones; set => _funciones = value; }
+        public string nombreUser { get => _nombreUser; set => _nombreUser = value; }
+
 
         //CONSTRUCTOR
         //public DNUsers(){ }
@@ -72,7 +80,12 @@ namespace k_negocio_00
                 LastName = dt.Rows[0]["lastName"].ToString();
                 Email = dt.Rows[0]["userEmail"].ToString();
                 Permiso= Convert.ToInt32(dt.Rows[0]["kind"]);
-            }
+                funciones= dt.Rows[0]["funciones"].ToString();
+                telefono1 = dt.Rows[0]["telefono1"].ToString();
+                nombreUser = dt.Rows[0]["nombreUser"].ToString();
+            }   
+            
+                
            
             return dt;
             

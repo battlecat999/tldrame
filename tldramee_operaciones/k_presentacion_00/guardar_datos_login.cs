@@ -32,7 +32,9 @@ namespace k_presentacion_00
         public string g_Ruta_Comp_Emails { get; set; }
 
         public string g_Email_Administracion { get; set; }
-       
+        public string g_telefono1 { get; set; }
+        public string g_funciones { get; set; }
+        public string g_nombreUser { get; set; }
 
     }
 }

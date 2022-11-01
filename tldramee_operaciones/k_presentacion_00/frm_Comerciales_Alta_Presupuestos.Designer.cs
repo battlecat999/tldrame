@@ -88,6 +88,8 @@
             this.lblItem = new System.Windows.Forms.Label();
             this.dg = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.txtTelCliente = new System.Windows.Forms.TextBox();
+            this.txtEmailCliente = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -602,7 +604,7 @@
             this.cmdAC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdAC.ForeColor = System.Drawing.Color.White;
             this.cmdAC.Image = global::k_presentacion_00.Properties.Resources.pngocean_com16;
-            this.cmdAC.Location = new System.Drawing.Point(591, 62);
+            this.cmdAC.Location = new System.Drawing.Point(574, 62);
             this.cmdAC.Name = "cmdAC";
             this.cmdAC.Size = new System.Drawing.Size(25, 25);
             this.cmdAC.TabIndex = 100;
@@ -719,12 +721,30 @@
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // txtTelCliente
+            // 
+            this.txtTelCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(235)))), ((int)(((byte)(128)))));
+            this.txtTelCliente.Location = new System.Drawing.Point(628, 38);
+            this.txtTelCliente.Name = "txtTelCliente";
+            this.txtTelCliente.Size = new System.Drawing.Size(100, 24);
+            this.txtTelCliente.TabIndex = 136;
+            // 
+            // txtEmailCliente
+            // 
+            this.txtEmailCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(235)))), ((int)(((byte)(128)))));
+            this.txtEmailCliente.Location = new System.Drawing.Point(628, 68);
+            this.txtEmailCliente.Name = "txtEmailCliente";
+            this.txtEmailCliente.Size = new System.Drawing.Size(100, 24);
+            this.txtEmailCliente.TabIndex = 137;
+            // 
             // frm_Comerciales_Alta_Presupuestos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(235)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(752, 812);
+            this.Controls.Add(this.txtEmailCliente);
+            this.Controls.Add(this.txtTelCliente);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dg);
             this.Controls.Add(this.lblItem);
@@ -861,5 +881,7 @@
         private System.Windows.Forms.Label lblItem;
         private System.Windows.Forms.DataGridView dg;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.TextBox txtTelCliente;
+        private System.Windows.Forms.TextBox txtEmailCliente;
     }
 }
