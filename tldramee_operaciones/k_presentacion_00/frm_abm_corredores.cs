@@ -285,7 +285,7 @@ namespace k_presentacion_00
                     cmdCommand.Parameters["intCorredor"].Value = Convert.ToInt32(this.txtIdCorredor.Text);
                     cmdCommand.Parameters["decCosto"].Value = this.txtCosto.Text;
                     cmdCommand.Parameters["intUsuario"].Value = datos.g_idUser;
-                    cmdCommand.Parameters["datFechaAlta"].Value = DateTime.Today.ToString("dd/MM/yyyy");
+                    cmdCommand.Parameters["datFechaAlta"].Value = DateTime.Today.ToString("yyyy/MM/dd");
 
                     cmdCommand.ExecuteNonQuery();
                     trsTransaccion.Commit();
