@@ -164,7 +164,7 @@
             // 
             // cmdGuardar
             // 
-            this.cmdGuardar.Location = new System.Drawing.Point(59, 635);
+            this.cmdGuardar.Location = new System.Drawing.Point(55, 635);
             this.cmdGuardar.Name = "cmdGuardar";
             this.cmdGuardar.Size = new System.Drawing.Size(163, 49);
             this.cmdGuardar.TabIndex = 21;
@@ -174,7 +174,7 @@
             // 
             // cmdLimpiar
             // 
-            this.cmdLimpiar.Location = new System.Drawing.Point(467, 635);
+            this.cmdLimpiar.Location = new System.Drawing.Point(463, 635);
             this.cmdLimpiar.Name = "cmdLimpiar";
             this.cmdLimpiar.Size = new System.Drawing.Size(171, 49);
             this.cmdLimpiar.TabIndex = 23;
@@ -479,7 +479,7 @@
             // 
             // cmdImprimir
             // 
-            this.cmdImprimir.Location = new System.Drawing.Point(261, 635);
+            this.cmdImprimir.Location = new System.Drawing.Point(257, 635);
             this.cmdImprimir.Name = "cmdImprimir";
             this.cmdImprimir.Size = new System.Drawing.Size(179, 49);
             this.cmdImprimir.TabIndex = 22;
