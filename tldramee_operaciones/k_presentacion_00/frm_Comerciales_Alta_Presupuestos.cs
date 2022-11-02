@@ -1003,107 +1003,107 @@ namespace k_presentacion_00
         private void cmdImprimir_Click(object sender, EventArgs e)
         {
             //EDD 2022/11/01 conexion base en acdb
-            string path = Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb";
+            //string path = Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb";
 
-            string connstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path;
-            using (OleDbConnection con = new OleDbConnection(connstring))
+            //string connstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path;
+            //using (OleDbConnection con = new OleDbConnection(connstring))
 
-            {
-                con.Open();
+            //{
+            //    con.Open();
 
-                //tabla ptoCabecera
-                string sql = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa);";
+            //    //tabla ptoCabecera
+            //    string sql = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa);";
 
-                OleDbCommand comando = new OleDbCommand(sql, con);
-                comando.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
-                comando.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
-                comando.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
-                comando.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
-                comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
-                comando.Parameters.AddWithValue("@Nombre", cboContactos.Text);
-                comando.Parameters.AddWithValue("@fechaPto", mFecha.Text);
-                comando.Parameters.AddWithValue("@telefono", txtTelCliente.Text);
-                comando.Parameters.AddWithValue("@email", txtEmailCliente.Text);
-                comando.Parameters.AddWithValue("@descServicio", cboModalidad.Text + "-" + cboRutas.Text);
-                comando.Parameters.AddWithValue("@valorUni", txtVenta.Text + "+ IVA");
+            //    OleDbCommand comando = new OleDbCommand(sql, con);
+            //    comando.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+            //    comando.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
+            //    comando.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
+            //    comando.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
+            //    comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
+            //    comando.Parameters.AddWithValue("@Nombre", cboContactos.Text);
+            //    comando.Parameters.AddWithValue("@fechaPto", mFecha.Text);
+            //    comando.Parameters.AddWithValue("@telefono", txtTelCliente.Text);
+            //    comando.Parameters.AddWithValue("@email", txtEmailCliente.Text);
+            //    comando.Parameters.AddWithValue("@descServicio", cboModalidad.Text + "-" + cboRutas.Text);
+            //    comando.Parameters.AddWithValue("@valorUni", txtVenta.Text + "+ IVA");
 
-                comando.Parameters.AddWithValue("@validez", k_dias_Validez.Text);
-                comando.Parameters.AddWithValue("@nombreFirma", datos.g_nombreUser);
-                comando.Parameters.AddWithValue("@puesto", datos.g_funciones);
-                comando.Parameters.AddWithValue("@emailEmpresa", datos.g_email);
-                comando.Parameters.AddWithValue("@telefonoEmpresa", datos.g_telefono1);
-
-
-                comando.ExecuteNonQuery();
-
-                //tabla ptoItems
-
-                string SQL = "INSERT INTO ptoItems (idEmpresa, idPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @idPresupuesto, @idGastos,@Item, @Detalle);";
+            //    comando.Parameters.AddWithValue("@validez", k_dias_Validez.Text);
+            //    comando.Parameters.AddWithValue("@nombreFirma", datos.g_nombreUser);
+            //    comando.Parameters.AddWithValue("@puesto", datos.g_funciones);
+            //    comando.Parameters.AddWithValue("@emailEmpresa", datos.g_email);
+            //    comando.Parameters.AddWithValue("@telefonoEmpresa", datos.g_telefono1);
 
 
-                OleDbCommand comand = new OleDbCommand(SQL, con);
-                comand.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
-                comand.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
-                comand.Parameters.AddWithValue("@idGastos", cboItem.SelectedValue);
-                //comando.Parameters.AddWithValue("@telefono", cboDataCliente.SelectedValue);
-                //comando.Parameters.AddWithValue("@email", cboDataCliente.Text);
-                //comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
-                comand.Parameters.AddWithValue("@Item", cboItem.Text);
-                comand.Parameters.AddWithValue("@Detalle", "");
+            //    comando.ExecuteNonQuery();
 
-                comand.ExecuteNonQuery();
-            }
+            //    //tabla ptoItems
 
-            Microsoft.Office.Interop.Access.Application oAccess = null;
-            oAccess=new Microsoft.Office.Interop.Access.Application();
+            //    string SQL = "INSERT INTO ptoItems (idEmpresa, idPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @idPresupuesto, @idGastos,@Item, @Detalle);";
 
-            oAccess.OpenCurrentDatabase(Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb",true);
 
-            // Select the Employees report in the database window:
-            //oAccess.DoCmd.SelectObject(
-            //   Access.AcObjectType.acReport, //ObjectType
-            //   "Presupuesto", //ObjectName
-            //   true //InDatabaseWindow
+            //    OleDbCommand comand = new OleDbCommand(SQL, con);
+            //    comand.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+            //    comand.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
+            //    comand.Parameters.AddWithValue("@idGastos", cboItem.SelectedValue);
+            //    //comando.Parameters.AddWithValue("@telefono", cboDataCliente.SelectedValue);
+            //    //comando.Parameters.AddWithValue("@email", cboDataCliente.Text);
+            //    //comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
+            //    comand.Parameters.AddWithValue("@Item", cboItem.Text);
+            //    comand.Parameters.AddWithValue("@Detalle", "");
+
+            //    comand.ExecuteNonQuery();
+            //}
+
+            //Microsoft.Office.Interop.Access.Application oAccess = null;
+            //oAccess=new Microsoft.Office.Interop.Access.Application();
+
+            //oAccess.OpenCurrentDatabase(Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb",true);
+
+            //// Select the Employees report in the database window:
+            ////oAccess.DoCmd.SelectObject(
+            ////   Access.AcObjectType.acReport, //ObjectType
+            ////   "Presupuesto", //ObjectName
+            ////   true //InDatabaseWindow
+            ////   );
+
+            //// Preview a report named Sales:
+            //oAccess.DoCmd.OpenReport(
+            //   "Presupuesto", //ReportName
+            //   Access.AcView.acViewPreview, //View
+            //   System.Reflection.Missing.Value, //FilterName
+            //   System.Reflection.Missing.Value,//WhereCondition
+            //   Access.AcWindowMode.acWindowNormal 
             //   );
+            //oAccess.Visible=true;
 
-            // Preview a report named Sales:
-            oAccess.DoCmd.OpenReport(
-               "Presupuesto", //ReportName
-               Access.AcView.acViewPreview, //View
-               System.Reflection.Missing.Value, //FilterName
-               System.Reflection.Missing.Value,//WhereCondition
-               Access.AcWindowMode.acWindowNormal 
-               );
-            oAccess.Visible=true;
+            ////funciones_Varias f = new funciones_Varias();
+            ////int[] ProcesosAntes;
+            ////int[] ProcesosDespues;
+            ////int PID;
 
-            //funciones_Varias f = new funciones_Varias();
-            //int[] ProcesosAntes;
-            //int[] ProcesosDespues;
-            //int PID;
-
-            //ProcesosAntes = f.ListarProcesosAntes("EXCEL");
+            ////ProcesosAntes = f.ListarProcesosAntes("EXCEL");
 
 
-            //Excel.Application Mi_Excel = new Excel.Application();
-            //Excel._Workbook librosTrabajo;
-            //Excel._Worksheet hojaTrabajo;
-            //string ExcelFile = @"C:\Sistema_Gestion\Transferencia\Prueba.xlsx";
+            ////Excel.Application Mi_Excel = new Excel.Application();
+            ////Excel._Workbook librosTrabajo;
+            ////Excel._Worksheet hojaTrabajo;
+            ////string ExcelFile = @"C:\Sistema_Gestion\Transferencia\Prueba.xlsx";
 
-            //librosTrabajo = Mi_Excel.Workbooks.Add(ExcelFile);
-            //hojaTrabajo = (Excel._Worksheet)librosTrabajo.ActiveSheet;
-            //hojaTrabajo.Range["A1"].Value = "Prueba";
-            //Mi_Excel.UserControl = true;
-            //librosTrabajo.Save();
-            //hojaTrabajo.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, ExcelFile);
+            ////librosTrabajo = Mi_Excel.Workbooks.Add(ExcelFile);
+            ////hojaTrabajo = (Excel._Worksheet)librosTrabajo.ActiveSheet;
+            ////hojaTrabajo.Range["A1"].Value = "Prueba";
+            ////Mi_Excel.UserControl = true;
+            ////librosTrabajo.Save();
+            ////hojaTrabajo.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, ExcelFile);
 
-            //Mi_Excel.ActiveWorkbook.Close(true, ExcelFile, Type.Missing);
+            ////Mi_Excel.ActiveWorkbook.Close(true, ExcelFile, Type.Missing);
 
-            //Mi_Excel.Quit();
-            //Mi_Excel = null;
+            ////Mi_Excel.Quit();
+            ////Mi_Excel = null;
 
-            //ProcesosDespues = f.ListarProcesosDespues("EXCEL");
-            //PID = f.ListarProcesoNuevo(ProcesosAntes, ProcesosDespues);
-            //f.DescargarProceso(PID);
+            ////ProcesosDespues = f.ListarProcesosDespues("EXCEL");
+            ////PID = f.ListarProcesoNuevo(ProcesosAntes, ProcesosDespues);
+            ////f.DescargarProceso(PID);
             try
             {
                 
