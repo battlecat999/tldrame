@@ -77,13 +77,12 @@ namespace k_presentacion_00
             if (validarControles() == false)
             {
                 this.cboItem.Focus();
-                return;
-                
+           
             }
 
             ConceptoCotizacion(0);
             btnNuevo_Click(sender, e);
-
+            return;
         }
 
         private void cboItem_SelectedIndexChanged(object sender, EventArgs e)
@@ -168,7 +167,7 @@ namespace k_presentacion_00
         //DED 2022/09/23 VALIDAMOS LOS CONTROLES
         private bool validarControles()
         {
-            if (this.cboItem.SelectedIndex == -1)
+            if (this.cboItem.Text == "")
             {
                 MessageBox.Show("El Item Concepto no puede estar vacío", "Atención");
                 this.cboItem.Focus();

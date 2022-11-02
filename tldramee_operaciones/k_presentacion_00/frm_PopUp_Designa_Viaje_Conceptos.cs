@@ -1661,5 +1661,15 @@ namespace k_presentacion_00
         {
 
         }
+
+        private void lblFechaPosicion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHoraPosicion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

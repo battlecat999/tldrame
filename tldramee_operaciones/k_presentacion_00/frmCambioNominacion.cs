@@ -895,6 +895,11 @@ namespace k_presentacion_00
         {
 
         }
+
+        private void lbl_Nombre_Transportista_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

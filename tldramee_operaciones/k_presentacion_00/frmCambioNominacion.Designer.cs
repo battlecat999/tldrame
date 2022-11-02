@@ -363,6 +363,7 @@
             this.lbl_Nombre_Transportista.Size = new System.Drawing.Size(226, 18);
             this.lbl_Nombre_Transportista.TabIndex = 57;
             this.lbl_Nombre_Transportista.Text = "Nombre_Transportista";
+            this.lbl_Nombre_Transportista.Click += new System.EventHandler(this.lbl_Nombre_Transportista_Click);
             // 
             // lbl_Nombre_Tractor
             // 
