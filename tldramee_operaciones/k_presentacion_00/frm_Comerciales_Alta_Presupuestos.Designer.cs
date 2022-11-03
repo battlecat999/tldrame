@@ -299,7 +299,6 @@
             this.cboPresupuesto.Name = "cboPresupuesto";
             this.cboPresupuesto.Size = new System.Drawing.Size(270, 23);
             this.cboPresupuesto.TabIndex = 1;
-            this.cboPresupuesto.SelectedIndexChanged += new System.EventHandler(this.cboPresupuesto_SelectedIndexChanged_1);
             // 
             // label13
             // 
@@ -744,7 +743,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(235)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(752, 812);
+            this.ClientSize = new System.Drawing.Size(733, 702);
             this.Controls.Add(this.txtEmailCliente);
             this.Controls.Add(this.txtTelCliente);
             this.Controls.Add(this.btnAgregar);

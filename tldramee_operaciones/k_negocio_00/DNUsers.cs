@@ -80,9 +80,9 @@ namespace k_negocio_00
                 LastName = dt.Rows[0]["lastName"].ToString();
                 Email = dt.Rows[0]["userEmail"].ToString();
                 Permiso= Convert.ToInt32(dt.Rows[0]["kind"]);
-                //funciones= dt.Rows[0]["funciones"].ToString();
-                //telefono1 = dt.Rows[0]["telefono1"].ToString();
-                //nombreUser = dt.Rows[0]["nombreUser"].ToString();
+                funciones= dt.Rows[0]["funciones"].ToString();
+                telefono1 = dt.Rows[0]["telefono1"].ToString();
+                nombreUser = dt.Rows[0]["nombreUser"].ToString();
             }   
             
                 

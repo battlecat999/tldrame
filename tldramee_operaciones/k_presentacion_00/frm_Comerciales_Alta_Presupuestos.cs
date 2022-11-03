@@ -25,6 +25,7 @@ using System.Diagnostics;
 using System.Reflection;
 using Access = Microsoft.Office.Interop.Access;
 using Microsoft.Office.Interop.Access.Dao;
+using EnvDTE;
 
 namespace k_presentacion_00
 {
@@ -59,7 +60,7 @@ namespace k_presentacion_00
             
             this.cboRazonSocial.SelectedIndexChanged-=new System.EventHandler(cboRazonSocial_SelectedIndexChanged);
             this.lblUsuario.Text = datos.g_idUser + " " + datos.g_lastName;
-            this.cboPresupuesto.SelectedIndexChanged -= new System.EventHandler(cboPresupuesto_SelectedIndexChanged);
+            //this.cboPresupuesto.SelectedIndexChanged -= new System.EventHandler(cboPresupuesto_SelectedIndexChanged);
             this.cboTipoServicio.SelectedIndexChanged -= new System.EventHandler(cboTipoServicio_SelectedIndexChanged);
             this.cboModalidad.SelectedIndexChanged -= new System.EventHandler(cboModalidad_SelectedIndexChanged);
             this.cboRutas.SelectedIndexChanged -= new System.EventHandler(cboRutas_SelectedIndexChanged);
@@ -75,9 +76,9 @@ namespace k_presentacion_00
 
             cargarcombos();
 
-            //iniciarGrilla();
-
-            this.cboPresupuesto.SelectedIndexChanged += new System.EventHandler(cboPresupuesto_SelectedIndexChanged);
+            iniciarGrilla();
+            ///*Cargamos_Grilla*/();
+            //this.cboPresupuesto.SelectedIndexChanged += new System.EventHandler(cboPresupuesto_SelectedIndexChanged);
             this.cboTipoServicio.SelectedIndexChanged += new System.EventHandler(cboTipoServicio_SelectedIndexChanged);
             this.cboRutas.SelectedIndexChanged += new System.EventHandler(cboRutas_SelectedIndexChanged);
             this.cboCondicionPago.SelectedIndexChanged += new System.EventHandler(cboCondicionPago_SelectedIndexChanged);
@@ -87,75 +88,87 @@ namespace k_presentacion_00
             this.cboModalidad.SelectedIndexChanged += new System.EventHandler(cboModalidad_SelectedIndexChanged);
             this.cboRazonSocial.SelectedIndexChanged +=  new System.EventHandler(cboRazonSocial_SelectedIndexChanged);
         }
-        //private void iniciarGrilla()
-        //{
+        private void iniciarGrilla()
+        {
 
-        //    funciones_Varias fv = new funciones_Varias();
-        //    //fv.PrepararDG(this.dgw, 590, 105, 50, 575);
-        //    DN_ABM o = new DN_ABM();
-        //    DN_Cotizaciones c = new DN_Cotizaciones();
-        //    DataTable d = new DataTable();
-        //    DataTable dtC = new DataTable();
-        //    DataTable dtG = new DataTable();
-        //    string codPresu;
-        //    if (this.cboPresupuesto.Text.ToString()==string.Empty)
-        //    {
-        //        codPresu = "0";
-        //    }
-        //    else
-        //    {
-        //        codPresu = this.cboPresupuesto.Text;
-        //    }
+            //funciones_Varias fv = new funciones_Varias();
+            ////fv.PrepararDG(this.dgw, 590, 105, 50, 575);
+            //DN_ABM o = new DN_ABM();
+            //DN_Cotizaciones c = new DN_Cotizaciones();
+            //DataTable d = new DataTable();
+            //DataTable dtC = new DataTable();
+            //DataTable dtG = new DataTable();
+            //string codPresu;
+            //if (this.cboPresupuesto.Text.ToString()==string.Empty)
+            //{
+            //    codPresu = "0";
+            //}
+            //else
+            //{
+            //    codPresu = this.cboPresupuesto.Text;
+            //}
 
-        //    d = c.DN_Traer_Cotizaciones ("SP_Cotizaciones_Items_ID",codPresu , datos.g_idEmpresa);
-        //    dtC = o.DN_Traer_DataTable("SP_GET_Contenedores_ALL", 0 , datos.g_idEmpresa);
-        //    dtG = o.DN_Traer_DataTable("SP_GET_Generadores_ALL", 0, datos.g_idEmpresa);
-        //    this.dgw.Columns.Clear();
+            //d = c.DN_Traer_Cotizaciones("SP_Cotizaciones_Items_ID", codPresu, datos.g_idEmpresa);
+            //dtC = o.DN_Traer_DataTable("SP_GET_Contenedores_ALL", 0, datos.g_idEmpresa);
+            //dtG = o.DN_Traer_DataTable("SP_GET_Generadores_ALL", 0, datos.g_idEmpresa);
+            this.dg.Columns.Clear();
 
-        //    this.dgw.AutoGenerateColumns = false;
+            this.dg.AutoGenerateColumns = false;
 
-        //    DataGridViewTextBoxColumn colCotizacion = new DataGridViewTextBoxColumn();
-        //    colCotizacion.Visible = false;
-        //    colCotizacion.HeaderText = "N";
-        //    colCotizacion.Name = "colCotizacion";
-        //    colCotizacion.DataPropertyName = "idCotizacion";
-        //    this.dgw.Columns.Add(colCotizacion);
+            DataGridViewTextBoxColumn colIdEmpresa = new DataGridViewTextBoxColumn();
+            colIdEmpresa.Visible = false;
+            colIdEmpresa.HeaderText = "IdEmpresa";
+            colIdEmpresa.Name = "colIdEmpresa";
+            colIdEmpresa.DataPropertyName = "IdEmpresa";
+            this.dg.Columns.Add(colIdEmpresa);
 
-        //    DataGridViewTextBoxColumn colItem = new DataGridViewTextBoxColumn();
-        //    colItem.Visible = true;
-        //    colItem.Width = 100;
-        //    colItem.HeaderText = "Items";
-        //    colItem.Name = "colItems";
-        //    colItem.DataPropertyName = "Item";
-        //    this.dgw.Columns.Add(colItem);
+            DataGridViewTextBoxColumn colIdCotizacion = new DataGridViewTextBoxColumn();
+            colIdCotizacion.Visible = false;
+            colIdCotizacion.Width = 100;
+            colIdCotizacion.HeaderText = "idCotizacion";
+            colIdCotizacion.Name = "colIdCotizacion";
+            colIdCotizacion.DataPropertyName = "idCotizacion";
+            this.dg.Columns.Add(colIdCotizacion);
 
-        //    DataGridViewComboBoxColumn colContenedores = new DataGridViewComboBoxColumn();
+            DataGridViewTextBoxColumn colIdGastos = new DataGridViewTextBoxColumn();
 
-        //    colContenedores.DataSource = dtC;
-        //    colContenedores.DisplayMember = "Descripcion";
-        //    colContenedores.ValueMember = "Codigo_Contenedor";
-        //    colContenedores.Visible = true;
-        //    colContenedores.HeaderText = "Contenedor";
-        //    colContenedores.Width = 300;
-        //    colContenedores.Name = "colContenedores";
-        //    colContenedores.DataPropertyName = "Contenedor";//Campo donde se guarda
-        //    this.dgw.Columns.Add(colContenedores);
+            //colContenedores.DataSource = dtC;
+            //colIdGastos.DisplayMember = "IdGastos";
+            //colIdGastos.ValueMember = "IdGastos";
+            colIdGastos.Visible = false;
+            colIdGastos.HeaderText = "IdGastos";
+            colIdGastos.Width = 100;
+            colIdGastos.Name = "colIdGastos";
+            colIdGastos.DataPropertyName = "IdGastos";//Campo donde se guarda
+            this.dg.Columns.Add(colIdGastos);
 
-        //    DataGridViewComboBoxColumn colGeneradores = new DataGridViewComboBoxColumn();
+            DataGridViewTextBoxColumn colItem = new DataGridViewTextBoxColumn();
 
-        //    colGeneradores.DataSource = dtG;
-        //    colGeneradores.DisplayMember = "descripcion";
-        //    colGeneradores.ValueMember = "Codigo_Generador";
-        //    colGeneradores.Visible = true;
-        //    colGeneradores.HeaderText = "Generador";
-        //    colGeneradores.Width = 300;
-        //    colGeneradores.Name = "colGeneradores";
-        //    colGeneradores.DataPropertyName = "Generadores";//Campo donde se guarda
+            //colGeneradores.DataSource = dtG;
+            //colItem.DisplayMember = "Item";
+            //colItem.ValueMember = "Item";
+            colItem.Visible = true;
+            colItem.HeaderText = "Item";
+            colItem.Width = 300;
+            colItem.Name = "colItem";
+            colItem.DataPropertyName = "Item";//Campo donde se guarda
+            this.dg.Columns.Add(colItem);
 
-        //    this.dgw.Columns.Add(colGeneradores);
+            DataGridViewTextBoxColumn colDetalle = new DataGridViewTextBoxColumn();
 
-        //    this.dgw.DataSource = d;
-        //}
+            //colGeneradores.DataSource = dtG;
+            //colDetalle.DisplayMember = "Descripcion";
+            //colDetalle.ValueMember = "Descripcion";
+            colDetalle.Visible = true;
+            colDetalle.HeaderText = "Descripcion";
+            colDetalle.Width = 200;
+            colDetalle.Name = "colDetalle";
+            colDetalle.DataPropertyName = "Descripcion";//Campo donde se guarda
+            this.dg.Columns.Add(colDetalle);
+
+            //this.dg.DataSource = dtItems;
+            //this.dg.DataSource = _dtItems.Tables[0];
+        }
         private void cargarclientes()
         {
             funciones_Varias o = new funciones_Varias();
@@ -199,7 +212,7 @@ namespace k_presentacion_00
 
             cargarPresupuestos();
             cargarclientes();
-            Cargamos_Grilla();
+            //Cargamos_Grilla();
 
             this.cboRazonSocial.SelectedIndexChanged += new System.EventHandler(cboRazonSocial_SelectedIndexChanged);
 
@@ -460,9 +473,9 @@ namespace k_presentacion_00
         {
             int codPresu;
             DataTable dt;
-            //iniciarGrilla();
             DNTablas_Gral dn = new DNTablas_Gral();
             codPresu = 0;
+            
             try
             {
 
@@ -505,6 +518,7 @@ namespace k_presentacion_00
                     Cargamos_Grilla();
                     esNuevo = false;
                 }
+               
             }
             catch (Exception ex)
             {
@@ -929,7 +943,7 @@ namespace k_presentacion_00
 
         private void Frm_Comerciales_Alta_Presupuestos_Load(object sender, EventArgs e)
         {
-
+            //this.dg.Visible = false;
         }
     private void ENTER_KeyPress(object sender, KeyPressEventArgs e)
     {
@@ -1002,79 +1016,90 @@ namespace k_presentacion_00
 
         private void cmdImprimir_Click(object sender, EventArgs e)
         {
+            int intGastos = 0;
+            string strItem = string.Empty;
+            string strDetalle = string.Empty;
             //EDD 2022/11/01 conexion base en acdb
-            //string path = Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb";
+            string path = Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb";
 
-            //string connstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path;
-            //using (OleDbConnection con = new OleDbConnection(connstring))
+            string connstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path;
+            using (OleDbConnection con = new OleDbConnection(connstring))
 
-            //{
-            //    con.Open();
+            {
+                con.Open();
 
-            //    //tabla ptoCabecera
-            //    string sql = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa);";
+                //tabla ptoCabecera
+                string sql = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa);";
 
-            //    OleDbCommand comando = new OleDbCommand(sql, con);
-            //    comando.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
-            //    comando.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
-            //    comando.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
-            //    comando.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
-            //    comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
-            //    comando.Parameters.AddWithValue("@Nombre", cboContactos.Text);
-            //    comando.Parameters.AddWithValue("@fechaPto", mFecha.Text);
-            //    comando.Parameters.AddWithValue("@telefono", txtTelCliente.Text);
-            //    comando.Parameters.AddWithValue("@email", txtEmailCliente.Text);
-            //    comando.Parameters.AddWithValue("@descServicio", cboModalidad.Text + "-" + cboRutas.Text);
-            //    comando.Parameters.AddWithValue("@valorUni", txtVenta.Text + "+ IVA");
+                OleDbCommand comando = new OleDbCommand(sql, con);
+                comando.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+                comando.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
+                comando.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
+                comando.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
+                comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
+                comando.Parameters.AddWithValue("@Nombre", cboContactos.Text);
+                comando.Parameters.AddWithValue("@fechaPto", mFecha.Text);
+                comando.Parameters.AddWithValue("@telefono", txtTelCliente.Text);
+                comando.Parameters.AddWithValue("@email", txtEmailCliente.Text);
+                comando.Parameters.AddWithValue("@descServicio", cboModalidad.Text + "-" + cboRutas.Text);
+                comando.Parameters.AddWithValue("@valorUni", txtVenta.Text + "+ IVA");
 
-            //    comando.Parameters.AddWithValue("@validez", k_dias_Validez.Text);
-            //    comando.Parameters.AddWithValue("@nombreFirma", datos.g_nombreUser);
-            //    comando.Parameters.AddWithValue("@puesto", datos.g_funciones);
-            //    comando.Parameters.AddWithValue("@emailEmpresa", datos.g_email);
-            //    comando.Parameters.AddWithValue("@telefonoEmpresa", datos.g_telefono1);
-
-
-            //    comando.ExecuteNonQuery();
-
-            //    //tabla ptoItems
-
-            //    string SQL = "INSERT INTO ptoItems (idEmpresa, idPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @idPresupuesto, @idGastos,@Item, @Detalle);";
+                comando.Parameters.AddWithValue("@validez", k_dias_Validez.Text);
+                comando.Parameters.AddWithValue("@nombreFirma", datos.g_nombreUser);
+                comando.Parameters.AddWithValue("@puesto", datos.g_funciones);
+                comando.Parameters.AddWithValue("@emailEmpresa", datos.g_email);
+                comando.Parameters.AddWithValue("@telefonoEmpresa", datos.g_telefono1);
 
 
-            //    OleDbCommand comand = new OleDbCommand(SQL, con);
-            //    comand.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
-            //    comand.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
-            //    comand.Parameters.AddWithValue("@idGastos", cboItem.SelectedValue);
-            //    //comando.Parameters.AddWithValue("@telefono", cboDataCliente.SelectedValue);
-            //    //comando.Parameters.AddWithValue("@email", cboDataCliente.Text);
-            //    //comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
-            //    comand.Parameters.AddWithValue("@Item", cboItem.Text);
-            //    comand.Parameters.AddWithValue("@Detalle", "");
+                comando.ExecuteNonQuery();
 
-            //    comand.ExecuteNonQuery();
-            //}
+                //tabla ptoItems insertamos en tabla y recorremos dg para los datos de conceptos EDD 2022/02/11
+                foreach (DataGridViewRow dgvRenglon in dg.Rows)
+                {
+                    string SQL = "INSERT INTO ptoItems (idEmpresa, idPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @idPresupuesto, @idGastos,@Item, @Detalle);";
 
-            //Microsoft.Office.Interop.Access.Application oAccess = null;
-            //oAccess=new Microsoft.Office.Interop.Access.Application();
 
-            //oAccess.OpenCurrentDatabase(Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb",true);
+                    OleDbCommand comand = new OleDbCommand(SQL, con);
+                    comand.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+                    comand.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
+                    if (dgvRenglon.Cells["colIdGastos"].Value != DBNull.Value)
+                    {
+                        intGastos = int.Parse(dgvRenglon.Cells["colIdGastos"].Value.ToString());
+                    }
+                    comand.Parameters.AddWithValue("@idGastos", intGastos);
+                    //comando.Parameters.AddWithValue("@telefono", cboDataCliente.SelectedValue);
+                    //comando.Parameters.AddWithValue("@email", cboDataCliente.Text);
+                    //comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
+                    strItem = dgvRenglon.Cells["colItem"].Value.ToString();
+                    comand.Parameters.AddWithValue("@Item", strItem);
+                    strDetalle = dgvRenglon.Cells["colDetalle"].Value.ToString();
+                    comand.Parameters.AddWithValue("@Detalle", strDetalle);
 
-            //// Select the Employees report in the database window:
-            ////oAccess.DoCmd.SelectObject(
-            ////   Access.AcObjectType.acReport, //ObjectType
-            ////   "Presupuesto", //ObjectName
-            ////   true //InDatabaseWindow
-            ////   );
+                    comand.ExecuteNonQuery();
+                }
+            }
 
-            //// Preview a report named Sales:
-            //oAccess.DoCmd.OpenReport(
-            //   "Presupuesto", //ReportName
-            //   Access.AcView.acViewPreview, //View
-            //   System.Reflection.Missing.Value, //FilterName
-            //   System.Reflection.Missing.Value,//WhereCondition
-            //   Access.AcWindowMode.acWindowNormal 
+            Microsoft.Office.Interop.Access.Application oAccess = null;
+            oAccess=new Microsoft.Office.Interop.Access.Application();
+
+            oAccess.OpenCurrentDatabase(Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb", true);
+
+            // Select the Employees report in the database window:
+            //oAccess.DoCmd.SelectObject(
+            //   Access.AcObjectType.acReport, //ObjectType
+            //   "Presupuesto", //ObjectName
+            //   true //InDatabaseWindow
             //   );
-            //oAccess.Visible=true;
+
+            // Preview a report named Sales:
+            oAccess.DoCmd.OpenReport(
+               "Presupuesto", //ReportName
+               Access.AcView.acViewPreview, //View
+               System.Reflection.Missing.Value, //FilterName
+               System.Reflection.Missing.Value,//WhereCondition
+               Access.AcWindowMode.acWindowNormal
+               );
+            oAccess.Visible=true;
 
             ////funciones_Varias f = new funciones_Varias();
             ////int[] ProcesosAntes;
@@ -1182,7 +1207,7 @@ namespace k_presentacion_00
         private void Cargamos_Grilla()
         
         {
-            
+
             //funciones_Varias o = new funciones_Varias();
             DNTablas_Gral lista = new DNTablas_Gral();
 
@@ -1232,7 +1257,10 @@ namespace k_presentacion_00
             _dtItems.Tables.Add(dtItems);
 
             //grdViajes.DataSource = dtItems;
+            //dg.DataSource=null;
             dg.DataSource = _dtItems.Tables[0];
+
+
 
 
             //this.btnAgregar.Enabled = true;
@@ -1258,48 +1286,51 @@ namespace k_presentacion_00
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            int intCotizacion;
-            DataRow rd = _dtItems.Tables[0].NewRow();
-            DataTable dt;
-            dt = (DataTable)this.cboItem.DataSource;
-            DataRow[] Busco_Dato;
-            Busco_Dato = dt.Select("id=" + (Int32)this.cboItem.SelectedValue);
-            //if (Busco_Dato.Count() > 0)
-            //{
-            //    this.cboItem.Text = Busco_Dato[0][2].ToString();
-            //}
-
-            if (this.cboPresupuesto.SelectedIndex >= 0)
+            try
             {
-                intCotizacion = (Int32)this.cboPresupuesto.SelectedValue;
+                int intCotizacion;
+                DataRow rd = _dtItems.Tables[0].NewRow();
+                DataTable dt;
+                dt = (DataTable)this.cboItem.DataSource;
+                DataRow[] Busco_Dato;
+                Busco_Dato = dt.Select("id=" + (Int32)this.cboItem.SelectedValue);
+                //if (Busco_Dato.Count() > 0)
+                //{
+                //    this.cboItem.Text = Busco_Dato[0][2].ToString();
+                //}
+
+                if (this.cboPresupuesto.SelectedIndex >= 0)
+                {
+                    intCotizacion = (Int32)this.cboPresupuesto.SelectedValue;
+                }
+                else
+                {
+                    intCotizacion = 0;
+                }
+
+                rd["IdEmpresa"] = datos.g_idEmpresa;
+                rd["IdCotizacion"] = intCotizacion;
+                rd["IdGastos"] = cboItem.SelectedValue;
+                rd["Item"] = cboItem.Text;
+                rd["Descripcion"] = Busco_Dato[0][2].ToString();
+
+
+                _dtItems.Tables[0].Rows.Add(rd);
+                //dg.DataSource = _dtItems.Tables[0];
             }
-            else
+            catch (Exception s)
             {
-                intCotizacion = 0; 
+
+                MessageBox.Show("No se puede Agregar El mismo Valor 2 Veces", "Atención");
+                Console.WriteLine("Error" + s.GetType());
+                //throw;
+                return;
             }
-
-            rd["IdEmpresa"] = datos.g_idEmpresa;
-            rd["IdCotizacion"] = intCotizacion;
-            rd["IdGastos"] = cboItem.SelectedValue;
-            rd["Item"] = cboItem.Text;
-            rd["Descripcion"] = Busco_Dato[0][2].ToString(); 
-
-
-            _dtItems.Tables[0].Rows.Add(rd);
-            //dg.DataSource = _dtItems.Tables[0];
+            
 
         }
 
-        private void cboPresupuesto_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboDetalleConcepto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void cboItem_SelectedValueChanged(object sender, EventArgs e)
         {
             

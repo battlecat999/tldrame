@@ -156,7 +156,7 @@
             this.cboPresupuesto.Name = "cboPresupuesto";
             this.cboPresupuesto.Size = new System.Drawing.Size(117, 23);
             this.cboPresupuesto.TabIndex = 2;
-            this.cboPresupuesto.SelectedIndexChanged += new System.EventHandler(this.cboPresupuesto_SelectedIndexChanged);
+            
             // 
             // cboContactos
             // 
