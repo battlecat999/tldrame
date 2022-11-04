@@ -90,6 +90,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtTelCliente = new System.Windows.Forms.TextBox();
             this.txtEmailCliente = new System.Windows.Forms.TextBox();
+            this.txtDirecEmpresa = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -738,12 +739,22 @@
             this.txtEmailCliente.TabIndex = 137;
             this.txtEmailCliente.Visible = false;
             // 
+            // txtDirecEmpresa
+            // 
+            this.txtDirecEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(235)))), ((int)(((byte)(128)))));
+            this.txtDirecEmpresa.Location = new System.Drawing.Point(628, 99);
+            this.txtDirecEmpresa.Name = "txtDirecEmpresa";
+            this.txtDirecEmpresa.Size = new System.Drawing.Size(100, 24);
+            this.txtDirecEmpresa.TabIndex = 138;
+            this.txtDirecEmpresa.Visible = false;
+            // 
             // frm_Comerciales_Alta_Presupuestos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(235)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(733, 702);
+            this.Controls.Add(this.txtDirecEmpresa);
             this.Controls.Add(this.txtEmailCliente);
             this.Controls.Add(this.txtTelCliente);
             this.Controls.Add(this.btnAgregar);
@@ -884,5 +895,6 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.TextBox txtTelCliente;
         private System.Windows.Forms.TextBox txtEmailCliente;
+        private System.Windows.Forms.TextBox txtDirecEmpresa;
     }
 }

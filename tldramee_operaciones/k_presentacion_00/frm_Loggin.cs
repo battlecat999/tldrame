@@ -109,6 +109,7 @@ namespace k_presentacion_00
                         guardar_datos_login datos = guardar_datos_login.Instance();
                         datos.g_idEmpresa = objUsuario.IdEmpresa;
                         datos.g_nomEmpresa = objUsuario.NomEmpresa;
+                        //datos.g_empresaDireccion = objUsuario.empresa_direccion;
                         datos.g_idUser = objUsuario.IdUsuario;
                         datos.g_userName = objUsuario.Usuario;
                         datos.g_lastName = objUsuario.LastName;

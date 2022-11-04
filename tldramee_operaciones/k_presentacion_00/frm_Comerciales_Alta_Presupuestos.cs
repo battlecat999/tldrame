@@ -445,6 +445,7 @@ namespace k_presentacion_00
 
             this.txtTelCliente.Text = d.Tel1;
             this.txtEmailCliente.Text = d.Email;
+            this.txtDirecEmpresa.Text = d.Direccion;
 
         }
         private void cmdUC_Click(object sender, EventArgs e)
@@ -1029,7 +1030,7 @@ namespace k_presentacion_00
                 con.Open();
 
                 //tabla ptoCabecera
-                string sql = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa);";
+                string sql = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa,direcEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa,@DireccionEmpresa);";
 
                 OleDbCommand comando = new OleDbCommand(sql, con);
                 comando.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
@@ -1038,6 +1039,7 @@ namespace k_presentacion_00
                 comando.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
                 comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
                 comando.Parameters.AddWithValue("@Nombre", cboContactos.Text);
+               
                 comando.Parameters.AddWithValue("@fechaPto", mFecha.Text);
                 comando.Parameters.AddWithValue("@telefono", txtTelCliente.Text);
                 comando.Parameters.AddWithValue("@email", txtEmailCliente.Text);
@@ -1049,6 +1051,7 @@ namespace k_presentacion_00
                 comando.Parameters.AddWithValue("@puesto", datos.g_funciones);
                 comando.Parameters.AddWithValue("@emailEmpresa", datos.g_email);
                 comando.Parameters.AddWithValue("@telefonoEmpresa", datos.g_telefono1);
+                comando.Parameters.AddWithValue("@DireccionEmpresa", txtDirecEmpresa.Text);
 
 
                 comando.ExecuteNonQuery();

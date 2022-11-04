@@ -20,6 +20,7 @@ namespace k_negocio_00
         private string _Pass;
         private int _idEmpresa;
         private string _nomEmpresa;
+        //private string _empresaDireccion;
         private int _idUsuario;
         private string _lastName;
         private string _email;
@@ -55,6 +56,7 @@ namespace k_negocio_00
 
         public int IdEmpresa { get => _idEmpresa; set => _idEmpresa = value; }
         public string NomEmpresa { get => _nomEmpresa; set => _nomEmpresa = value; }
+        //public string empresa_direccion { get => _empresaDireccion; set => _empresaDireccion = value; }
         public int IdUsuario { get => _idUsuario; set => _idUsuario = value; }
         public string LastName { get => _lastName; set => _lastName = value; }
         public string Email { get => _email; set => _email = value; }
@@ -76,17 +78,19 @@ namespace k_negocio_00
             {
                 IdEmpresa = Convert.ToInt32(dt.Rows[0]["empresa_ID"]);
                 NomEmpresa = dt.Rows[0]["empresa_nombre"].ToString();
-                IdUsuario= Convert.ToInt32(dt.Rows[0]["idUser"]);
+                //empresa_direccion = dt.Rows[0]["empresa_direccion"].ToString();
+                IdUsuario = Convert.ToInt32(dt.Rows[0]["idUser"]);
                 LastName = dt.Rows[0]["lastName"].ToString();
                 Email = dt.Rows[0]["userEmail"].ToString();
                 Permiso= Convert.ToInt32(dt.Rows[0]["kind"]);
                 funciones= dt.Rows[0]["funciones"].ToString();
                 telefono1 = dt.Rows[0]["telefono1"].ToString();
                 nombreUser = dt.Rows[0]["nombreUser"].ToString();
+
             }   
             
                 
-           
+            
             return dt;
             
         }
