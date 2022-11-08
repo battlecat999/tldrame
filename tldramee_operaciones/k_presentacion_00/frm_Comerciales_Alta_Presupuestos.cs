@@ -1017,6 +1017,7 @@ namespace k_presentacion_00
 
         private void cmdImprimir_Click(object sender, EventArgs e)
         {
+            string SQL;
             int intGastos = 0;
             string strItem = string.Empty;
             string strDetalle = string.Empty;
@@ -1029,40 +1030,49 @@ namespace k_presentacion_00
             {
                 con.Open();
 
+                SQL = "DELETE FROM ptoCabecera;";
+                OleDbCommand comandoo = new OleDbCommand(SQL, con);
+                comandoo.ExecuteNonQuery();
+
+                SQL = "DELETE FROM ptoItems;";
+                comandoo = new OleDbCommand(SQL, con);
+
+                comandoo.ExecuteNonQuery();
+
                 //tabla ptoCabecera
-                string sql = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa,direcEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa,@DireccionEmpresa);";
+                SQL = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa,direcEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa,@DireccionEmpresa);";
 
-                OleDbCommand comando = new OleDbCommand(sql, con);
-                comando.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
-                comando.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
-                comando.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
-                comando.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
-                comando.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
-                comando.Parameters.AddWithValue("@Nombre", cboContactos.Text);
-               
-                comando.Parameters.AddWithValue("@fechaPto", mFecha.Text);
-                comando.Parameters.AddWithValue("@telefono", txtTelCliente.Text);
-                comando.Parameters.AddWithValue("@email", txtEmailCliente.Text);
-                comando.Parameters.AddWithValue("@descServicio", cboModalidad.Text + "-" + cboRutas.Text);
-                comando.Parameters.AddWithValue("@valorUni", txtVenta.Text + "+ IVA");
+                OleDbCommand comandos = new OleDbCommand(SQL, con);
+                comandos.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+                comandos.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
+                comandos.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
+                comandos.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
+                comandos.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
+                comandos.Parameters.AddWithValue("@Nombre", cboContactos.Text);
 
-                comando.Parameters.AddWithValue("@validez", k_dias_Validez.Text);
-                comando.Parameters.AddWithValue("@nombreFirma", datos.g_nombreUser);
-                comando.Parameters.AddWithValue("@puesto", datos.g_funciones);
-                comando.Parameters.AddWithValue("@emailEmpresa", datos.g_email);
-                comando.Parameters.AddWithValue("@telefonoEmpresa", datos.g_telefono1);
-                comando.Parameters.AddWithValue("@DireccionEmpresa", txtDirecEmpresa.Text);
+                comandos.Parameters.AddWithValue("@fechaPto", mFecha.Text);
+                comandos.Parameters.AddWithValue("@telefono", txtTelCliente.Text);
+                comandos.Parameters.AddWithValue("@email", txtEmailCliente.Text);
+                comandos.Parameters.AddWithValue("@descServicio", cboModalidad.Text + "-" + cboRutas.Text);
+                comandos.Parameters.AddWithValue("@valorUni", txtVenta.Text + "+ IVA");
+
+                comandos.Parameters.AddWithValue("@validez", k_dias_Validez.Text);
+                comandos.Parameters.AddWithValue("@nombreFirma", datos.g_nombreUser);
+                comandos.Parameters.AddWithValue("@puesto", datos.g_funciones);
+                comandos.Parameters.AddWithValue("@emailEmpresa", datos.g_email);
+                comandos.Parameters.AddWithValue("@telefonoEmpresa", datos.g_telefono1);
+                comandos.Parameters.AddWithValue("@DireccionEmpresa", txtDirecEmpresa.Text);
 
 
-                comando.ExecuteNonQuery();
+                comandos.ExecuteNonQuery();
 
                 //tabla ptoItems insertamos en tabla y recorremos dg para los datos de conceptos EDD 2022/02/11
                 foreach (DataGridViewRow dgvRenglon in dg.Rows)
                 {
-                    string SQL = "INSERT INTO ptoItems (idEmpresa, idPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @idPresupuesto, @idGastos,@Item, @Detalle);";
+                    string ssql = "INSERT INTO ptoItems (idEmpresa, idPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @idPresupuesto, @idGastos,@Item, @Detalle);";
 
 
-                    OleDbCommand comand = new OleDbCommand(SQL, con);
+                    OleDbCommand comand = new OleDbCommand(ssql, con);
                     comand.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
                     comand.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
                     if (dgvRenglon.Cells["colIdGastos"].Value != DBNull.Value)
