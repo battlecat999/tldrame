@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Loggin));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.picLoco = new System.Windows.Forms.PictureBox();
             this.txtuser = new System.Windows.Forms.TextBox();
             this.txtpass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,11 +41,10 @@
             this.lblErrorLogin = new System.Windows.Forms.Label();
             this.pMinimizar = new System.Windows.Forms.PictureBox();
             this.pCerrar = new System.Windows.Forms.PictureBox();
-            this.picLoco = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLoco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLoco)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,6 +58,17 @@
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
+            // picLoco
+            // 
+            this.picLoco.BackColor = System.Drawing.Color.Black;
+            this.picLoco.Image = global::k_presentacion_00.Properties.Resources.Logo1;
+            this.picLoco.Location = new System.Drawing.Point(3, 103);
+            this.picLoco.Name = "picLoco";
+            this.picLoco.Size = new System.Drawing.Size(249, 117);
+            this.picLoco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picLoco.TabIndex = 1;
+            this.picLoco.TabStop = false;
+            // 
             // txtuser
             // 
             this.txtuser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
@@ -69,6 +80,7 @@
             this.txtuser.Size = new System.Drawing.Size(408, 19);
             this.txtuser.TabIndex = 1;
             this.txtuser.Text = "USUARIO";
+            this.txtuser.TextChanged += new System.EventHandler(this.txtuser_TextChanged);
             this.txtuser.Enter += new System.EventHandler(this.txtuser_Enter);
             this.txtuser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtuser_KeyDown);
             this.txtuser.Leave += new System.EventHandler(this.txtuser_Leave);
@@ -186,17 +198,6 @@
             this.pCerrar.TabStop = false;
             this.pCerrar.Click += new System.EventHandler(this.pCerrar_Click);
             // 
-            // picLoco
-            // 
-            this.picLoco.BackColor = System.Drawing.Color.Black;
-            this.picLoco.Image = global::k_presentacion_00.Properties.Resources.Logo1;
-            this.picLoco.Location = new System.Drawing.Point(3, 103);
-            this.picLoco.Name = "picLoco";
-            this.picLoco.Size = new System.Drawing.Size(249, 117);
-            this.picLoco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picLoco.TabIndex = 1;
-            this.picLoco.TabStop = false;
-            // 
             // frm_Loggin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,9 +223,9 @@
             this.Text = "Login";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmLogin_MouseDown);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLoco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLoco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

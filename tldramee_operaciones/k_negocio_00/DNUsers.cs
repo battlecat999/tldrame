@@ -20,7 +20,6 @@ namespace k_negocio_00
         private string _Pass;
         private int _idEmpresa;
         private string _nomEmpresa;
-        //private string _empresaDireccion;
         private int _idUsuario;
         private string _lastName;
         private string _email;
@@ -28,6 +27,7 @@ namespace k_negocio_00
         private string _telefono1;
         private string _funciones;
         private string _nombreUser;
+        private string _empresaDireccion;
 
 
         //todas las demas....
@@ -56,7 +56,6 @@ namespace k_negocio_00
 
         public int IdEmpresa { get => _idEmpresa; set => _idEmpresa = value; }
         public string NomEmpresa { get => _nomEmpresa; set => _nomEmpresa = value; }
-        //public string empresa_direccion { get => _empresaDireccion; set => _empresaDireccion = value; }
         public int IdUsuario { get => _idUsuario; set => _idUsuario = value; }
         public string LastName { get => _lastName; set => _lastName = value; }
         public string Email { get => _email; set => _email = value; }
@@ -64,6 +63,7 @@ namespace k_negocio_00
         public string telefono1 { get => _telefono1; set => _telefono1 = value; }
         public string funciones { get => _funciones; set => _funciones = value; }
         public string nombreUser { get => _nombreUser; set => _nombreUser = value; }
+        public string direcEmpresa { get => _empresaDireccion; set => _empresaDireccion = value; }
 
 
         //CONSTRUCTOR
@@ -78,7 +78,6 @@ namespace k_negocio_00
             {
                 IdEmpresa = Convert.ToInt32(dt.Rows[0]["empresa_ID"]);
                 NomEmpresa = dt.Rows[0]["empresa_nombre"].ToString();
-                //empresa_direccion = dt.Rows[0]["empresa_direccion"].ToString();
                 IdUsuario = Convert.ToInt32(dt.Rows[0]["idUser"]);
                 LastName = dt.Rows[0]["lastName"].ToString();
                 Email = dt.Rows[0]["userEmail"].ToString();
@@ -86,6 +85,7 @@ namespace k_negocio_00
                 funciones= dt.Rows[0]["funciones"].ToString();
                 telefono1 = dt.Rows[0]["telefono1"].ToString();
                 nombreUser = dt.Rows[0]["nombreUser"].ToString();
+                direcEmpresa = dt.Rows[0]["direcEmpresa"].ToString();
 
             }   
             

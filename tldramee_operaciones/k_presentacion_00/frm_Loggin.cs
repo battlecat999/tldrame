@@ -105,11 +105,10 @@ namespace k_presentacion_00
                     Loguear = objUsuario.iniciarSesion();
                     if (Loguear.Rows.Count >0)
                     {
-                        //guardo los datos del login
+                        //guardo los datos del login EDD 2022-11-09
                         guardar_datos_login datos = guardar_datos_login.Instance();
                         datos.g_idEmpresa = objUsuario.IdEmpresa;
                         datos.g_nomEmpresa = objUsuario.NomEmpresa;
-                        //datos.g_empresaDireccion = objUsuario.empresa_direccion;
                         datos.g_idUser = objUsuario.IdUsuario;
                         datos.g_userName = objUsuario.Usuario;
                         datos.g_lastName = objUsuario.LastName;
@@ -118,6 +117,7 @@ namespace k_presentacion_00
                         datos.g_telefono1 = objUsuario.telefono1;
                         datos.g_funciones = objUsuario.funciones;
                         datos.g_nombreUser = objUsuario.nombreUser;
+                        datos.g_empresaDireccion = objUsuario.direcEmpresa;
                         //MPS20210216
                         datos.g_Ruta_Firma_HTMP = ConfigurationManager.AppSettings["Ruta_Firma_html"].ToString();
                         datos.g_Ruta_Comp_Anticipos = ConfigurationManager.AppSettings["ruta_anticipos_pdf"].ToString();
@@ -180,6 +180,11 @@ namespace k_presentacion_00
                 txtpass.Text = "1";
                 btnAcceder_Click(sender, e);
             }
+        }
+
+        private void txtuser_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

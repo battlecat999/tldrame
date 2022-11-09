@@ -77,7 +77,7 @@ namespace k_presentacion_00
             cargarcombos();
 
             iniciarGrilla();
-            ///*Cargamos_Grilla*/();
+            Cargamos_Grilla();
             //this.cboPresupuesto.SelectedIndexChanged += new System.EventHandler(cboPresupuesto_SelectedIndexChanged);
             this.cboTipoServicio.SelectedIndexChanged += new System.EventHandler(cboTipoServicio_SelectedIndexChanged);
             this.cboRutas.SelectedIndexChanged += new System.EventHandler(cboRutas_SelectedIndexChanged);
@@ -609,32 +609,32 @@ namespace k_presentacion_00
 
                
 
-                datos.g_idEmpresa = int.Parse(dgvRenglon.Cells["IdEmpresa"].Value.ToString());
+                datos.g_idEmpresa = int.Parse(dgvRenglon.Cells["colIdEmpresa"].Value.ToString());
                 if (intCotizacion == 0)
                 {
-                    intCotizacion = int.Parse(dgvRenglon.Cells["IdCotizacion"].Value.ToString());
+                    intCotizacion = int.Parse(dgvRenglon.Cells["colIdCotizacion"].Value.ToString());
                 }
                 else
                 {
                     intCotizacion = Convert.ToInt32(this.cboPresupuesto.SelectedValue);
                 }
                 //EDD 2022/03/10 le pasamos el valor corespondiente//
-                intGastos = int.Parse(dgvRenglon.Cells["IdGastos"].Value.ToString());
-                strItem = dgvRenglon.Cells["Item"].Value.ToString();
-                strDetalle = dgvRenglon.Cells["Descripcion"].Value.ToString();
+                intGastos = int.Parse(dgvRenglon.Cells["colIdGastos"].Value.ToString());
+                strItem = dgvRenglon.Cells["colItem"].Value.ToString();
+                strDetalle = dgvRenglon.Cells["colDetalle"].Value.ToString();
                 strSP_Detalle = "SP_Cotizacion_Gastos";
                 strEliminoDetalle = "SP_Cotizacion_Gastos_Delete";
 
-                if (dgvRenglon.Cells["IdEmpresa"].Value != DBNull.Value)
+                if (dgvRenglon.Cells["colIdEmpresa"].Value != DBNull.Value)
                 {
-                    datos.g_idEmpresa = int.Parse(dgvRenglon.Cells["IdEmpresa"].Value.ToString());
+                    datos.g_idEmpresa = int.Parse(dgvRenglon.Cells["colIdEmpresa"].Value.ToString());
                 }
 
-                if (dgvRenglon.Cells["IdCotizacion"].Value != DBNull.Value)
+                if (dgvRenglon.Cells["colIdCotizacion"].Value != DBNull.Value)
                 {
                     if (intCotizacion == 0)
                     {
-                        intCotizacion = int.Parse(dgvRenglon.Cells["IdCotizacion"].Value.ToString());
+                        intCotizacion = int.Parse(dgvRenglon.Cells["colIdCotizacion"].Value.ToString());
                     }
                     else
                     {
@@ -642,19 +642,19 @@ namespace k_presentacion_00
                     }
                 }
 
-                if (dgvRenglon.Cells["IdGastos"].Value != DBNull.Value)
+                if (dgvRenglon.Cells["colIdGastos"].Value != DBNull.Value)
                 {
-                    intGastos = int.Parse(dgvRenglon.Cells["IdGastos"].Value.ToString());
+                    intGastos = int.Parse(dgvRenglon.Cells["colIdGastos"].Value.ToString());
                 }
 
-                if (dgvRenglon.Cells["Item"].Value != DBNull.Value)
+                if (dgvRenglon.Cells["colItem"].Value != DBNull.Value)
                 {
-                    strItem = dgvRenglon.Cells["Item"].Value.ToString();
+                    strItem = dgvRenglon.Cells["colItem"].Value.ToString();
                 }
 
-                if (dgvRenglon.Cells["Descripcion"].Value != DBNull.Value)
+                if (dgvRenglon.Cells["colDetalle"].Value != DBNull.Value)
                 {
-                    strDetalle = dgvRenglon.Cells["Descripcion"].Value.ToString();
+                    strDetalle = dgvRenglon.Cells["colDetalle"].Value.ToString();
                 }
 
                 //EDD 2022/03/10
@@ -667,19 +667,6 @@ namespace k_presentacion_00
             DNTablas_Gral ej = new DNTablas_Gral();
             termino = ej.DN_Grabar_Cab_Detalle(qCab, qDet, qDetElimino);
             
-            //if (esNuevo == true)
-            //{
-            //    strSP_Cabecera = "SP_Cotizacion_Gastos";
-
-
-            //}
-            //else
-            //{
-            //    strSP_Cabecera = "SP_Cotizacion_Gastos";
-
-
-            //}
-
             //VARIABLES
             if ((Int32)this.cboEstado.SelectedValue == 2)
             {
@@ -1061,7 +1048,7 @@ namespace k_presentacion_00
                 comandos.Parameters.AddWithValue("@puesto", datos.g_funciones);
                 comandos.Parameters.AddWithValue("@emailEmpresa", datos.g_email);
                 comandos.Parameters.AddWithValue("@telefonoEmpresa", datos.g_telefono1);
-                comandos.Parameters.AddWithValue("@DireccionEmpresa", txtDirecEmpresa.Text);
+                comandos.Parameters.AddWithValue("@DireccionEmpresa", datos.g_empresaDireccion);
 
 
                 comandos.ExecuteNonQuery();
@@ -1329,7 +1316,7 @@ namespace k_presentacion_00
 
 
                 _dtItems.Tables[0].Rows.Add(rd);
-                //dg.DataSource = _dtItems.Tables[0];
+                
             }
             catch (Exception s)
             {

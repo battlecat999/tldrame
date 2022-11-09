@@ -20,7 +20,7 @@ namespace k_presentacion_00
         }
         public int g_idEmpresa { get; set; }
         public string g_nomEmpresa { get; set; }
-        //public string g_empresaDireccion { get; set; }
+        public string g_empresaDireccion { get; set; }
         public int g_idUser { get; set; }
         public string g_userName { get; set; }
         public string g_lastName { get; set; }
