@@ -1228,11 +1228,11 @@ namespace k_presentacion_00
 
                         strNumero_Precinto = dgvRenglon.Cells["Numero_Precinto"].Value.ToString();
                         decPeso = decimal.Parse(dgvRenglon.Cells["Peso_Toneladas"].Value.ToString());
-
                         datFecha_Posicion = DateTime.Parse(dgvRenglon.Cells["Fecha_Posicion"].Value.ToString());
                         datHora_Posicion = dgvRenglon.Cells["Hora_Posicion"].Value.ToString();
                         datFecha_Retiro = DateTime.Parse(dgvRenglon.Cells["Fecha_Retiro"].Value.ToString());
-                    //                        datHora_Retiro = DateTime.Parse(dgvRenglon.Cells["Hora_Retiro"].Value.ToString());
+                        
+                        //datHora_Retiro = DateTime.Parse(dgvRenglon.Cells["Hora_Retiro"].Value.ToString());
                         intMoro = Convert.ToInt32(dgvRenglon.Cells["Especial"].Value);
 
                 cmdCommand.CommandText = "SP_OT_Item_Alta";
@@ -1266,12 +1266,9 @@ namespace k_presentacion_00
                         {
                             cmdCommand.Parameters["strNumero_Precinto"].Value = strNumero_Precinto;
                         }
-
-
-                        cmdCommand.Parameters["decPeso"].Value = decPeso;
-                        cmdCommand.Parameters["intID_Unidad_Medida"].Value = DBNull.Value;
-                        cmdCommand.Parameters["decVenta"].Value = decImporte;
-
+                cmdCommand.Parameters["decPeso"].Value = decPeso;
+                cmdCommand.Parameters["intID_Unidad_Medida"].Value = DBNull.Value;
+                cmdCommand.Parameters["decVenta"].Value = decImporte;
                 cmdCommand.Parameters["datFecha_Posicion"].Value = datFecha_Posicion.ToString("yyyy-MM-dd");
                 cmdCommand.Parameters["datHora_Posicion"].Value = datHora_Posicion.ToString();
                     //cmdCommand.Parameters["datFecha_Retiro"].Value = datFecha_Retiro.ToString("yyyy-MM-dd");
