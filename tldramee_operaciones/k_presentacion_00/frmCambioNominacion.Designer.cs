@@ -584,8 +584,7 @@
             this.lblBlackList.Name = "lblBlackList";
             this.lblBlackList.Size = new System.Drawing.Size(400, 184);
             this.lblBlackList.TabIndex = 71;
-            this.lblBlackList.Text = "XXX SE ENCUENTRA BLOQUEADO PARA REALIZAR VIAJES. COMUNICARSE CON MAXIMILIANO RUAT" +
-    "A.";
+            this.lblBlackList.Text = "XXX SE ENCUENTRA BLOQUEADO PARA REALIZAR VIAJES. COMUNICARSE CON ADMINISTRACION";
             this.lblBlackList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblBlackList.Visible = false;
             // 

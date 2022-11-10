@@ -140,6 +140,13 @@ namespace k_presentacion_00
             dgv.Columns[17].Width = 55;
             dgv.Columns[18].Width = 55;
 
+            DataGridViewColumn colBtnNominacion = new DataGridViewButtonColumn();
+
+            dgv.Columns.Add(colBtnNominacion);
+            dgv.Columns[20].Name = "Cambio Nominacion";
+            dgv.Columns[20].HeaderText = "Cambio Nominacion";
+
+
             if (MessageBox.Show("¿Desea Exportar a Excel?", "Atención", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 DataTable dt = (DataTable)this.dgv.DataSource;
@@ -149,7 +156,47 @@ namespace k_presentacion_00
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            foreach (DataGridViewRow dgvRenglon in dgv.Rows)
+            {
+                int intOt;
+                int intItem;
+                string strRuta;
+                int intCompra;
+                
+                frmCambioNominacion f = new frmCambioNominacion();
 
+                intOt = int.Parse(dgvRenglon.Cells["OT"].Value.ToString());
+                intItem= int.Parse(dgvRenglon.Cells["Items"].Value.ToString());
+                strRuta = dgvRenglon.Cells["Ruta"].Value.ToString();
+                intCompra =  dgvRenglon.Cells["Ruta"].Value.ToString();
+
+
+                f._Empresa = datos.g_idEmpresa;
+                f._OT = intOt;
+                f._Item = intItem;
+                f._Corredor = Convert.ToInt32(strRuta);
+                f._Costo = _Costo;
+                f._codigo_Transportista = Convert.ToInt32(this.cboTransportista.SelectedValue);
+                f._nombre_Transportista = this.cboTransportista.Text;
+                f._codigo_Tractor = Convert.ToInt32(this.txtPatente.Text);
+                f._nombre_Tractor = this.txtPatente.Text;
+                f._codigo_Chasis = Convert.ToInt32(this.lbl_ID_Chasis.Text);
+                f._nombre_Chasis = this.lblChasis.Text;
+                f._codigo_Chofer = Convert.ToInt32(this.lbl_ID_Chofer.Text);
+                f._nombre_Chofer = this.lblChofer.Text;
+                f._BLBooking = this.txtBL.Text;
+                f._IdCliente = Convert.ToInt32(cboClientes.SelectedValue);
+                //dde 08/09/22
+                f._FechaPosicion = this.lblFechaPosicion.Text;
+                f._FechaRetiro = this.lblFechaRetiro.Text;
+                f._HoraPosicion = this.lblHoraPosicion.Text;
+
+
+                f.ShowDialog(this);
+
+                this.Close();
+            }
+           
         }
 
         private void frmBuscador_OT_Load(object sender, EventArgs e)
@@ -158,6 +205,11 @@ namespace k_presentacion_00
         }
 
         private void cboClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
         }
