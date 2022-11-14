@@ -162,34 +162,52 @@ namespace k_presentacion_00
                 int intItem;
                 string strRuta;
                 int intCompra;
+                int intcodTractor;
+                int intcodChasis;
+                string strNombreTractor;
+                string strNombreChasis;
+                string strnombreChofer;
+                int intChofer;
+                string strBooking;
+                //DateTime datfechaPos;
                 
+
                 frmCambioNominacion f = new frmCambioNominacion();
 
                 intOt = int.Parse(dgvRenglon.Cells["OT"].Value.ToString());
                 intItem= int.Parse(dgvRenglon.Cells["Items"].Value.ToString());
                 strRuta = dgvRenglon.Cells["Ruta"].Value.ToString();
-                intCompra =  dgvRenglon.Cells["Ruta"].Value.ToString();
+                intCompra = int.Parse(dgvRenglon.Cells["Compra"].Value.ToString());
+                intcodTractor = int.Parse(dgvRenglon.Cells["codTractor"].Value.ToString());
+                intcodChasis = int.Parse(dgvRenglon.Cells["Chasis"].Value.ToString());
+                strNombreTractor = dgvRenglon.Cells["nombreTractor"].Value.ToString();
+                strNombreChasis = dgvRenglon.Cells["nomChasis"].Value.ToString();
+                intChofer = int.Parse(dgvRenglon.Cells["codChofer"].Value.ToString());
+                strnombreChofer = dgvRenglon.Cells["Chofer"].Value.ToString();
+                strBooking = dgvRenglon.Cells["Booking"].Value.ToString();
+                //datfechaPos = 
+
 
 
                 f._Empresa = datos.g_idEmpresa;
                 f._OT = intOt;
                 f._Item = intItem;
                 f._Corredor = Convert.ToInt32(strRuta);
-                f._Costo = _Costo;
+                f._Costo = intCompra;
                 f._codigo_Transportista = Convert.ToInt32(this.cboTransportista.SelectedValue);
                 f._nombre_Transportista = this.cboTransportista.Text;
-                f._codigo_Tractor = Convert.ToInt32(this.txtPatente.Text);
-                f._nombre_Tractor = this.txtPatente.Text;
-                f._codigo_Chasis = Convert.ToInt32(this.lbl_ID_Chasis.Text);
-                f._nombre_Chasis = this.lblChasis.Text;
-                f._codigo_Chofer = Convert.ToInt32(this.lbl_ID_Chofer.Text);
-                f._nombre_Chofer = this.lblChofer.Text;
-                f._BLBooking = this.txtBL.Text;
+                f._codigo_Tractor = Convert.ToInt32(intcodTractor);
+                f._nombre_Tractor = strNombreTractor;
+                f._codigo_Chasis = Convert.ToInt32(intcodChasis);
+                f._nombre_Chasis = strNombreChasis;
+                f._codigo_Chofer = Convert.ToInt32(intChofer);
+                f._nombre_Chofer = strnombreChofer;
+                f._BLBooking = strBooking;
                 f._IdCliente = Convert.ToInt32(cboClientes.SelectedValue);
                 //dde 08/09/22
-                f._FechaPosicion = this.lblFechaPosicion.Text;
-                f._FechaRetiro = this.lblFechaRetiro.Text;
-                f._HoraPosicion = this.lblHoraPosicion.Text;
+                //f._FechaPosicion = this.lblFechaPosicion.Text;
+                //f._FechaRetiro = this.lblFechaRetiro.Text;
+                //f._HoraPosicion = this.lblHoraPosicion.Text;
 
 
                 f.ShowDialog(this);

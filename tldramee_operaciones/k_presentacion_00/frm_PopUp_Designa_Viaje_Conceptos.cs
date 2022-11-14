@@ -1417,7 +1417,7 @@ namespace k_presentacion_00
             f._codigo_Transportista = Convert.ToInt32(this.lbl_ID_Transportista.Text) ;
             f._nombre_Transportista = this.lblTransportista.Text ;
             f._codigo_Tractor = Convert.ToInt32(this.lbl_ID_Tractor.Text);
-            f._nombre_Tractor = this.lblTractor.Text; ;
+            f._nombre_Tractor = this.lblTractor.Text; 
             f._codigo_Chasis = Convert.ToInt32(this.lbl_ID_Chasis.Text);
             f._nombre_Chasis = this.lblChasis.Text;
             f._codigo_Chofer = Convert.ToInt32(this.lbl_ID_Chofer.Text);
