@@ -39,6 +39,7 @@ namespace k_presentacion_00
         public int _IdCliente { get; set; }
         public string _BLBooking { get; set; }
         public string _groupBox1 { get; set; }
+        public int _viene_De { get; set; }
 
         guardar_datos_login datos = guardar_datos_login.Instance();
 
@@ -105,6 +106,15 @@ namespace k_presentacion_00
             //Carga_Combo_Choferes();
 
             IsBlackList = false;
+            if (_viene_De == 1)
+            {
+                this.Height = 476;
+
+            }
+            else
+            {
+                this.Height = 787;
+            }
 
             Cursor.Current = Cursors.Default;
         }
