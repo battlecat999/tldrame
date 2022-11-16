@@ -10,6 +10,14 @@ namespace k_presentacion_00
 {
     public partial class frmBuscador_OT : Form
     {
+        public int _OT { get; set; }
+        public int _Item { get; set; }
+        public int _Corredor { get; set; }
+        public Decimal _Costo { get; set; }
+        public int _IdCliente { get; set; }
+
+        BindingSource _bindingSource = new BindingSource();
+
         int idEmpresa;
         guardar_datos_login datos = guardar_datos_login.Instance();
 
@@ -50,9 +58,11 @@ namespace k_presentacion_00
             DataTable dtOT;
             DNTablas_Gral lista = new DNTablas_Gral();
             MySqlParameter[] Parametros = new MySqlParameter[9];
+            DataGridViewButtonColumn colBtnNominacion = new DataGridViewButtonColumn();
 
-            //Empresa
-            Parametros[0] = new MySqlParameter("intEmpresa", datos.g_idEmpresa);
+            dgv.Columns.Clear();
+           //Empresa
+           Parametros[0] = new MySqlParameter("intEmpresa", datos.g_idEmpresa);
             //OT
             if (this.txtNroOT.Text != string.Empty)
             {
@@ -123,7 +133,7 @@ namespace k_presentacion_00
             }
 
             dtOT = lista.Get_Datos("SP_Buscador_OT", Parametros); //, parameters);
-
+            
             dgv.DataSource = dtOT;
             dgv.Columns[0].Width = 45;
             dgv.Columns[1].Width = 45;
@@ -138,13 +148,17 @@ namespace k_presentacion_00
             dgv.Columns[13].Width = 55;
             dgv.Columns[16].Width = 55;
             dgv.Columns[17].Width = 55;
-            dgv.Columns[18].Width = 55;
-
-            DataGridViewColumn colBtnNominacion = new DataGridViewButtonColumn();
+            dgv.Columns[18].Width = 55;//desc
+            dgv.Columns[20].Visible = false;
+            dgv.Columns[21].Visible = false;
+            dgv.Columns[22].Visible = false;
+            dgv.Columns[23].Visible = false;
+            dgv.Columns[24].Visible = false;
 
             dgv.Columns.Add(colBtnNominacion);
-            dgv.Columns[20].Name = "Cambio Nominacion";
-            dgv.Columns[20].HeaderText = "Cambio Nominacion";
+            colBtnNominacion.Name = "Cambio Nominacion";
+            //dgv.Columns[20].Name = "Cambio Nominacion";
+            //dgv.Columns[20].HeaderText = "Cambio Nominacion";
 
 
             if (MessageBox.Show("¿Desea Exportar a Excel?", "Atención", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -156,11 +170,11 @@ namespace k_presentacion_00
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            foreach (DataGridViewRow dgvRenglon in dgv.Rows)
+            foreach (DataGridViewRow dgvRenglon in dgv.Rows) //Recorremos datagridview y pasamos datos a frmCambioNominacion// EDD 2022-11-15
             {
                 int intOt;
                 int intItem;
-                string strRuta;
+                int intCorredor;
                 int intCompra;
                 int intcodTractor;
                 int intcodChasis;
@@ -169,33 +183,36 @@ namespace k_presentacion_00
                 string strnombreChofer;
                 int intChofer;
                 string strBooking;
-                //DateTime datfechaPos;
-                
-
+                string strfechaPos;
+                string strfechaRet;
+                string strHoraPosic;
+                string strTransportista;
                 frmCambioNominacion f = new frmCambioNominacion();
-
+                
                 intOt = int.Parse(dgvRenglon.Cells["OT"].Value.ToString());
                 intItem= int.Parse(dgvRenglon.Cells["Items"].Value.ToString());
-                strRuta = dgvRenglon.Cells["Ruta"].Value.ToString();
+                intCorredor = int.Parse(dgvRenglon.Cells["idCorredor"].Value.ToString());
                 intCompra = int.Parse(dgvRenglon.Cells["Compra"].Value.ToString());
                 intcodTractor = int.Parse(dgvRenglon.Cells["codTractor"].Value.ToString());
-                intcodChasis = int.Parse(dgvRenglon.Cells["Chasis"].Value.ToString());
-                strNombreTractor = dgvRenglon.Cells["nombreTractor"].Value.ToString();
-                strNombreChasis = dgvRenglon.Cells["nomChasis"].Value.ToString();
+                intcodChasis = int.Parse(dgvRenglon.Cells["CodChasis"].Value.ToString());
+                strNombreTractor = dgvRenglon.Cells["tractor"].Value.ToString();
+                strNombreChasis = dgvRenglon.Cells["Chasis"].Value.ToString();
                 intChofer = int.Parse(dgvRenglon.Cells["codChofer"].Value.ToString());
                 strnombreChofer = dgvRenglon.Cells["Chofer"].Value.ToString();
                 strBooking = dgvRenglon.Cells["Booking"].Value.ToString();
-                //datfechaPos = 
+                strfechaPos = dgvRenglon.Cells["Posic"].Value.ToString();
+                strfechaRet = dgvRenglon.Cells["Retiro"].Value.ToString();
+                strHoraPosic = dgvRenglon.Cells["HoraPosic"].Value.ToString();
+                strTransportista = dgvRenglon.Cells["Transportista"].Value.ToString();
 
-
-
+                //EDD 2022-11-15
                 f._Empresa = datos.g_idEmpresa;
                 f._OT = intOt;
                 f._Item = intItem;
-                f._Corredor = Convert.ToInt32(strRuta);
+                f._Corredor = intCorredor;
                 f._Costo = intCompra;
                 f._codigo_Transportista = Convert.ToInt32(this.cboTransportista.SelectedValue);
-                f._nombre_Transportista = this.cboTransportista.Text;
+                f._nombre_Transportista = strTransportista;
                 f._codigo_Tractor = Convert.ToInt32(intcodTractor);
                 f._nombre_Tractor = strNombreTractor;
                 f._codigo_Chasis = Convert.ToInt32(intcodChasis);
@@ -203,16 +220,15 @@ namespace k_presentacion_00
                 f._codigo_Chofer = Convert.ToInt32(intChofer);
                 f._nombre_Chofer = strnombreChofer;
                 f._BLBooking = strBooking;
-                f._IdCliente = Convert.ToInt32(cboClientes.SelectedValue);
-                //dde 08/09/22
-                //f._FechaPosicion = this.lblFechaPosicion.Text;
-                //f._FechaRetiro = this.lblFechaRetiro.Text;
-                //f._HoraPosicion = this.lblHoraPosicion.Text;
-
-
+                f._IdCliente = _IdCliente;
+                f._FechaPosicion = Convert.ToDateTime(strfechaPos).ToString("dd-MM-yyyy"); 
+                f._FechaRetiro = Convert.ToDateTime(strfechaRet).ToString("dd-MM-yyyy"); 
+                f._HoraPosicion = strHoraPosic;
+                
                 f.ShowDialog(this);
 
                 this.Close();
+               
             }
            
         }

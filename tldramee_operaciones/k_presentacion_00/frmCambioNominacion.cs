@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace k_presentacion_00
 {
-    //dde 08/09/22 declaramos objetos traemos sus datos _FechaPosicion _FechaRetiro _HoraPosicion// 
+    //EDD 08/09/22 declaramos objetos traemos sus datos _FechaPosicion _FechaRetiro _HoraPosicion// 
     public partial class frmCambioNominacion : Form
     {
         bool IsBlackList = false;
@@ -38,6 +38,8 @@ namespace k_presentacion_00
         public Decimal _Costo { get; set; }
         public int _IdCliente { get; set; }
         public string _BLBooking { get; set; }
+        public string _groupBox1 { get; set; }
+
         guardar_datos_login datos = guardar_datos_login.Instance();
 
         public frmCambioNominacion()
@@ -78,6 +80,7 @@ namespace k_presentacion_00
             this.cboHoraPosicion.Text = _HoraPosicion.ToString();
             this.lblOT.Text = _OT.ToString();
             this.lblItem.Text = _Item.ToString();
+
 
             this.lbl_Codigo_Transportista.Text = _codigo_Transportista.ToString();
             this.lbl_Codigo_Tractor.Text = _codigo_Tractor.ToString();
@@ -123,16 +126,20 @@ namespace k_presentacion_00
             DataTable p;
 
             p = lista.Get_Datos("SP_ItemOT_Tiene_Anticipo_Factura", parameters);
-            strTieneAnticipo = p.Rows[0][0].ToString();
-            strTieneFactura = p.Rows[0][1].ToString();
-            if (strTieneAnticipo == "NO" && strTieneFactura == "NO")
-            {
-                this.lbl_Aviso_Anticipo.Visible = false;
+            if(p.Rows.Count >0)
+                {
+                strTieneAnticipo = p.Rows[0][0].ToString();
+                strTieneFactura = p.Rows[0][1].ToString();
+                if (strTieneAnticipo == "NO" && strTieneFactura == "NO" && strTieneAnticipo == null && strTieneFactura == null)
+                {
+                    this.lbl_Aviso_Anticipo.Visible = false;
+                }
+                else
+                {
+                    this.lbl_Aviso_Anticipo.Visible = true;
+                }
             }
-            else
-            {
-                this.lbl_Aviso_Anticipo.Visible = true;
-            }
+            
 
         }
         private void Carga_Combo_Transportistas()
@@ -150,7 +157,7 @@ namespace k_presentacion_00
 
             DataTable p;
 
-            p = lista.Get_Transportistas("sp_Proveedores_A_Designar", parameters);
+            p = lista.Get_Transportistas("SP_Proveedor_A_Designar", parameters);
 
             this.cboTransportista.SelectedValueChanged -= new EventHandler(this.CboTransportista_SelectedValueChanged);
 
@@ -863,7 +870,7 @@ namespace k_presentacion_00
 
         private void cboTransportista_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //this.groupBox1.Enabled = false;
         }
 
         private void lbl_Nombre_Chasis_Click(object sender, EventArgs e)

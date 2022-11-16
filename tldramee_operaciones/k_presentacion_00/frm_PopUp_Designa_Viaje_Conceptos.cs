@@ -1410,11 +1410,11 @@ namespace k_presentacion_00
         {
             frmCambioNominacion f = new frmCambioNominacion();
             f._Empresa = datos.g_idEmpresa; 
-            f._OT = _OT ;
-            f._Item = _Item ;
+            f._OT = _OT;
+            f._Item = _Item;
             f._Corredor = _Corredor;
             f._Costo = _Costo;
-            f._codigo_Transportista = Convert.ToInt32(this.lbl_ID_Transportista.Text) ;
+            f._codigo_Transportista = Convert.ToInt32(this.lbl_ID_Transportista.Text);
             f._nombre_Transportista = this.lblTransportista.Text ;
             f._codigo_Tractor = Convert.ToInt32(this.lbl_ID_Tractor.Text);
             f._nombre_Tractor = this.lblTractor.Text; 
