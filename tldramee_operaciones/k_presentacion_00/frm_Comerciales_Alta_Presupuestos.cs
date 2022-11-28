@@ -49,6 +49,7 @@ namespace k_presentacion_00
         BindingSource _bindingSource = new BindingSource();
 
         DataSet _dtItems = new DataSet();
+        private Access.AcOutputObjectType acReport;
 
         public frm_Comerciales_Alta_Presupuestos()
         {
@@ -1014,134 +1015,133 @@ namespace k_presentacion_00
             string connstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path;
             using (OleDbConnection con = new OleDbConnection(connstring))
 
-            {
-                con.Open();
-
-                SQL = "DELETE FROM ptoCabecera;";
-                OleDbCommand comandoo = new OleDbCommand(SQL, con);
-                comandoo.ExecuteNonQuery();
-
-                SQL = "DELETE FROM ptoItems;";
-                comandoo = new OleDbCommand(SQL, con);
-
-                comandoo.ExecuteNonQuery();
-
-                //tabla ptoCabecera
-                SQL = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa,direcEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa,@DireccionEmpresa);";
-
-                OleDbCommand comandos = new OleDbCommand(SQL, con);
-                comandos.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
-                comandos.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
-                comandos.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
-                comandos.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
-                comandos.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
-                comandos.Parameters.AddWithValue("@Nombre", cboContactos.Text);
-
-                comandos.Parameters.AddWithValue("@fechaPto", mFecha.Text);
-                comandos.Parameters.AddWithValue("@telefono", txtTelCliente.Text);
-                comandos.Parameters.AddWithValue("@email", txtEmailCliente.Text);
-                comandos.Parameters.AddWithValue("@descServicio", cboModalidad.Text + "-" + cboRutas.Text);
-                comandos.Parameters.AddWithValue("@valorUni", txtVenta.Text + "+ IVA");
-
-                comandos.Parameters.AddWithValue("@validez", k_dias_Validez.Text);
-                comandos.Parameters.AddWithValue("@nombreFirma", datos.g_nombreUser);
-                comandos.Parameters.AddWithValue("@puesto", datos.g_funciones);
-                comandos.Parameters.AddWithValue("@emailEmpresa", datos.g_email);
-                comandos.Parameters.AddWithValue("@telefonoEmpresa", datos.g_telefono1);
-                comandos.Parameters.AddWithValue("@DireccionEmpresa", datos.g_empresaDireccion);
-
-
-                comandos.ExecuteNonQuery();
-
-                //tabla ptoItems insertamos en tabla y recorremos dg para los datos de conceptos EDD 2022/02/11
-                foreach (DataGridViewRow dgvRenglon in dg.Rows)
-                {
-                    string ssql = "INSERT INTO ptoItems (idEmpresa, idPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @idPresupuesto, @idGastos,@Item, @Detalle);";
-
-
-                    OleDbCommand comand = new OleDbCommand(ssql, con);
-                    comand.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
-                    comand.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
-                    if (dgvRenglon.Cells["colIdGastos"].Value != DBNull.Value)
-                    {
-                        intGastos = int.Parse(dgvRenglon.Cells["colIdGastos"].Value.ToString());
-                    }
-                    comand.Parameters.AddWithValue("@idGastos", intGastos);
-                    //comando.Parameters.AddWithValue("@telefono", cboDataCliente.SelectedValue);
-                    //comando.Parameters.AddWithValue("@email", cboDataCliente.Text);
-                    //comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
-                    strItem = dgvRenglon.Cells["colItem"].Value.ToString();
-                    comand.Parameters.AddWithValue("@Item", strItem);
-                    strDetalle = dgvRenglon.Cells["colDetalle"].Value.ToString();
-                    comand.Parameters.AddWithValue("@Detalle", strDetalle);
-
-                    comand.ExecuteNonQuery();
-                }
-            }
-
-            Microsoft.Office.Interop.Access.Application oAccess = null;
-            oAccess=new Microsoft.Office.Interop.Access.Application();
-
-            oAccess.OpenCurrentDatabase(Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb", true);
-
-            // Select the Employees report in the database window:
-            //oAccess.DoCmd.SelectObject(
-            //   Access.AcObjectType.acReport, //ObjectType
-            //   "Presupuesto", //ObjectName
-            //   true //InDatabaseWindow
-            //   );
-
-            // Preview a report named Sales:
-            oAccess.DoCmd.OpenReport(
-               "Presupuesto", //ReportName
-               Access.AcView.acViewPreview, //View
-               System.Reflection.Missing.Value, //FilterName
-               System.Reflection.Missing.Value,//WhereCondition
-               Access.AcWindowMode.acWindowNormal
-               );
-            oAccess.Visible=true;
-
-            ////funciones_Varias f = new funciones_Varias();
-            ////int[] ProcesosAntes;
-            ////int[] ProcesosDespues;
-            ////int PID;
-
-            ////ProcesosAntes = f.ListarProcesosAntes("EXCEL");
-
-
-            ////Excel.Application Mi_Excel = new Excel.Application();
-            ////Excel._Workbook librosTrabajo;
-            ////Excel._Worksheet hojaTrabajo;
-            ////string ExcelFile = @"C:\Sistema_Gestion\Transferencia\Prueba.xlsx";
-
-            ////librosTrabajo = Mi_Excel.Workbooks.Add(ExcelFile);
-            ////hojaTrabajo = (Excel._Worksheet)librosTrabajo.ActiveSheet;
-            ////hojaTrabajo.Range["A1"].Value = "Prueba";
-            ////Mi_Excel.UserControl = true;
-            ////librosTrabajo.Save();
-            ////hojaTrabajo.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, ExcelFile);
-
-            ////Mi_Excel.ActiveWorkbook.Close(true, ExcelFile, Type.Missing);
-
-            ////Mi_Excel.Quit();
-            ////Mi_Excel = null;
-
-            ////ProcesosDespues = f.ListarProcesosDespues("EXCEL");
-            ////PID = f.ListarProcesoNuevo(ProcesosAntes, ProcesosDespues);
-            ////f.DescargarProceso(PID);
             try
-            {
-                
-            funciones_envio_emails fee = new funciones_envio_emails();
-            int intTipoEvento;
-            intTipoEvento = (Int32)funciones_envio_emails.TipoArchivos.E_COTI;
-            //fee.Envio_Email_Cotizacion(datos.g_idEmpresa, (Int32)this.cboRazonSocial.SelectedValue, this.cboPresupuesto.Text, intTipoEvento);
-            }
-            catch (Exception)
-            {
+            { 
+                    {
+                        con.Open();
+
+                        SQL = "DELETE FROM ptoCabecera;";
+                        OleDbCommand comandoo = new OleDbCommand(SQL, con);
+                        comandoo.ExecuteNonQuery();
+
+                        SQL = "DELETE FROM ptoItems;";
+                        comandoo = new OleDbCommand(SQL, con);
+
+                        comandoo.ExecuteNonQuery();
+
+                        //tabla ptoCabecera
+                        SQL = "INSERT INTO ptoCabecera (idEmpresa, idPresupuesto, numeroPresupuesto, idCliente, razonSocial,Nombre, fechaPto,telefono,email,descServicio,valorUni,validez,nombreFirma,puesto,emailEmpresa,telefonoEmpresa,direcEmpresa) VALUES(@idEmpresa,@idPresupuesto, @numeroPresupuesto,@idCliente, @razonSocial, @Nombre, @fechaPto,@telefono,@email,@descServicio,@valorUni,@validez,@nombreFirma,@puesto,@emailEmpresa,@telefonoEmpresa,@DireccionEmpresa);";
+
+                        OleDbCommand comandos = new OleDbCommand(SQL, con);
+                        comandos.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+                        comandos.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
+                        comandos.Parameters.AddWithValue("@numeroPresupuesto", cboPresupuesto.Text);
+                        comandos.Parameters.AddWithValue("@idCliente", cboRazonSocial.SelectedValue);
+                        comandos.Parameters.AddWithValue("@razonSocial", cboRazonSocial.Text);
+                        comandos.Parameters.AddWithValue("@Nombre", cboContactos.Text);
+
+                        comandos.Parameters.AddWithValue("@fechaPto", mFecha.Text);
+                        comandos.Parameters.AddWithValue("@telefono", txtTelCliente.Text);
+                        comandos.Parameters.AddWithValue("@email", txtEmailCliente.Text);
+                        comandos.Parameters.AddWithValue("@descServicio", cboModalidad.Text + "-" + cboRutas.Text);
+                        comandos.Parameters.AddWithValue("@valorUni", txtVenta.Text + "+ IVA");
+
+                        comandos.Parameters.AddWithValue("@validez", k_dias_Validez.Text);
+                        comandos.Parameters.AddWithValue("@nombreFirma", datos.g_nombreUser);
+                        comandos.Parameters.AddWithValue("@puesto", datos.g_funciones);
+                        comandos.Parameters.AddWithValue("@emailEmpresa", datos.g_email);
+                        comandos.Parameters.AddWithValue("@telefonoEmpresa", datos.g_telefono1);
+                        comandos.Parameters.AddWithValue("@DireccionEmpresa", datos.g_empresaDireccion);
+
+
+                        comandos.ExecuteNonQuery();
+
+                        //tabla ptoItems insertamos en tabla y recorremos dg para los datos de conceptos EDD 2022/02/11
+                        foreach (DataGridViewRow dgvRenglon in dg.Rows)
+                        {
+                            string ssql = "INSERT INTO ptoItems (idEmpresa, idPresupuesto, idGastos, Item,Detalle) VALUES(@idEmpresa, @idPresupuesto, @idGastos,@Item, @Detalle);";
+
+
+                            OleDbCommand comand = new OleDbCommand(ssql, con);
+                            comand.Parameters.AddWithValue("@idEmpresa", datos.g_idEmpresa);
+                            comand.Parameters.AddWithValue("@idPresupuesto", cboPresupuesto.SelectedValue);
+                            if (dgvRenglon.Cells["colIdGastos"].Value != DBNull.Value)
+                            {
+                                intGastos = int.Parse(dgvRenglon.Cells["colIdGastos"].Value.ToString());
+                            }
+                            comand.Parameters.AddWithValue("@idGastos", intGastos);
+                            //comando.Parameters.AddWithValue("@telefono", cboDataCliente.SelectedValue);
+                            //comando.Parameters.AddWithValue("@email", cboDataCliente.Text);
+                            //comando.Parameters.AddWithValue("@fechaPto", txtNombre.Text);
+                            strItem = dgvRenglon.Cells["colItem"].Value.ToString();
+                            comand.Parameters.AddWithValue("@Item", strItem);
+                            strDetalle = dgvRenglon.Cells["colDetalle"].Value.ToString();
+                            comand.Parameters.AddWithValue("@Detalle", strDetalle);
+
+                            comand.ExecuteNonQuery();
+                        }
+                    }
+
+                    Microsoft.Office.Interop.Access.Application oAccess = null;
+                    oAccess=new Microsoft.Office.Interop.Access.Application();
+
+                    oAccess.OpenCurrentDatabase(Application.StartupPath.ToString() + "\\Bases\\PresupuestosDat.accdb", true);
+
+                    // Preview a report named Sales:
+                    oAccess.DoCmd.OpenReport(
+                       "Presupuesto", //ReportName
+                       Access.AcView.acViewPreview, //View
+                       System.Reflection.Missing.Value, //FilterName
+                       System.Reflection.Missing.Value,//WhereCondition
+                       Access.AcWindowMode.acWindowNormal
+                       );
+                    oAccess.Visible=false;
+
+                    oAccess.Run("envio_PtoClientes");
+
+                    //DoCmd.OutputTo(acReport, "Informe1", acFormatPDF, CurrentProject.Path + @"\Informe1.PDF");
+                    ////funciones_Varias f = new funciones_Varias();
+                    //int[] ProcesosAntes;
+                    ////int[] ProcesosDespues;
+                    ////int PID;
+
+                    ////ProcesosAntes = f.ListarProcesosAntes("EXCEL");
+
+
+                    ////Excel.Application Mi_Excel = new Excel.Application();
+                    ////Excel._Workbook librosTrabajo;
+                    ////Excel._Worksheet hojaTrabajo;
+                    ////string ExcelFile = @"C:\Sistema_Gestion\Transferencia\Prueba.xlsx";
+
+                    ////librosTrabajo = Mi_Excel.Workbooks.Add(ExcelFile);
+                    ////hojaTrabajo = (Excel._Worksheet)librosTrabajo.ActiveSheet;
+                    ////hojaTrabajo.Range["A1"].Value = "Prueba";
+                    ////Mi_Excel.UserControl = true;
+                    ////librosTrabajo.Save();
+                    ////hojaTrabajo.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, ExcelFile);
+
+                    ////Mi_Excel.ActiveWorkbook.Close(true, ExcelFile, Type.Missing);
+
+                    ////Mi_Excel.Quit();
+                    ////Mi_Excel = null;
+
+                    ////ProcesosDespues = f.ListarProcesosDespues("EXCEL");
+                    ////PID = f.ListarProcesoNuevo(ProcesosAntes, ProcesosDespues);
+                    ////f.DescargarProceso(PID);
+
+
+                    funciones_envio_emails fee = new funciones_envio_emails();
+
+                    int intTipoEvento;
+                    intTipoEvento = (Int32)funciones_envio_emails.TipoArchivos.E_COTI;
+                    fee.Envio_Email_Cotizacion(datos.g_idEmpresa, (Int32)this.cboRazonSocial.SelectedValue, this.cboPresupuesto.Text, intTipoEvento);
+
+                }
+                catch (Exception)
+                {
 
                 throw;
-            }
+                }
 
         }
 
