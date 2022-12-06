@@ -1130,11 +1130,11 @@ namespace k_presentacion_00
                     ////f.DescargarProceso(PID);
 
 
-                    funciones_envio_emails fee = new funciones_envio_emails();
+                    //funciones_envio_emails fee = new funciones_envio_emails();
 
-                    int intTipoEvento;
-                    intTipoEvento = (Int32)funciones_envio_emails.TipoArchivos.E_COTI;
-                    fee.Envio_Email_Cotizacion(datos.g_idEmpresa, (Int32)this.cboRazonSocial.SelectedValue, this.cboPresupuesto.Text, intTipoEvento);
+                    //int intTipoEvento;
+                    //intTipoEvento = (Int32)funciones_envio_emails.TipoArchivos.E_COTI;
+                    //fee.Envio_Email_Cotizacion(datos.g_idEmpresa, (Int32)this.cboRazonSocial.SelectedValue, this.cboPresupuesto.Text, intTipoEvento);
 
                 }
                 catch (Exception)
