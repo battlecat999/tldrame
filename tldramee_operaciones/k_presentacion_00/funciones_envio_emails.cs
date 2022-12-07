@@ -448,12 +448,35 @@ namespace k_presentacion_00
             cmdCommand.CommandType = CommandType.StoredProcedure;
             //verifico envio de email al final de la carga del ultimo contenedor
             cmdCommand.Parameters.Clear();//limpio los parametros.
-            // ED 30/08/22 // Aca validamos si es 1(impo)o si es 2(expo) generar cuadro con datos para cada uno//
-            if (intTipoServicio==1)
-            {
-                cmdCommand.CommandText ="SP_Emails_Fin_Nominacion_impo";
+            // EDD 30/08/22 // Aca validamos si es 1(impo)o si es 2(expo) generar cuadro con datos para cada uno//
 
-            }
+            //EDD 07/12/22 // SP EXCLUSIVOS PARA CLIENTES UNICOS
+            cmdCommand.CommandText = "SP_traer_Clientes_Exclusivos";
+
+            cmdCommand.Parameters.Add("intCliente", MySqlDbType.Int32);
+            cmdCommand.Parameters["intCliente"].Value = intCliente;
+       
+            cmdCommand.ExecuteNonQuery();
+
+            //declaro un tatbla
+            DataTable SP = new DataTable();
+
+            MySqlDataReader consultaCliente;
+            consultaCliente = cmdCommand.ExecuteReader();
+
+            SP.Load(consultaCliente);
+            consultaCliente.Close();
+
+            if (intTipoServicio==1)
+                if (SP == null)
+                {
+                    cmdCommand.CommandText ="SP_Emails_Fin_Nominacion_impo";
+
+                }
+                else 
+                {
+                    cmdCommand.CommandText ="SP_Emails_Fin_Nom_impo_ExclusivoClientes";
+                }
             else
             {
                 cmdCommand.CommandText ="SP_Emails_Fin_Nominacion_expo";
