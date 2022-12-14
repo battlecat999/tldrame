@@ -1379,7 +1379,7 @@ namespace k_presentacion_00
                 funciones_envio_emails fee = new funciones_envio_emails();
                 //DDE 2022/09/13 
                 fee.Envio_Email_Cuadro_Control(_Empresa, _OT, _strBooking,_IdCliente,0,0,Convert.ToInt32(this.lblTipoServicio.Text), (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION,"lightblue");//paso 0 en itemot para que el SP no tome un item especifico
-           
+            
             }
             catch (Exception ex)
             {
@@ -1549,6 +1549,9 @@ namespace k_presentacion_00
                 strContenedor = this.txtNroContenedor.Text.ToString();
                 strPrecinto = this.txtNroPrecinto.Text.ToString();
                 strPrecintoEmpty = this.txtNroPrecintoVacio.Text.ToString();
+
+               
+
                 cmdCommand.Connection = cnnConnection;
                 cmdCommand.Transaction = trsTransaccion;
                 cmdCommand.CommandType = CommandType.StoredProcedure;

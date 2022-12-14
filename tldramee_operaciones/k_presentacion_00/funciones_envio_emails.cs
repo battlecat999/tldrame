@@ -466,6 +466,7 @@ namespace k_presentacion_00
 
             SP.Load(consultaCliente);
             consultaCliente.Close();
+       
 
             if (intTipoServicio==1)
                 if (SP == null)
@@ -475,7 +476,7 @@ namespace k_presentacion_00
                 }
                 else 
                 {
-                    cmdCommand.CommandText ="SP_Emails_Fin_Nom_impo_ExclusivoClientes";
+                    cmdCommand.CommandText = SP.Rows[0]["SP"].ToString(); 
                 }
             else
             {
