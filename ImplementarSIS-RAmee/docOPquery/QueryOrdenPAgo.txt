@@ -1,0 +1,3 @@
+INSERT INTO ParametrosEmail ( OrigenEmail, Asunto, CuerpoEmail, CC, CCO )
+VALUES (3, "@@Proveedor@@ || ORDEN DE PAGO || @@Fecha@@ || @@Empresa@@", "CuerpoEmail
+aviso_envio_ordenDEpago.html", "Joana.roldan@tldrame.com.ar", "Miryana.roldan@tldrame.com.ar");
