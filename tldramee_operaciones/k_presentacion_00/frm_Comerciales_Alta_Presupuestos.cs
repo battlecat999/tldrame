@@ -49,7 +49,7 @@ namespace k_presentacion_00
         BindingSource _bindingSource = new BindingSource();
 
         DataSet _dtItems = new DataSet();
-        private Access.AcOutputObjectType acReport;
+        //private Access.AcOutputObjectType acReport;
 
         public frm_Comerciales_Alta_Presupuestos()
         {

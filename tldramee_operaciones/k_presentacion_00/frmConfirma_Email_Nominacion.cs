@@ -134,15 +134,17 @@ namespace k_presentacion_00
                 int intEmpresa;
                 string strBooking;
                 int intIdCliente;
+                int intIDTS;
                 //if (isChecked)
                // {
                     intEmpresa = (Int32)grdEmails[0, e.RowIndex].Value;
                     intOT = (Int32)grdEmails[3, e.RowIndex].Value;
                     intIdCliente = (Int32)grdEmails[1, e.RowIndex].Value;
                     strBooking = grdEmails[6, e.RowIndex].Value.ToString();
+                    intIDTS= (Int32)grdEmails[12, e.RowIndex].Value;
 
-                    funciones_envio_emails fee = new funciones_envio_emails();
-                    fee.Envio_Email_Cuadro_Control(intEmpresa, intOT, strBooking, intIdCliente, 0, 0, 0, (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION,"lightblue");
+                funciones_envio_emails fee = new funciones_envio_emails();
+                    fee.Envio_Email_Cuadro_Control(intEmpresa, intOT, strBooking, intIdCliente, 0, 0, intIDTS, (Int32)funciones_envio_emails.TipoArchivos.E_NOMINACION,"lightblue");
                     Cargar_Datos();
                 //}
             }
@@ -228,6 +230,8 @@ namespace k_presentacion_00
 
             DataGridViewColumn colBtnEnvia = new DataGridViewButtonColumn();
 
+            DataGridViewColumn colIDTS = new DataGridViewTextBoxColumn();
+
             grdEmails.AutoGenerateColumns = false;
             grdEmails.AllowUserToAddRows = false;
 
@@ -246,7 +250,8 @@ namespace k_presentacion_00
             grdEmails.Columns.Add(colViajes);
             grdEmails.Columns.Add(colEmail);
             grdEmails.Columns.Add(colBtnEnvia);
-            
+            grdEmails.Columns.Add(colIDTS);
+
 
             //grdConceptos.ColumnCount = 5;
             grdEmails.Columns[0].Name = "IdEmpresa";
@@ -264,6 +269,7 @@ namespace k_presentacion_00
             grdEmails.Columns[9].Name = "Viajes";
             grdEmails.Columns[10].Name = "Email";
             grdEmails.Columns[11].Name = "Envia";
+            grdEmails.Columns[12].Name = "IDTS";
 
             //grdAnticipos.Columns[10].Name = "Anula";
 
@@ -288,7 +294,8 @@ namespace k_presentacion_00
             grdEmails.Columns[9].HeaderText = "Viajes";
             grdEmails.Columns[10].HeaderText = "Fecha Email";
             grdEmails.Columns[11].HeaderText = "Envia";
-            
+            grdEmails.Columns[12].HeaderText = "IDTS";
+
 
 
             //grdConceptos.Columns[6].HeaderText = "Estado";
@@ -307,7 +314,7 @@ namespace k_presentacion_00
             grdEmails.Columns[8].DataPropertyName = "Ruta";
             grdEmails.Columns[9].DataPropertyName = "Cantidad_Viajes";
             grdEmails.Columns[10].DataPropertyName = "Nominacion";
-
+            grdEmails.Columns[12].DataPropertyName = "idTipoServicio";
 
             grdEmails.Columns[0].Visible  = false;
             grdEmails.Columns[1].Visible = false;
@@ -328,6 +335,7 @@ namespace k_presentacion_00
             grdEmails.Columns[9].Width = 100;
             grdEmails.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grdEmails.Columns[10].Width = 150;
+            grdEmails.Columns[12].Visible = false;
 
             //grdAnticipos.Columns[4].Width = 200;
             //grdAnticipos.Columns[6].Width = 200;
@@ -352,7 +360,7 @@ namespace k_presentacion_00
 
             
                 string valor;
-                if (e.Value.GetType() != typeof(System.DBNull))
+                if (e.Value != null)
                 {
 
 

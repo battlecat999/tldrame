@@ -46,11 +46,11 @@ namespace k_presentacion_00
 
             r = u.DN_Traer_DataTable("SP_Clientes_Get_All", 0, datos.g_idEmpresa);
 
-            o.CargarComboDataTable(this.cboClientes, r, "id", "descripcion", false,false,false, true);
+            o.CargarComboDataTable(this.cboClientes, r, "id", "descripcion", false, false, false, true);
 
             r = u.DN_Traer_DataTable("SP_Transportistas_Get_All", 0, datos.g_idEmpresa);
 
-            o.CargarComboDataTable(this.cboTransportista, r, "id", "descripcion", false, false,false, true);
+            o.CargarComboDataTable(this.cboTransportista, r, "id", "descripcion", false, false, false, true);
 
         }
         private void cmdBuscar_Click(object sender, EventArgs e)
@@ -61,8 +61,8 @@ namespace k_presentacion_00
             DataGridViewButtonColumn colBtnNominacion = new DataGridViewButtonColumn();
 
             dgv.Columns.Clear();
-           //Empresa
-           Parametros[0] = new MySqlParameter("intEmpresa", datos.g_idEmpresa);
+            //Empresa
+            Parametros[0] = new MySqlParameter("intEmpresa", datos.g_idEmpresa);
             //OT
             if (this.txtNroOT.Text != string.Empty)
             {
@@ -73,7 +73,7 @@ namespace k_presentacion_00
                 Parametros[1] = new MySqlParameter("intOT", DBNull.Value);
             }
             //Clientes
-            if (this.cboClientes.SelectedIndex !=-1)
+            if (this.cboClientes.SelectedIndex != -1)
             {
                 Parametros[2] = new MySqlParameter("intCliente", Convert.ToInt32(this.cboClientes.SelectedValue));
             }
@@ -97,7 +97,7 @@ namespace k_presentacion_00
             fHasta = DateTime.Parse(this.mFechaHasta.Text);
 
             Parametros[4] = new MySqlParameter("datFechaDesde", MySqlDbType.DateTime);
-            Parametros[5] = new MySqlParameter("datFechaHasta",MySqlDbType.DateTime);
+            Parametros[5] = new MySqlParameter("datFechaHasta", MySqlDbType.DateTime);
             Parametros[4].Value = fDesde.ToString("yyyy-MM-dd");
             Parametros[5].Value = fHasta.ToString("yyyy-MM-dd");
 
@@ -106,7 +106,7 @@ namespace k_presentacion_00
             //Nro de contenedor
             if (this.txtContenedor.Text != string.Empty)
             {
-                Parametros[6] = new MySqlParameter("strNroCont",this.txtContenedor.Text);
+                Parametros[6] = new MySqlParameter("strNroCont", this.txtContenedor.Text);
             }
             else
             {
@@ -133,27 +133,35 @@ namespace k_presentacion_00
             }
 
             dtOT = lista.Get_Datos("SP_Buscador_OT", Parametros); //, parameters);
-            
+
             dgv.DataSource = dtOT;
             dgv.Columns[0].Width = 45;
             dgv.Columns[1].Width = 45;
-            dgv.Columns[2].Width = 200;
+            dgv.Columns[2].Width = 150;//clientes
+            dgv.Columns[3].Width = 120;
+            dgv.Columns[4].Width = 45;
             dgv.Columns[5].Width = 45;
             dgv.Columns[6].Width = 55;
-            dgv.Columns[7].Width = 200;
+            dgv.Columns[7].Width = 200;//ruta
             dgv.Columns[8].Width = 55;
             dgv.Columns[9].Width = 100;//posic
-            dgv.Columns[11].Width = 180;
+            dgv.Columns[10].Width = 100;
+            dgv.Columns[11].Width = 140;//transportista
             dgv.Columns[12].Width = 55;
             dgv.Columns[13].Width = 55;
+            dgv.Columns[14].Width = 55;
+            dgv.Columns[15].Width = 55;
             dgv.Columns[16].Width = 55;
             dgv.Columns[17].Width = 55;
-            dgv.Columns[18].Width = 55;//desc
-            dgv.Columns[20].Visible = false;
-            dgv.Columns[21].Visible = false;
-            dgv.Columns[22].Visible = false;
-            dgv.Columns[23].Visible = false;
-            dgv.Columns[24].Visible = false;
+            dgv.Columns[18].Width = 55;//Ultima Posicion
+            dgv.Columns[19].Visible = false;//Compra
+            dgv.Columns[20].Visible = false;//codTractor
+            dgv.Columns[21].Visible = false;//codChasis
+            dgv.Columns[22].Visible = false;//codChofer
+            dgv.Columns[23].Visible = false;//HoraPosic
+            dgv.Columns[24].Visible = false;//idCorredor
+            dgv.Columns[25].Visible = false;//idProveedor
+            dgv.Columns[26].Visible = false;//idCliente
 
             dgv.Columns.Add(colBtnNominacion);
             colBtnNominacion.Name = "Cambio Nominacion";
@@ -164,86 +172,105 @@ namespace k_presentacion_00
             if (MessageBox.Show("¿Desea Exportar a Excel?", "Atención", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 DataTable dt = (DataTable)this.dgv.DataSource;
-                funciones_Varias.ExportToExcel(dt,"ExportacionOT");
+                funciones_Varias.ExportToExcel(dt, "ExportacionOT");
             }
         }
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            int intOt;
+            int intItem;
+            int intCorredor;
+            int intCliente;
+            decimal decCompra;
+            int intCodTractor;
+            int intCodChasis;
+            string strNombreTractor;
+            string strNombreChasis;
+            string strNombreChofer;
+            int intChofer;
+            string strBooking;
+            string strfechaPos;
+            string strfechaRet;
+            string strHoraPosic;
+            string strTransportista;
+            string strDesc;
+            int intTransportista;
             try
             {
-                foreach (DataGridViewRow dgvRenglon in dgv.Rows) //Recorremos datagridview y pasamos datos a frmCambioNominacion// EDD 2022-11-15
+                dgv.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
+                if (e.ColumnIndex == 27)
                 {
-                    int intOt;
-                    int intItem;
-                    int intCorredor;
-                    int intCompra;
-                    int intcodTractor;
-                    int intcodChasis;
-                    string strNombreTractor;
-                    string strNombreChasis;
-                    string strnombreChofer;
-                    int intChofer;
-                    string strBooking;
-                    string strfechaPos;
-                    string strfechaRet;
-                    string strHoraPosic;
-                    string strTransportista;
-                    string strDesc;
-
-                    frmCambioNominacion f = new frmCambioNominacion();
-
-                    intOt = int.Parse(dgvRenglon.Cells["OT"].Value.ToString());
-                    intItem= int.Parse(dgvRenglon.Cells["Items"].Value.ToString());
-                    intCorredor = int.Parse(dgvRenglon.Cells["idCorredor"].Value.ToString());
-                    intCompra = int.Parse(dgvRenglon.Cells["Compra"].Value.ToString());
-                    intcodTractor = int.Parse(dgvRenglon.Cells["codTractor"].Value.ToString());
-                    intcodChasis = int.Parse(dgvRenglon.Cells["CodChasis"].Value.ToString());
-                    strNombreTractor = dgvRenglon.Cells["tractor"].Value.ToString();
-                    strNombreChasis = dgvRenglon.Cells["Chasis"].Value.ToString();
-                    intChofer = int.Parse(dgvRenglon.Cells["codChofer"].Value.ToString());
-                    strnombreChofer = dgvRenglon.Cells["Chofer"].Value.ToString();
-                    strBooking = dgvRenglon.Cells["Booking"].Value.ToString();
-                    strfechaPos = dgvRenglon.Cells["Posic"].Value.ToString();
-                    strfechaRet = dgvRenglon.Cells["Retiro"].Value.ToString();
-                    strHoraPosic = dgvRenglon.Cells["HoraPosic"].Value.ToString();
-                    strTransportista = dgvRenglon.Cells["Transportista"].Value.ToString();
-                    strDesc = dgvRenglon.Cells["Descripcion"].Value.ToString();
-
-                    //EDD 2022-11-15
-                    f._Empresa = datos.g_idEmpresa;
-                    f._OT = intOt;
-                    f._Item = intItem;
-                    f._Corredor = intCorredor;
-                    f._Costo = intCompra;
-                    f._codigo_Transportista = Convert.ToInt32(this.cboTransportista.SelectedValue);
-                    f._nombre_Transportista = strTransportista;
-                    f._codigo_Tractor = Convert.ToInt32(intcodTractor);
-                    f._nombre_Tractor = strNombreTractor;
-                    f._codigo_Chasis = Convert.ToInt32(intcodChasis);
-                    f._nombre_Chasis = strNombreChasis;
-                    f._codigo_Chofer = Convert.ToInt32(intChofer);
-                    f._nombre_Chofer = strnombreChofer;
-                    f._BLBooking = strBooking;
-                    f._IdCliente = _IdCliente;
-                    f._FechaPosicion = Convert.ToDateTime(strfechaPos).ToString("dd-MM-yyyy");
-                    f._FechaRetiro = Convert.ToDateTime(strfechaRet).ToString("dd-MM-yyyy");
-                    f._HoraPosicion = strHoraPosic;
-                    f._viene_De = 1;//viene desde el buscador de OT
-
-                    if (strDesc == "FINALIZADA")
+                    if (dgv[15, e.RowIndex].Value.ToString() == "FINALIZADA")
                     {
+
+
+                        frmCambioNominacion f = new frmCambioNominacion();
+
+                        intOt = int.Parse(dgv[0, e.RowIndex].Value.ToString());
+                        intItem = int.Parse(dgv[1, e.RowIndex].Value.ToString());
+                        intCorredor = int.Parse(dgv[24, e.RowIndex].Value.ToString());
+                        intCliente = int.Parse(dgv[26, e.RowIndex].Value.ToString());
+                        decCompra = decimal.Parse(dgv[19, e.RowIndex].Value.ToString());
+
+                        intTransportista = int.Parse(dgv[25, e.RowIndex].Value.ToString()); ;
+                        strTransportista = dgv[11, e.RowIndex].Value.ToString();
+
+                        intCodTractor = int.Parse(dgv[20, e.RowIndex].Value.ToString());
+                        strNombreTractor = dgv[12, e.RowIndex].Value.ToString();
+
+                        intCodChasis = int.Parse(dgv[21, e.RowIndex].Value.ToString());
+                        strNombreChasis = dgv[13, e.RowIndex].Value.ToString();
+
+                        intChofer = int.Parse(dgv[22, e.RowIndex].Value.ToString());
+                        strNombreChofer = dgv[14, e.RowIndex].Value.ToString();
+
+                        strBooking = dgv[4, e.RowIndex].Value.ToString();
+                        strfechaPos = dgv[9, e.RowIndex].Value.ToString();
+                        strfechaRet = dgv[8, e.RowIndex].Value.ToString();
+                        strHoraPosic = dgv[23, e.RowIndex].Value.ToString();
+                        strDesc = dgv[15, e.RowIndex].Value.ToString();
+
+                        //EDD 2022-11-15
+                        f._Empresa = datos.g_idEmpresa;
+                        f._OT = intOt;
+                        f._Item = intItem;
+                        f._Corredor = intCorredor;
+                        f._Costo = decCompra;
+                        f._codigo_Transportista = intTransportista;
+                        f._nombre_Transportista = strTransportista;
+                        f._codigo_Tractor = Convert.ToInt32(intCodTractor);
+                        f._nombre_Tractor = strNombreTractor;
+                        f._codigo_Chasis = Convert.ToInt32(intCodChasis);
+                        f._nombre_Chasis = strNombreChasis;
+                        f._codigo_Chofer = Convert.ToInt32(intChofer);
+                        f._nombre_Chofer = strNombreChofer;
+                        f._BLBooking = strBooking;
+                        f._IdCliente = intCliente;
+                        f._FechaPosicion = Convert.ToDateTime(strfechaPos).ToString("dd-MM-yyyy");
+                        f._FechaRetiro = Convert.ToDateTime(strfechaRet).ToString("dd-MM-yyyy");
+                        f._HoraPosicion = strHoraPosic;
+                        f._viene_De = 1;//viene desde el buscador de OT
+
+
                         f.ShowDialog(this);
                         this.Close();
                     }
+                    else
+                    {
+                        return;
+                    }
                 }
+
             }
             catch (Exception)
             {
 
                 throw;
             }
-           
+
         }
         private void frmBuscador_OT_Load(object sender, EventArgs e)
         {
