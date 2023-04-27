@@ -414,7 +414,8 @@ namespace k_presentacion_00
             }
         }
         //intTipoServicio entra si es 1=impo si es 2=expo//DDE 2022/09/13//
-        public void Envio_Email_Cuadro_Control(int intEmpresa, int intOT, string strBooking,int intCliente, int intItemOT,int intOpcion,int intTipoServicio,int intEvento_Param,string color_Fondo_DataTable)//intOPcion, lista individual=0 o todo el paquete cuando =1
+        public void Envio_Email_Cuadro_Control(int intEmpresa, int intOT, string strBooking,int intCliente, int intItemOT, 
+                int intOpcion,int intTipoServicio,int intEvento_Param,string color_Fondo_DataTable)//intOPcion, lista individual=0 o todo el paquete cuando =1
         {
 
             clsConn cnMarco = new clsConn();
@@ -441,7 +442,7 @@ namespace k_presentacion_00
 
 
             cnnConnection.Open();
-           
+           //******************************
 
             MySqlCommand cmdCommand = cnnConnection.CreateCommand();
             cmdCommand.Connection = cnnConnection;
@@ -469,7 +470,7 @@ namespace k_presentacion_00
        
 
             if (intTipoServicio==1)
-                if (SP == null)
+                if (SP == null || SP.Rows.Count==0)
                 {
                     cmdCommand.CommandText ="SP_Emails_Fin_Nominacion_impo";
 
